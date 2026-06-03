@@ -1,0 +1,154 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap');
+
+  .bh-post {
+    width: 540px;
+    min-height: 600px;
+    background: #FAF9F6;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+
+  .bh-wave-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bh-content {
+    position: relative;
+    z-index: 1;
+    padding: 48px 44px 36px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .bh-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8A9A5B;
+    margin-bottom: 28px;
+  }
+
+  .bh-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    color: #4D4D4D;
+    margin-bottom: 28px;
+    max-width: 340px;
+  }
+
+  .bh-divider {
+    width: 40px;
+    height: 1px;
+    background: #8B6D53;
+    margin-bottom: 24px;
+    opacity: 0.6;
+  }
+
+  .bh-body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #5a5a5a;
+    max-width: 360px;
+    margin-bottom: 32px;
+  }
+
+  .bh-cta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8B6D53;
+    border-bottom: 1px solid #8B6D53;
+    padding-bottom: 3px;
+    display: inline-block;
+    margin-bottom: 40px;
+    opacity: 0.85;
+  }
+
+  .bh-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+  }
+
+  .bh-signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+    color: #8B6D53;
+    opacity: 0.8;
+  }
+
+  .bh-bowl-icon {
+    width: 52px;
+    height: 52px;
+    opacity: 0.18;
+  }
+</style>
+
+<div class="bh-post">
+  <svg class="bh-wave-bg" viewBox="0 0 540 600" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="480" cy="60" rx="180" ry="160" fill="#8B5E52" opacity="0.07"/>
+    <ellipse cx="500" cy="120" rx="130" ry="100" fill="#8A9A5B" opacity="0.06"/>
+    <path d="M380,0 Q460,80 420,200 Q390,300 480,380 Q530,440 540,540" stroke="#8B6D53" stroke-width="0.8" fill="none" opacity="0.12"/>
+    <path d="M400,0 Q500,100 440,220 Q410,320 500,400 Q545,460 540,600" stroke="#8B6D53" stroke-width="0.5" fill="none" opacity="0.08"/>
+    <ellipse cx="80" cy="560" rx="200" ry="120" fill="#8B5E52" opacity="0.06"/>
+    <ellipse cx="40" cy="600" rx="140" ry="90" fill="#8A9A5B" opacity="0.05"/>
+    <circle cx="460" cy="520" r="3" fill="#8B6D53" opacity="0.2"/>
+    <circle cx="480" cy="540" r="2" fill="#8B6D53" opacity="0.15"/>
+    <circle cx="445" cy="545" r="1.5" fill="#8B6D53" opacity="0.15"/>
+  </svg>
+
+  <div class="bh-content">
+    <div class="bh-tag">Sound Healing · Boluri Tibetane</div>
+
+    <div class="bh-headline">Nu e oboseală<br>normală. E ceva<br>mai profund.</div>
+
+    <div class="bh-divider"></div>
+
+    <div class="bh-body">
+      Simți că te trezești obosit chiar dacă ai dormit.<br>
+      Că ești prezent fizic, dar undeva în interior — absent.<br><br>
+      Sistemul tău nervos a rămas blocat în modul de alertă.<br>
+      Nu pentru că ești slab. Ci pentru că a ținut tot.<br><br>
+      Sunetul ajunge acolo unde cuvintele nu ajung.<br>
+      Bolurile nu îți cer nimic — nici explicații, nici efort. Doar să fii.
+    </div>
+
+    <div class="bh-cta">Te aștept sâmbătă · Locuri limitate → link în bio</div>
+
+    <div class="bh-footer">
+      <div class="bh-signature">Loredana Crișan</div>
+      <svg class="bh-bowl-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="26" cy="30" rx="22" ry="10" stroke="#8B6D53" stroke-width="1.5"/>
+        <path d="M4 30 Q26 48 48 30" stroke="#8B6D53" stroke-width="1.5" fill="none"/>
+        <line x1="8" y1="28" x2="44" y2="28" stroke="#8B6D53" stroke-width="0.8" opacity="0.5"/>
+        <ellipse cx="26" cy="28" rx="22" ry="4" stroke="#8B6D53" stroke-width="0.8" opacity="0.4"/>
+        <line x1="26" y1="10" x2="26" y2="20" stroke="#8B6D53" stroke-width="1.2"/>
+        <circle cx="26" cy="8" r="2" fill="#8B6D53"/>
+        <path d="M20 16 Q14 10 18 6" stroke="#8B6D53" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M32 16 Q38 10 34 6" stroke="#8B6D53" stroke-width="0.8" fill="none" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+</div>
