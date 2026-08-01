@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programează-te — Loredana Crișan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;1,6..96,300;1,6..96,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --white:    #ffffff;
+  --cream:    #faf9f6;
+  --title:    #2D2D2D;
+  --body:     #4D4D4D;
+  --border:   rgba(45,45,45,0.12);
+
+  /* section accents */
+  --purple:   #9f67bc;
+  --sky:      #c3dcf4;
+  --orange:   #fd9d43;
+  --yellow:   #fedd92;
+  --sage:     #b7c184;
+  --green:    #dee9b5;
+  --charcoal: #4D4D4D;
+
+  --serif: 'Bodoni Moda', Georgia, serif;
+  --sans:  'Montserrat', sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  background: var(--cream);
+  color: var(--body);
+  font-family: var(--sans);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────
+   PAGE SYSTEM
+───────────────────────────────────────── */
+.page { display:block; scroll-margin-top: 72px; }
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 1.25rem 5rem;
+  background: rgba(250,249,246,0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  text-decoration:none; line-height:1.1; display:flex; flex-direction:column; gap:4px;
+}
+.nav-logo small {
+  display:block; font-family:var(--sans); font-size:0.6rem;
+  letter-spacing:0.35em; text-transform:uppercase; color:var(--body);
+  font-weight:500; margin-top:2px;
+}
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a {
+  font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--body); text-decoration:none; font-weight:500;
+  transition: color 0.25s;
+}
+.nav-links a:hover { color:var(--title); }
+.nav-cta {
+  background:var(--title); color:white;
+  padding:0.7rem 1.8rem; font-family:var(--sans);
+  font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;
+  font-weight:500; text-decoration:none; transition:opacity 0.25s;
+}
+.nav-cta:hover { opacity:0.75; }
+
+/* ─────────────────────────────────────────
+   SHARED UTILS
+───────────────────────────────────────── */
+.pt-nav { padding-top:80px; }
+
+.section-eyebrow {
+  font-size:0.62rem; letter-spacing:0.4em; text-transform:uppercase;
+  font-weight:600; margin-bottom:1.5rem; display:block;
+}
+
+.section-title {
+  font-family:var(--serif); font-size:clamp(2.8rem,5vw,5.5rem);
+  font-weight:300; line-height:0.97; color:var(--title);
+}
+.section-title em { font-style:italic; }
+
+.btn-dark {
+  display:inline-block;
+  background:var(--title); color:white;
+  padding:0.9rem 2.2rem; font-family:var(--sans);
+  font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase;
+  font-weight:500; text-decoration:none; transition:opacity 0.25s;
+  border:none; cursor:pointer;
+}
+.btn-dark:hover { opacity:0.72; }
+
+.btn-outline {
+  display:inline-block;
+  border:1px solid var(--title); color:var(--title);
+  padding:0.9rem 2.2rem; font-family:var(--sans);
+  font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase;
+  font-weight:500; text-decoration:none; transition:all 0.25s;
+  background:transparent; cursor:pointer;
+}
+.btn-outline:hover { background:var(--title); color:white; }
+
+/* accent bar */
+.accent-bar {
+  height:4px; width:60px;
+  margin-bottom:2.5rem; border-radius:2px;
+}
+
+/* divider line */
+hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
+
+/* ─────────────────────────────────────────
+   ══ HOME PAGE ══
+───────────────────────────────────────── */
+#home { background:var(--cream); }
+
+/* HERO */
+.home-hero {
+  min-height:100vh;
+  display:grid; grid-template-columns:1fr 1fr;
+  padding-top:80px;
+  position:relative; overflow:hidden;
+}
+.home-hero-left {
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 6rem 4rem 6rem 5rem;
+}
+.home-hero-tag {
+  display:inline-flex; align-items:center; gap:0.75rem;
+  font-size:0.62rem; letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--body); font-weight:500; margin-bottom:2.5rem;
+}
+.home-hero-tag::before {
+  content:''; display:block; width:32px; height:1px; background:var(--body);
+}
+.home-hero-title {
+  font-family:var(--serif); font-size:clamp(4rem,7vw,8rem);
+  font-weight:300; line-height:0.92; color:var(--title);
+  margin-bottom:2.5rem;
+}
+.home-hero-title em { font-style:italic; color:var(--purple); }
+.home-hero-sub {
+  font-size:0.88rem; line-height:2; color:var(--body);
+  max-width:400px; margin-bottom:3rem; font-weight:300;
+}
+.home-hero-actions { display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; }
+
+.home-hero-right {
+  background:var(--purple);
+  position:relative; overflow:hidden;
+  display:flex; align-items:flex-end;
+}
+.hero-right-inner {
+  padding:4rem; width:100%;
+}
+.hero-quote-text {
+  font-family:var(--serif); font-size:1.6rem; font-style:italic;
+  font-weight:300; color:white; line-height:1.5; margin-bottom:1.5rem;
+}
+.hero-quote-cite {
+  font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase;
+  color:rgba(255,255,255,0.6); font-weight:500;
+}
+.hero-bg-word {
+  position:absolute; top:3rem; left:3rem; right:3rem;
+  font-family:var(--serif); font-size:clamp(5rem,12vw,14rem);
+  font-weight:300; line-height:1;
+  color:rgba(255,255,255,0.06); pointer-events:none;
+  user-select:none; letter-spacing:-0.02em;
+}
+
+/* STATS STRIP */
+.home-strip {
+  background:var(--title); color:white;
+  display:flex; gap:0; overflow:hidden;
+}
+.strip-item {
+  flex:1; padding:2.5rem 3rem;
+  border-right:1px solid rgba(255,255,255,0.08);
+  display:flex; flex-direction:column; gap:0.4rem;
+}
+.strip-item:last-child { border-right:none; }
+.strip-num {
+  font-family:var(--serif); font-size:2.8rem; font-weight:300;
+  color:white; line-height:1;
+}
+.strip-label {
+  font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(255,255,255,0.5); font-weight:500;
+}
+
+/* HOME PAGES GRID */
+.home-pages-grid {
+  padding:7rem 5rem;
+  display:grid; grid-template-columns:repeat(7,1fr);
+  gap:0;
+}
+.home-page-card {
+  padding:3rem 2rem;
+  display:flex; flex-direction:column; gap:1.5rem;
+  border-right:1px solid var(--border);
+  cursor:pointer; transition:transform 0.3s;
+  text-decoration:none; color:inherit;
+}
+.home-page-card:last-child { border-right:none; }
+.home-page-card:hover { transform:translateY(-4px); }
+.home-card-dot {
+  width:36px; height:36px; border-radius:50%;
+  flex-shrink:0;
+}
+.home-card-title {
+  font-family:var(--serif); font-size:1.1rem; font-weight:400;
+  color:var(--title); line-height:1.2;
+}
+.home-card-arrow {
+  font-size:1rem; color:var(--body); margin-top:auto;
+  transition:transform 0.2s;
+}
+.home-page-card:hover .home-card-arrow { transform:translateX(4px); }
+
+/* HOME INTRO */
+.home-intro {
+  padding:7rem 5rem; display:grid;
+  grid-template-columns:1fr 1fr; gap:8rem; align-items:center;
+}
+.home-intro-text p {
+  font-size:0.88rem; line-height:2; color:var(--body);
+  margin-bottom:1.25rem; font-weight:300;
+}
+.home-intro-visual {
+  aspect-ratio:4/5;
+  background:var(--sage);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.home-intro-visual-inner {
+  font-family:var(--serif); font-size:2.5rem; font-style:italic;
+  color:white; opacity:0.5; text-align:center; line-height:1.4;
+}
+.intro-circle {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+/* HOME CTA */
+.home-cta {
+  background:var(--title); color:white;
+  padding:8rem 5rem; text-align:center;
+}
+.home-cta h2 {
+  font-family:var(--serif); font-size:clamp(3rem,6vw,7rem);
+  font-weight:300; line-height:0.95; margin-bottom:2rem;
+}
+.home-cta h2 em { font-style:italic; color:var(--sage); }
+.home-cta p {
+  font-size:0.88rem; color:rgba(255,255,255,0.6);
+  margin-bottom:3rem; font-weight:300;
+}
+
+/* ─────────────────────────────────────────
+   ══ PAGE SHELL (all 7 section pages) ══
+───────────────────────────────────────── */
+.sec-page { background:var(--white); }
+
+.sec-hero {
+  min-height:55vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:8rem 5rem 5rem;
+  position:relative; overflow:hidden;
+}
+.sec-hero-bg {
+  position:absolute; inset:0;
+  opacity:0.18;
+}
+.sec-hero-content { position:relative; z-index:2; max-width:800px; }
+.sec-hero-sub {
+  font-size:0.9rem; line-height:1.9; color:var(--body);
+  max-width:560px; margin-top:2rem; font-weight:300;
+}
+
+.sec-body { padding:6rem 5rem; }
+.sec-body-narrow { max-width:800px; }
+.sec-body-wide { }
+
+/* ─────────────────────────────────────────
+   1 — DESPRE MINE  (purple)
+───────────────────────────────────────── */
+#despre-mine .sec-hero { background:var(--cream); }
+#despre-mine .accent-bar { background:var(--purple); }
+#despre-mine .section-eyebrow { color:var(--purple); }
+
+.despre-grid {
+  display:grid; grid-template-columns:1.2fr 1fr;
+  gap:6rem; align-items:start;
+}
+.despre-text p {
+  font-size:0.9rem; line-height:2; color:var(--body);
+  margin-bottom:1.5rem; font-weight:300;
+}
+.despre-text h3 {
+  font-family:var(--serif); font-size:1.8rem; font-weight:300;
+  color:var(--title); margin:2.5rem 0 1rem;
+}
+.despre-sidebar {}
+.despre-photo {
+  aspect-ratio:3/4; background:var(--purple);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; margin-bottom:2rem;
+}
+.despre-photo-placeholder {
+  font-family:var(--serif); font-size:2rem; font-style:italic;
+  color:rgba(255,255,255,0.5); text-align:center;
+}
+.despre-cert {
+  border:1px solid var(--border); padding:2rem;
+}
+.despre-cert h4 {
+  font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--purple); font-weight:600; margin-bottom:1.25rem;
+}
+.despre-cert ul { list-style:none; }
+.despre-cert li {
+  font-size:0.82rem; padding:0.6rem 0;
+  border-bottom:1px solid var(--border); font-weight:300;
+  display:flex; gap:0.75rem; align-items:flex-start;
+  color:var(--body);
+}
+.despre-cert li::before { content:'—'; color:var(--purple); flex-shrink:0; }
+
+/* ─────────────────────────────────────────
+   2 — MISIUNEA & VIZIUNEA  (sky)
+───────────────────────────────────────── */
+#misiunea .sec-hero { background:var(--cream); }
+#misiunea .accent-bar { background:var(--sky); }
+#misiunea .section-eyebrow { color:var(--sky); filter:saturate(1.5) brightness(0.75); }
+
+.misiunea-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:2px;
+  margin-bottom:5rem;
+}
+.misiunea-half {
+  padding:4rem; background:var(--cream);
+  border:1px solid var(--border);
+}
+.misiunea-half:first-child { background:var(--sky); }
+.misiunea-half h2 {
+  font-family:var(--serif); font-size:2.2rem; font-weight:300;
+  color:var(--title); margin-bottom:1.5rem;
+}
+.misiunea-half:first-child h2 { color:var(--title); }
+.misiunea-half p {
+  font-size:0.88rem; line-height:2; color:var(--body); font-weight:300;
+  margin-bottom:1rem;
+}
+.misiunea-values {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+}
+.value-card {
+  padding:3rem 2.5rem; background:var(--cream);
+  border:1px solid var(--border);
+}
+.value-card-num {
+  font-family:var(--serif); font-size:3.5rem; font-weight:300;
+  color:var(--sky); line-height:1; margin-bottom:1rem;
+  opacity:0.5;
+}
+.value-card h3 {
+  font-family:var(--serif); font-size:1.4rem; font-weight:300;
+  color:var(--title); margin-bottom:0.75rem;
+}
+.value-card p { font-size:0.82rem; line-height:1.85; color:var(--body); font-weight:300; }
+
+/* ─────────────────────────────────────────
+   3 — SERVICII & ACTIVITĂȚI  (orange)
+───────────────────────────────────────── */
+#servicii .sec-hero { background:var(--cream); }
+#servicii .accent-bar { background:var(--orange); }
+#servicii .section-eyebrow { color:var(--orange); }
+
+.servicii-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+  margin-bottom:5rem;
+}
+.serviciu-card {
+  padding:3.5rem 3rem; background:var(--cream);
+  border:1px solid var(--border);
+  display:flex; flex-direction:column;
+  transition:background 0.3s; cursor:pointer;
+}
+.serviciu-card:hover { background:var(--orange); }
+.serviciu-card:hover .serviciu-price { color:white; }
+.serviciu-card:hover .serviciu-name { color:white; }
+.serviciu-card:hover .serviciu-desc { color:rgba(255,255,255,0.75); }
+.serviciu-card:hover .serviciu-arrow { color:white; }
+.serviciu-tag {
+  font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase;
+  font-weight:600; color:var(--orange); margin-bottom:2rem;
+  transition:color 0.3s;
+}
+.serviciu-card:hover .serviciu-tag { color:rgba(255,255,255,0.7); }
+.serviciu-name {
+  font-family:var(--serif); font-size:1.6rem; font-weight:300;
+  color:var(--title); line-height:1.15; margin-bottom:1.25rem;
+  transition:color 0.3s;
+}
+.serviciu-desc {
+  font-size:0.82rem; line-height:1.85; color:var(--body);
+  font-weight:300; flex:1; margin-bottom:2rem;
+  transition:color 0.3s;
+}
+.serviciu-price {
+  font-family:var(--serif); font-size:1.8rem; font-weight:300;
+  color:var(--title); transition:color 0.3s;
+}
+.serviciu-duration {
+  font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--body); font-weight:500; margin-bottom:0.25rem;
+  transition:color 0.3s;
+}
+.serviciu-card:hover .serviciu-duration { color:rgba(255,255,255,0.6); }
+.serviciu-arrow {
+  margin-top:2rem; font-size:1.2rem; color:var(--orange);
+  transition:all 0.3s; align-self:flex-end;
+}
+
+/* activitati */
+.activitati-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:2px;
+}
+.activitate-item {
+  padding:3rem; border:1px solid var(--border);
+  display:grid; grid-template-columns:auto 1fr; gap:2rem; align-items:start;
+}
+.activitate-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:var(--orange); margin-top:0.4rem; flex-shrink:0;
+}
+.activitate-item h3 {
+  font-family:var(--serif); font-size:1.3rem; font-weight:300;
+  color:var(--title); margin-bottom:0.75rem;
+}
+.activitate-item p { font-size:0.82rem; line-height:1.85; color:var(--body); font-weight:300; }
+
+/* ─────────────────────────────────────────
+   4 — TARIFE  (yellow)
+───────────────────────────────────────── */
+#tarife .sec-hero { background:var(--cream); }
+#tarife .accent-bar { background:var(--yellow); }
+#tarife .section-eyebrow { color:#9a7a00; }
+
+.tarife-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+  margin-bottom:4rem;
+}
+.tarif-card {
+  border:1px solid var(--border); padding:3.5rem 3rem;
+  position:relative; background:var(--cream);
+}
+.tarif-card.featured {
+  background:var(--yellow); border-color:var(--yellow);
+}
+.tarif-badge {
+  position:absolute; top:2rem; right:2rem;
+  font-size:0.58rem; letter-spacing:0.25em; text-transform:uppercase;
+  font-weight:600; color:var(--title);
+  background:white; padding:0.3rem 0.75rem;
+}
+.tarif-name {
+  font-family:var(--serif); font-size:1.5rem; font-weight:300;
+  color:var(--title); margin-bottom:0.5rem;
+}
+.tarif-duration {
+  font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--body); font-weight:500; margin-bottom:2rem;
+}
+.tarif-price {
+  font-family:var(--serif); font-size:3.5rem; font-weight:300;
+  color:var(--title); line-height:1; margin-bottom:0.4rem;
+}
+.tarif-currency {
+  font-size:0.75rem; letter-spacing:0.15em; color:var(--body);
+  font-weight:400; margin-bottom:2rem;
+}
+.tarif-includes { list-style:none; margin-bottom:2.5rem; }
+.tarif-includes li {
+  font-size:0.82rem; padding:0.55rem 0;
+  border-bottom:1px solid var(--border);
+  display:flex; gap:0.75rem; color:var(--body); font-weight:300;
+}
+.tarif-includes li::before { content:'✓'; color:var(--title); font-weight:500; flex-shrink:0; }
+
+.tarife-note {
+  padding:3rem; border:1px solid var(--border);
+  background:var(--cream);
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
+}
+.tarife-note h3 {
+  font-family:var(--serif); font-size:1.5rem; font-weight:300;
+  color:var(--title); margin-bottom:1rem;
+}
+.tarife-note p { font-size:0.85rem; line-height:1.9; color:var(--body); font-weight:300; }
+
+/* ─────────────────────────────────────────
+   5 — PROGRAMEAZĂ & CONTACT  (sage)
+───────────────────────────────────────── */
+#programeaza .sec-hero { background:var(--cream); }
+#programeaza .accent-bar { background:var(--sage); }
+#programeaza .section-eyebrow { color:#5a6840; }
+
+.contact-split {
+  display:grid; grid-template-columns:1fr 1fr; gap:2px;
+}
+.contact-form-side {
+  padding:4rem; border:1px solid var(--border); background:var(--cream);
+}
+.contact-info-side {
+  padding:4rem; background:var(--sage);
+}
+.contact-info-side h3 {
+  font-family:var(--serif); font-size:1.8rem; font-weight:300;
+  color:var(--title); margin-bottom:2rem;
+}
+.contact-detail {
+  margin-bottom:2rem;
+}
+.contact-detail-label {
+  font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--title); font-weight:600; margin-bottom:0.4rem;
+}
+.contact-detail-value {
+  font-size:0.9rem; color:var(--title); font-weight:300;
+}
+
+/* form */
+.form-group { margin-bottom:1.5rem; }
+.form-label {
+  display:block; font-size:0.6rem; letter-spacing:0.25em;
+  text-transform:uppercase; font-weight:600; color:var(--body);
+  margin-bottom:0.5rem;
+}
+.form-input, .form-select, .form-textarea {
+  width:100%; padding:0.85rem 1rem;
+  border:1px solid var(--border); background:white;
+  font-family:var(--sans); font-size:0.85rem; font-weight:300;
+  color:var(--title); outline:none;
+  transition:border-color 0.25s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color:var(--sage);
+}
+.form-textarea { height:110px; resize:none; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+.session-select {
+  display:grid; grid-template-columns:1fr; gap:0.75rem; margin-bottom:1.5rem;
+}
+.session-opt {
+  border:1px solid var(--border); padding:1.25rem;
+  cursor:pointer; transition:all 0.2s; background:white;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.session-opt.active { border-color:var(--sage); background:rgba(183,193,132,0.08); }
+.session-opt-name { font-size:0.82rem; font-weight:400; color:var(--title); }
+.session-opt-price { font-family:var(--serif); font-size:1.1rem; font-weight:300; color:var(--title); }
+
+/* calendar mini */
+.cal-wrap { margin-bottom:1.5rem; }
+.cal-title-row {
+  font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+  font-weight:600; color:var(--body); margin-bottom:0.75rem;
+}
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+.cal-hd {
+  font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--body); font-weight:500; text-align:center; padding:0.25rem 0;
+}
+.cal-d {
+  aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+  font-size:0.72rem; cursor:pointer; border:1px solid transparent;
+  transition:all 0.18s; font-weight:300; color:var(--title);
+}
+.cal-d:hover { border-color:var(--sage); }
+.cal-d.sel { background:var(--sage); color:white; }
+.cal-d.off { color:rgba(77,77,77,0.25); pointer-events:none; }
+
+.time-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; margin-bottom:1.5rem; }
+.time-btn {
+  padding:0.55rem; text-align:center; border:1px solid var(--border);
+  font-size:0.72rem; cursor:pointer; background:white; font-family:var(--sans);
+  transition:all 0.18s; font-weight:300;
+}
+.time-btn:hover { border-color:var(--sage); }
+.time-btn.sel { background:var(--sage); color:white; border-color:var(--sage); }
+.time-btn.taken { opacity:0.3; pointer-events:none; text-decoration:line-through; }
+
+/* ─────────────────────────────────────────
+   6 — BENEFICII  (light green)
+───────────────────────────────────────── */
+#beneficii .sec-hero { background:var(--cream); }
+#beneficii .accent-bar { background:var(--green); }
+#beneficii .section-eyebrow { color:#5a7040; }
+
+.beneficii-intro {
+  display:grid; grid-template-columns:1fr 1fr; gap:6rem;
+  margin-bottom:5rem; align-items:center;
+}
+.beneficii-intro p {
+  font-size:0.9rem; line-height:2; color:var(--body); font-weight:300;
+  margin-bottom:1.25rem;
+}
+.beneficii-intro-visual {
+  background:var(--green); aspect-ratio:1;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-size:5rem; font-weight:300;
+  color:rgba(45,45,45,0.2); font-style:italic;
+}
+
+.beneficii-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+  margin-bottom:5rem;
+}
+.beneficiu-card {
+  padding:3rem 2.5rem; border:1px solid var(--border); background:var(--cream);
+}
+.beneficiu-cat {
+  font-size:0.58rem; letter-spacing:0.35em; text-transform:uppercase;
+  font-weight:600; margin-bottom:1.25rem;
+}
+.beneficiu-card:nth-child(1) .beneficiu-cat { color:#5a6840; }
+.beneficiu-card:nth-child(2) .beneficiu-cat { color:var(--orange); }
+.beneficiu-card:nth-child(3) .beneficiu-cat { color:var(--purple); }
+.beneficiu-card h3 {
+  font-family:var(--serif); font-size:1.35rem; font-weight:300;
+  color:var(--title); margin-bottom:1rem;
+}
+.beneficiu-list { list-style:none; }
+.beneficiu-list li {
+  font-size:0.82rem; padding:0.6rem 0;
+  border-bottom:1px solid var(--border);
+  color:var(--body); font-weight:300;
+  display:flex; gap:0.75rem;
+}
+.beneficiu-list li::before { content:'○'; font-size:0.5rem; flex-shrink:0; margin-top:0.35rem; }
+.beneficiu-card:nth-child(1) .beneficiu-list li::before { color:#5a6840; }
+.beneficiu-card:nth-child(2) .beneficiu-list li::before { color:var(--orange); }
+.beneficiu-card:nth-child(3) .beneficiu-list li::before { color:var(--purple); }
+
+.testimoniale-row {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+}
+.testimonial-card {
+  padding:3rem 2.5rem; background:var(--green);
+  border:1px solid rgba(45,45,45,0.06);
+}
+.testimonial-card p {
+  font-family:var(--serif); font-size:1.05rem; font-style:italic;
+  font-weight:300; color:var(--title); line-height:1.65; margin-bottom:1.75rem;
+}
+.testimonial-card cite {
+  font-style:normal; font-size:0.62rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--body); font-weight:500;
+}
+
+/* ─────────────────────────────────────────
+   7 — FAQ  (charcoal / neutral)
+───────────────────────────────────────── */
+#faq .sec-hero { background:var(--cream); }
+#faq .accent-bar { background:var(--charcoal); }
+#faq .section-eyebrow { color:var(--charcoal); }
+
+.faq-layout {
+  display:grid; grid-template-columns:1fr 1.6fr; gap:6rem; align-items:start;
+}
+.faq-sidebar h3 {
+  font-family:var(--serif); font-size:1.6rem; font-weight:300;
+  color:var(--title); margin-bottom:1.25rem;
+}
+.faq-sidebar p { font-size:0.85rem; line-height:1.9; color:var(--body); font-weight:300; margin-bottom:1.5rem; }
+
+.faq-list {}
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-q {
+  width:100%; background:none; border:none; cursor:pointer;
+  padding:1.5rem 0; display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--serif); font-size:1.1rem; font-weight:300;
+  color:var(--title); text-align:left; font-family:var(--serif);
+}
+.faq-q-icon {
+  width:28px; height:28px; border:1px solid var(--border);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:0.9rem; color:var(--body); flex-shrink:0; transition:all 0.25s;
+  font-family:var(--sans);
+}
+.faq-q.open .faq-q-icon {
+  background:var(--charcoal); color:white; border-color:var(--charcoal);
+  transform:rotate(45deg);
+}
+.faq-a {
+  font-size:0.85rem; line-height:1.9; color:var(--body);
+  font-weight:300; padding-bottom:1.5rem; display:none;
+  max-width:90%;
+}
+.faq-a.open { display:block; }
+
+/* ─────────────────────────────────────────
+   FOOTER (shared)
+───────────────────────────────────────── */
+.site-footer {
+  background:var(--title); color:rgba(255,255,255,0.45);
+  padding:3rem 5rem;
+  display:flex; justify-content:space-between; align-items:center;
+  border-top:1px solid rgba(255,255,255,0.07);
+  font-size:0.65rem; letter-spacing:0.1em;
+}
+.footer-logo {
+  font-family:var(--serif); font-size:1.2rem;
+  color:white; font-weight:300;
+}
+.footer-links { display:flex; gap:2rem; }
+.footer-links a {
+  color:rgba(255,255,255,0.45); text-decoration:none;
+  transition:color 0.2s; font-size:0.65rem;
+}
+.footer-links a:hover { color:white; }
+
+/* ─── CANVA DESIGN PATTERN ADDITIONS ─── */
+
+/* Hero: two-column split same as Canva card layout */
+.sec-hero {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  min-height: 60vh;
+}
+.sec-hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5rem 4rem;
+  border-right: 1px solid var(--border);
+}
+.sec-hero-visual {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Accent bottom band (replicated from every Canva card) */
+.canva-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+.canva-band img { height: 28px; width: auto; }
+.canva-band-tag {
+  font-size: 0.56rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Sub-hero accent strip */
+.sub-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+}
+.sub-band-label {
+  font-size: 0.56rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Large faded letter bg (Canva decorative element) */
+.hero-bg-letter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: clamp(8rem, 18vw, 18rem);
+  font-weight: 300;
+  font-style: italic;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Card number — large Bodoni faded */
+.bodoni-num {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1;
+  opacity: 0.12;
+  color: var(--title);
+  margin-bottom: 0.75rem;
+}
+
+/* Left-border line card (Canva vertical separator) */
+.lc {
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  background: var(--white);
+  border-left-width: 3px;
+}
+
+/* Dot list */
+.dl { list-style: none; }
+.dl li {
+  font-size: 0.85rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  color: var(--body);
+  font-weight: 300;
+}
+.dl li::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+  background: currentColor;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width:900px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-links { display:none; }
+  .home-hero { grid-template-columns:1fr; }
+  .home-hero-right { display:none; }
+  .home-hero-left { padding:5rem 1.5rem 3rem; }
+  .home-pages-grid { grid-template-columns:repeat(2,1fr); padding:3rem 1.5rem; }
+  .home-strip { flex-direction:column; }
+  .strip-item { border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .home-intro { grid-template-columns:1fr; gap:2rem; padding:3rem 1.5rem; }
+  .home-cta { padding:4rem 1.5rem; }
+  .sec-hero { padding:6rem 1.5rem 3rem; }
+  .sec-body { padding:3rem 1.5rem; }
+  .despre-grid, .misiunea-grid, .misiunea-values,
+  .servicii-grid, .tarife-grid, .contact-split,
+  .beneficii-intro, .beneficii-grid, .testimoniale-row,
+  .faq-layout, .activitati-row, .tarife-note {
+    grid-template-columns:1fr; gap:1px;
+  }
+  hr.thin { margin:0 1.5rem; }
+  .site-footer { flex-direction:column; gap:1rem; padding:2rem 1.5rem; text-align:center; }
+}
+
+
+/* override: all pages visible in standalone */
+.page { display: block !important; }
+
+/* standalone page specific */
+body { background: var(--cream); }
+.standalone-nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 1rem 4rem;
+  background: rgba(250,249,246,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.standalone-nav img { height: 40px; width: auto; }
+.standalone-nav small {
+  font-family: var(--sans); font-size: 0.56rem;
+  letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--body); font-weight: 500; display: block; margin-top: 3px;
+}
+.back-link {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--body); text-decoration: none; font-weight: 500;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--title); }
+</style>
+</head>
+<body>
+
+<!-- Standalone nav -->
+<nav class="standalone-nav">
+  <a href="index.html" style="text-decoration:none;">
+    <img src="https://media.canva.com/v2/document-image/hash:209870851/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAANvaxuxp5IqcqavoEjSYGpibqTAAQrItjci3iU7DiUM8&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0012.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T182435Z%26X-Amz-Expires%3D73469%26X-Amz-Signature%3D2f0dcdc68d5af75cb38420e0815f3b61392ef10dd047387379c170983cc1ba1d%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAMNK42Rx-IdFxGZbifvuOhhPILA2-8gChpyJRK-QRBgd&page=15&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan">
+    <small>Breath &amp; Sound Healing</small>
+  </a>
+  <a href="javascript:history.back()" class="back-link">← Înapoi la site</a>
+</nav>
+
+<!-- Programeaza section — full page -->
+<div style="padding-top:72px;">
+  <div id="programeaza" class="page sec-page pt-nav" style="scroll-margin-top:72px;border-top:4px solid #b7c184;">
+
+  <div class="sec-hero">
+    <div class="sec-hero-bg" style="background:var(--sage)"></div>
+    <div class="sec-hero-content">
+      <div class="accent-bar" style="background:var(--sage); filter:brightness(0.75)"></div>
+      <span class="section-eyebrow" style="color:#4a5a30">Programează & Contact</span>
+      <h1 class="section-title">Rezervă<br><em>spațiul tău</em></h1>
+      <p class="sec-hero-sub">Alege sesiunea, completează formularul și te contactez în maxim 2 ore pentru confirmare.</p>
+    </div>
+  </div>
+
+  
+    <!-- blob bottom-left -->
+    <div style="position:absolute;bottom:-10px;left:-10px;width:28%;height:140px;pointer-events:none;">
+      <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="bl-pg" cx="10%" cy="90%" r="60%">
+            <stop offset="0%" stop-color="#c8d898" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#c8d898" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="20" cy="160" rx="140" ry="110" fill="url(#bl-pg)"/>
+        <path d="M 0 180 C 18 148, 52 155, 64 122 C 76 89, 48 72, 60 44"
+              stroke="#c8d898" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M 22 180 C 38 145, 68 152, 80 118"
+              stroke="#c8d898" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.35"/>
+      </svg>
+    </div>
+    <!-- text content -->
+    <div style="position:relative;z-index:1;padding:2.5rem 4rem 2.5rem;">
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:0.45rem;">
+        <span style="font-size:0.58rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:var(--title);">PROGRAMEAZĂ & CONTACT</span>
+        <span style="width:90px;height:1px;background:var(--border);display:block;flex-shrink:0;"></span>
+      </div>
+      <span style="font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--body);font-weight:400;">REZERVĂ SPAȚIUL TĂU.</span>
+    </div>
+    <!-- arrow → -->
+    <div style="position:absolute;bottom:1.25rem;right:2rem;z-index:1;">
+      <svg width="34" height="12" viewBox="0 0 34 12" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="6" x2="28" y2="6" stroke="#5a6840" stroke-width="1.8"/>
+        <polyline points="22,1 29,6 22,11" stroke="#5a6840" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+<div class="sec-body" style="position:relative;">
+    <div style="position:absolute;top:-40px;left:-50px;width:460px;height:400px;pointer-events:none;z-index:0;">
+      <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="b1pg" cx="68%" cy="28%" r="52%">
+            <stop offset="0%" stop-color="#c8d898" stop-opacity="1"/><stop offset="100%" stop-color="#c8d898" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="b2pg" cx="85%" cy="12%" r="40%">
+            <stop offset="0%" stop-color="#edf3d8" stop-opacity="0.85"/><stop offset="100%" stop-color="#edf3d8" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="b3pg" cx="48%" cy="62%" r="46%">
+            <stop offset="0%" stop-color="#d8e5b0" stop-opacity="0.7"/><stop offset="100%" stop-color="#d8e5b0" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="260" cy="100" rx="200" ry="170" fill="url(#b1pg)"/>
+        <ellipse cx="380" cy="55"  rx="155" ry="120" fill="url(#b2pg)"/>
+        <ellipse cx="340" cy="195" rx="140" ry="125" fill="url(#b3pg)"/>
+        <path d="M 360 10  C 330 60, 280 50, 255 100 C 270 135, 245 175, 220 215" stroke="#5a6840" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78"/>
+        <path d="M 395 28  C 362 80, 315 70, 290 120 C 302 158, 278 198, 252 238" stroke="#5a6840" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.52"/>
+        <path d="M 420 5   C 390 60, 344 48, 322 98  C 336 128, 314 162, 295 198" stroke="#5a6840" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.35"/>
+      </svg>
+    </div>
+    <div class="contact-split">
+      <!-- FORM -->
+      <div class="contact-form-side">
+        <span class="section-eyebrow" style="color:#4a5a30; margin-bottom:2rem; display:block;">Formular de programare</span>
+
+        <!-- sesiune -->
+        <div class="session-select">
+          <div class="session-opt active" onclick="selSes(this,'Sesiune Breathwork','350 RON','90 min')">
+            <span class="session-opt-name">Sesiune Breathwork · 90 min</span>
+            <span class="session-opt-price">350 RON</span>
+          </div>
+          <div class="session-opt" onclick="selSes(this,'Sound Bath','250 RON','60 min')">
+            <span class="session-opt-name">Sound Bath · 60 min</span>
+            <span class="session-opt-price">250 RON</span>
+          </div>
+          <div class="session-opt" onclick="selSes(this,'Breath + Sound','450 RON','120 min')">
+            <span class="session-opt-name">Breath + Sound · 120 min</span>
+            <span class="session-opt-price">450 RON</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Prenume</label>
+            <input class="form-input" type="text" placeholder="Ana">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nume</label>
+            <input class="form-input" type="text" placeholder="Ionescu">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="ana@email.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Telefon</label>
+          <input class="form-input" type="tel" placeholder="+40 700 000 000">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Locație</label>
+          <select class="form-select">
+            <option>Cluj-Napoca (fizic)</option>
+            <option>Online (Zoom)</option>
+          </select>
+        </div>
+
+        <!-- calendar -->
+        <div class="cal-wrap">
+          <p class="cal-title-row">Alege o dată — August 2026</p>
+          <div class="cal-grid" id="cal">
+            <div class="cal-hd">Lu</div><div class="cal-hd">Ma</div><div class="cal-hd">Mi</div>
+            <div class="cal-hd">Jo</div><div class="cal-hd">Vi</div><div class="cal-hd">Sâ</div><div class="cal-hd">Du</div>
+          </div>
+        </div>
+
+        <!-- time -->
+        <p class="form-label" style="margin-bottom:0.5rem;">Interval orar preferat</p>
+        <div class="time-grid">
+          <div class="time-btn" onclick="selTime(this)">09:00</div>
+          <div class="time-btn" onclick="selTime(this)">10:30</div>
+          <div class="time-btn taken">12:00</div>
+          <div class="time-btn" onclick="selTime(this)">14:00</div>
+          <div class="time-btn" onclick="selTime(this)">15:30</div>
+          <div class="time-btn taken">17:00</div>
+          <div class="time-btn" onclick="selTime(this)">18:30</div>
+          <div class="time-btn" onclick="selTime(this)">10:00</div>
+          <div class="time-btn" onclick="selTime(this)">11:30</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mesaj (opțional)</label>
+          <textarea class="form-textarea" placeholder="Spune-mi pe scurt cu ce ai vrea să lucrăm..."></textarea>
+        </div>
+
+        <button class="btn-dark" style="width:100%;text-align:center;" onclick="document.getElementById('prog-success').style.display='block';this.style.display='none'">
+          Trimite cererea de programare →
+        </button>
+        <div id="prog-success" style="display:none;margin-top:1.5rem;background:rgba(183,193,132,0.15);border:1px solid var(--sage);padding:2rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">✓</div>
+          <p style="font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--title);margin-bottom:0.5rem;">Cerere trimisă!</p>
+          <p style="font-size:0.82rem;font-weight:300;color:var(--body);">Te contactez în maxim 2 ore pentru confirmare. 🌿</p>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="contact-info-side">
+        <h3>Informații de contact</h3>
+
+        <div class="contact-detail">
+          <p class="contact-detail-label">Locație</p>
+          <p class="contact-detail-value">Cluj-Napoca, România<br>(adresa exactă la confirmare)</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-detail-label">Email</p>
+          <p class="contact-detail-value">loredana@breathsound.ro</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-detail-label">WhatsApp</p>
+          <p class="contact-detail-value">+40 700 000 000</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-detail-label">Program</p>
+          <p class="contact-detail-value">Luni–Vineri: 09:00–20:00<br>Sâmbătă: 10:00–16:00</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-detail-label">Instagram</p>
+          <p class="contact-detail-value">@loredana.breathsound</p>
+        </div>
+
+        <div style="margin-top:3rem; padding:2rem; border:1px solid rgba(45,45,45,0.15); background:rgba(255,255,255,0.4);">
+          <p style="font-size:0.82rem;line-height:1.9;color:var(--title);font-weight:300;">
+            <strong style="font-weight:600;">Ce se întâmplă după trimitere?</strong><br>
+            Vei primi un răspuns în maxim 2 ore în care confirmăm data, ora și locația (sau linkul Zoom). Nu se percepe niciun cost la rezervare.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function selSes(el) {
+  document.querySelectorAll('.session-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+}
+function selTime(el) {
+  document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+</script>
+</body>
+</html>
