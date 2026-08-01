@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loredana Crișan — Breath & Sound Healing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Titluri: The Seasons (necesită licență comercială web — Adobe Fonts / MyFonts).
+     Cormorant Garamond este stand-in până la licențiere. Body: Montserrat. -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     LOREDANA CRIȘAN — BREATH & SOUND HEALING
+     Design tokens conform Brand Manual (Oaza Advertising, 07.07.2026)
+     ─────────────────────────────────────────────────────────
+     REGULA DE AUR: culorile-secțiune se folosesc EXCLUSIV pentru
+     elemente decorative (nori, unde, simboluri, fundaluri, borduri).
+     Textul rămâne mereu #2D2D2D (titluri) / #4D4D4D (body).
+     ═══════════════════════════════════════════════════════════ */
+  :root {
+    /* Fundal & text — temă light */
+    --bg:            #FFFFFF;
+    --title:         #2D2D2D;
+    --body:          #4D4D4D;
+
+    /* Culori pe secțiuni de conținut — DECORATIV ONLY */
+    --acc-about:     #9f67bc;  /* Despre mine */
+    --acc-mission:   #c3dcf4;  /* Misiune & Viziune */
+    --acc-services:  #fd9d43;  /* Servicii & Activități */
+    --acc-pricing:   #fedd92;  /* Tarife */
+    --acc-benefits:  #dee9b5;  /* Beneficii */
+    --acc-contact:   #b7c184;  /* Programează & Contact */
+    --acc-faq:       #4D4D4D;  /* FAQ — neutru, fără nor */
+
+    /* Accent activ al secțiunii curente (suprascris de .sec--*) */
+    --accent:        var(--acc-contact);
+
+    /* Neutre derivate */
+    --line:          rgba(45,45,45,0.12);
+    --line-strong:   rgba(45,45,45,0.22);
+    --muted:         rgba(77,77,77,0.62);
+    --tint:          color-mix(in srgb, var(--accent) 14%, #FFFFFF);
+    --tint-soft:     color-mix(in srgb, var(--accent) 7%,  #FFFFFF);
+
+    /* Tipografie — The Seasons (titluri) + Montserrat (rest).
+       ATENȚIE LICENȚĂ: The Seasons necesită licență comercială web.
+       Cormorant Garamond este folosit ca stand-in până la achiziție. */
+    --serif:         'Cormorant Garamond', 'The Seasons', serif;
+    --sans:          'Montserrat', sans-serif;
+  }
+
+  /* Aliasuri de compatibilitate pentru stilurile inline rămase.
+     Toate sunt remapate pe paleta oficială. */
+  :root {
+    --cream: #FFFFFF;
+    --dark: #2D2D2D;
+    --charcoal: #4D4D4D;
+    --sage: var(--acc-contact);
+    --earth: var(--acc-about);
+    --light-sage: color-mix(in srgb, var(--acc-contact) 16%, #FFFFFF);
+    --light-earth: color-mix(in srgb, var(--acc-about) 10%, #FFFFFF);
+    --border: var(--line);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 17px;          /* brand: 16–18px */
+    line-height: 1.65;        /* brand: 1.6–1.7 */
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Secțiuni tematice — setează doar --accent, niciodată culoarea textului */
+  .sec--about    { --accent: var(--acc-about); }
+  .sec--mission  { --accent: var(--acc-mission); }
+  .sec--services { --accent: var(--acc-services); }
+  .sec--pricing  { --accent: var(--acc-pricing); }
+  .sec--benefits { --accent: var(--acc-benefits); }
+  .sec--contact  { --accent: var(--acc-contact); }
+  .sec--faq      { --accent: var(--acc-faq); }
+
+  /* ── TIPOGRAFIE ─────────────────────────────────────────── */
+  /* H1 / display: The Seasons, lowercase */
+  .hero-title, .section-title, .who-heading,
+  .booking-hero h1, .content-hero h1, .cta-section h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    color: var(--title);
+    text-transform: lowercase;
+    letter-spacing: 0.005em;
+  }
+  /* H2 / eyebrow: Montserrat CAPS, letter-spacing mărit */
+  .hero-eyebrow, .who-label, .section-label,
+  .method-origin, .recap-label, .booking-info .label,
+  .payment-summary .label, .stat-label, .testimonial-author,
+  .technique-card .meta, .form-group label, .what-includes h4,
+  .sidebar-box h4, .service-price, .badge, .nav-links a,
+  .nav-cta, .btn-primary, .btn-secondary, .tab-btn,
+  .pay-method, .total-pay, .strip-item span:last-child {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+  }
+
+  /* ── NAV ────────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
+    color: var(--title); letter-spacing: 0.02em; line-height: 1.1;
+    text-decoration: none; text-transform: lowercase;
+  }
+  .nav-logo span {
+    display: block; font-size: 0.62rem; font-family: var(--sans);
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--body); font-weight: 500;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.68rem; color: var(--body); text-decoration: none;
+    padding-bottom: 3px; border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .nav-links a:hover { border-bottom-color: var(--acc-contact); color: var(--title); }
+  .nav-cta {
+    background: var(--title); color: #fff; border: none;
+    padding: 0.8rem 2rem; font-family: var(--sans); font-size: 0.63rem;
+    cursor: pointer; transition: background 0.3s; text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--body); }
+
+  /* PAGE SYSTEM */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+  #home, #booking, #payment, #content-page { padding-top: 84px; }
+
+  /* ── HERO ───────────────────────────────────────────────── */
+  .hero {
+    min-height: 92vh;
+    display: grid; grid-template-columns: 1.05fr 1fr;
+    position: relative; overflow: hidden;
+    --accent: var(--acc-mission);
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 7rem 4rem 5rem 6rem; position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.62rem; letter-spacing: 0.34em;
+    color: var(--body); margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 2px;
+    background: var(--acc-contact);   /* decor */
+  }
+  .hero-title {
+    font-size: clamp(3rem, 5.6vw, 5.6rem);
+    line-height: 1.0; margin-bottom: 1.8rem;
+  }
+  .hero-title em { font-style: italic; color: var(--title); }
+  .hero-subtitle {
+    font-size: 1.05rem; line-height: 1.7; color: var(--body);
+    max-width: 460px; margin-bottom: 3rem; font-weight: 400;
+  }
+  .hero-actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--title); color: #fff; padding: 1.1rem 2.5rem;
+    font-family: var(--sans); font-size: 0.66rem;
+    border: none; cursor: pointer; transition: all 0.3s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--body); transform: translateY(-2px); }
+  .btn-secondary {
+    font-size: 0.66rem; color: var(--title); text-decoration: none;
+    border-bottom: 2px solid var(--accent); padding-bottom: 3px;
+    transition: border-color 0.3s;
+  }
+  .btn-secondary:hover { border-bottom-color: var(--title); }
+
+  .hero-right { position: relative; background: var(--bg); overflow: hidden; }
+  /* „Nor" decorativ — Misiune & Viziune (bleu) + Despre mine (mov) */
+  .hero-right::before {
+    content: ''; position: absolute; width: 90%; aspect-ratio: 1;
+    top: 6%; left: 12%; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%,
+      color-mix(in srgb, var(--acc-mission) 85%, transparent) 0%,
+      color-mix(in srgb, var(--acc-about) 30%, transparent) 55%,
+      transparent 72%);
+    filter: blur(28px); opacity: 0.85; pointer-events: none;
+  }
+  .hero-bg-text {
+    position: absolute; bottom: 2rem; right: -1rem;
+    font-family: var(--serif); font-size: clamp(6rem, 12vw, 13rem);
+    font-weight: 300; color: rgba(45,45,45,0.05); line-height: 1;
+    pointer-events: none; white-space: nowrap; text-transform: lowercase;
+  }
+  .hero-wave-svg {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 88%; opacity: 0.55;
+  }
+  .hero-quote {
+    position: absolute; bottom: 3.5rem; left: 3.5rem; right: 3.5rem;
+    font-family: var(--serif); font-size: 1.45rem; font-weight: 400;
+    font-style: italic; color: var(--title); line-height: 1.45;
+  }
+  .hero-quote cite {
+    display: block; font-style: normal; font-family: var(--sans);
+    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--body); margin-top: 0.9rem; font-weight: 500;
+  }
+
+  /* ── STRIP (cifre) ──────────────────────────────────────── */
+  .strip {
+    background: var(--bg); color: var(--body);
+    padding: 2.5rem 6rem;
+    display: flex; gap: 4rem; align-items: center; overflow: hidden;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .strip-item { display: flex; align-items: center; gap: 1.25rem; white-space: nowrap; }
+  .strip-item span:first-child {
+    font-family: var(--serif); font-size: 2.6rem; font-weight: 300;
+    color: var(--title); line-height: 1;
+  }
+  .strip-item span:last-child { font-size: 0.6rem; }
+  .strip-sep { width: 28px; height: 3px; background: var(--acc-benefits); flex-shrink: 0; border-radius: 2px; }
+
+  /* ── DESPRE MINE (mov #9f67bc) ──────────────────────────── */
+  .who {
+    padding: 8rem 6rem; display: grid; grid-template-columns: 1fr 1.1fr;
+    gap: 7rem; align-items: center; position: relative;
+    --accent: var(--acc-about);
+  }
+  .who-label { font-size: 0.62rem; letter-spacing: 0.34em; color: var(--body); margin-bottom: 1.75rem; }
+  .who-heading { font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-bottom: 2rem; }
+  .who-heading em { font-style: italic; color: var(--title); }
+  .who-text { font-size: 1.02rem; line-height: 1.7; color: var(--body); margin-bottom: 1.4rem; }
+  .who-img {
+    position: relative; aspect-ratio: 4/5; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: color-mix(in srgb, var(--acc-about) 10%, #FFFFFF);
+  }
+  .who-img::before {   /* nor decorativ mov + bleu */
+    content: ''; position: absolute; inset: -12%;
+    background: radial-gradient(circle at 70% 25%,
+      color-mix(in srgb, var(--acc-about) 55%, transparent) 0%,
+      color-mix(in srgb, var(--acc-mission) 55%, transparent) 45%,
+      transparent 70%);
+    filter: blur(34px); opacity: 0.75;
+  }
+  .who-img-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+  .who-signature {
+    font-family: var(--serif); font-size: 3rem; font-style: italic;
+    color: var(--title); opacity: 0.35; text-align: center; text-transform: lowercase;
+  }
+  .who-circle-deco {
+    position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    border: 1.5px solid var(--acc-about); opacity: 0.45; z-index: 2;
+  }
+
+  /* ── SERVICII & ACTIVITĂȚI (orange #fd9d43) ─────────────── */
+  .services {
+    padding: 8rem 6rem; background: var(--bg); color: var(--body);
+    position: relative; overflow: hidden;
+    --accent: var(--acc-services);
+  }
+  .services::before {   /* nor orange/roșu */
+    content: ''; position: absolute; width: 620px; height: 620px;
+    top: -220px; right: -180px; border-radius: 50%;
+    background: radial-gradient(circle,
+      color-mix(in srgb, var(--acc-services) 45%, transparent) 0%,
+      color-mix(in srgb, var(--acc-pricing) 40%, transparent) 45%,
+      transparent 70%);
+    filter: blur(50px); opacity: 0.55; pointer-events: none;
+  }
+  .section-header { text-align: center; margin-bottom: 4.5rem; position: relative; z-index: 1; }
+  .section-label { font-size: 0.62rem; letter-spacing: 0.34em; color: var(--body); margin-bottom: 1.25rem; }
+  .section-title { font-size: clamp(2.4rem, 4.6vw, 4.4rem); line-height: 1.05; }
+  .section-title em { font-style: italic; color: var(--title); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; position: relative; z-index: 1; }
+  .service-card {
+    background: #fff; border: 1px solid var(--line);
+    border-top: 3px solid var(--acc-services);
+    padding: 3rem 2.5rem; transition: box-shadow 0.3s, transform 0.3s; cursor: pointer;
+  }
+  .service-card:hover { box-shadow: 0 18px 45px rgba(45,45,45,0.08); transform: translateY(-3px); }
+  .service-number {
+    font-family: var(--serif); font-size: 3rem; font-weight: 300;
+    color: rgba(45,45,45,0.18); line-height: 1; margin-bottom: 1.25rem;
+  }
+  .service-name {
+    font-family: var(--serif); font-size: 1.7rem; font-weight: 400;
+    color: var(--title); margin-bottom: 1rem; line-height: 1.2; text-transform: lowercase;
+  }
+  .service-desc { font-size: 0.95rem; line-height: 1.7; color: var(--body); margin-bottom: 2rem; }
+  .service-price {
+    font-size: 0.63rem; color: var(--title);
+    display: inline-block; padding: 0.5rem 0.9rem;
+    background: color-mix(in srgb, var(--acc-pricing) 45%, #FFFFFF);
+  }
+  .service-arrow { margin-top: 1.5rem; text-align: right; color: var(--title); font-size: 1.1rem; }
+
+  /* ── BENEFICII / METODE (verde pal #dee9b5) ─────────────── */
+  .methods { padding: 8rem 6rem; position: relative; --accent: var(--acc-benefits); }
+  .methods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem; }
+  .method-block {
+    padding: 3rem; border: 1px solid var(--line); position: relative;
+    background: color-mix(in srgb, var(--acc-benefits) 12%, #FFFFFF);
+  }
+  .method-block::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 72px; background: var(--acc-contact);
+  }
+  .method-name {
+    font-family: var(--serif); font-size: 2.1rem; font-weight: 400;
+    color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase;
+  }
+  .method-origin { font-size: 0.6rem; letter-spacing: 0.28em; color: var(--body); margin-bottom: 1.5rem; }
+  .method-text { font-size: 0.98rem; line-height: 1.7; color: var(--body); margin-bottom: 1.5rem; }
+  .method-benefits { list-style: none; }
+  .method-benefits li {
+    font-size: 0.92rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 0.75rem; color: var(--body);
+  }
+  .method-benefits li::before {
+    content: ''; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--acc-contact); flex-shrink: 0;
+  }
+
+  /* ── TESTIMONIALE ───────────────────────────────────────── */
+  /* Notă brand manual: secțiunea „Recenzii" este momentan exclusă
+     din structura oficială. Păstrată aici, stilizată neutru. */
+  .testimonials { padding: 8rem 6rem; background: var(--bg); border-top: 1px solid var(--line); --accent: var(--acc-mission); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+  .testimonial {
+    background: color-mix(in srgb, var(--acc-mission) 14%, #FFFFFF);
+    padding: 2.5rem; border-bottom: 3px solid var(--acc-mission);
+  }
+  .testimonial-text {
+    font-family: var(--serif); font-size: 1.15rem; font-style: italic;
+    line-height: 1.6; color: var(--title); margin-bottom: 1.75rem;
+  }
+  .testimonial-author { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--body); }
+
+  /* ── CTA / PROGRAMEAZĂ (verde #b7c184) ──────────────────── */
+  .cta-section {
+    padding: 9rem 6rem; text-align: center; background: var(--bg);
+    color: var(--body); position: relative; overflow: hidden;
+    --accent: var(--acc-contact);
+  }
+  .cta-section::before {   /* nor verde închis + verde deschis */
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%); width: 780px; height: 620px;
+    background: radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--acc-contact) 42%, transparent) 0%,
+      color-mix(in srgb, var(--acc-benefits) 45%, transparent) 45%,
+      transparent 70%);
+    filter: blur(48px); opacity: 0.7; pointer-events: none;
+  }
+  .cta-bg-circle {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 600px; height: 600px; border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--acc-contact) 55%, transparent);
+    pointer-events: none;
+  }
+  .cta-bg-circle::before {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 400px; height: 400px; border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--acc-contact) 70%, transparent);
+  }
+  .cta-section h2 {
+    font-size: clamp(2.8rem, 5.4vw, 5.4rem); line-height: 1.02;
+    position: relative; z-index: 1; margin-bottom: 1.5rem;
+  }
+  .cta-section h2 em { font-style: italic; color: var(--title); }
+  .cta-section p { font-size: 1.02rem; color: var(--body); margin-bottom: 2.5rem; position: relative; z-index: 1; }
+  .cta-section .btn-primary { position: relative; z-index: 1; }
+
+  /* ── FOOTER (charcoal neutru) ───────────────────────────── */
+  footer {
+    background: var(--title); color: rgba(255,255,255,0.6);
+    padding: 3rem 6rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.68rem; letter-spacing: 0.08em;
+  }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: #fff; }
+  .footer-logo { font-family: var(--serif); font-size: 1.35rem; color: #fff; font-weight: 400; text-transform: lowercase; }
+
+  /* ── PROGRAMARE (verde #b7c184) ─────────────────────────── */
+  .booking-hero {
+    background: var(--bg); color: var(--body);
+    padding: 5.5rem 6rem 3.5rem; text-align: center;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    --accent: var(--acc-contact);
+  }
+  .booking-hero::before {
+    content: ''; position: absolute; top: -180px; left: 50%;
+    transform: translateX(-50%); width: 760px; height: 480px;
+    background: radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--acc-contact) 40%, transparent) 0%,
+      color-mix(in srgb, var(--acc-benefits) 42%, transparent) 50%,
+      transparent 72%);
+    filter: blur(46px); opacity: 0.75; pointer-events: none;
+  }
+  .booking-hero h1 { font-size: clamp(2.6rem, 5.2vw, 4.8rem); line-height: 1.02; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+  .booking-hero h1 em { font-style: italic; color: var(--title); }
+  .booking-hero p { font-size: 1rem; color: var(--body); max-width: 540px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .booking-content { padding: 5rem 6rem; display: grid; grid-template-columns: 1fr 1.25fr; gap: 5rem; --accent: var(--acc-contact); }
+  .booking-info h2 { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase; }
+  .booking-info .label { font-size: 0.62rem; letter-spacing: 0.3em; color: var(--body); margin-bottom: 1.5rem; }
+
+  .session-types { margin-bottom: 2.5rem; }
+  .session-type {
+    border: 1px solid var(--line); padding: 2rem; margin-bottom: 1rem;
+    cursor: pointer; transition: all 0.3s; position: relative; background: #fff;
+  }
+  .session-type:hover { border-color: var(--line-strong); }
+  .session-type.selected {
+    border-color: var(--acc-contact);
+    background: color-mix(in srgb, var(--acc-contact) 10%, #FFFFFF);
+  }
+  .session-type h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: var(--title); margin-bottom: 0.35rem; text-transform: lowercase; }
+  .session-type .meta {
+    display: flex; gap: 1.5rem; font-size: 0.62rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--body); font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .session-type p { font-size: 0.92rem; color: var(--body); line-height: 1.7; }
+  .session-type .check {
+    position: absolute; top: 1rem; right: 1rem; width: 24px; height: 24px;
+    border: 1px solid var(--line-strong); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; color: var(--title); opacity: 0;
+  }
+  .session-type.selected .check { opacity: 1; background: var(--acc-contact); border-color: var(--acc-contact); color: var(--title); }
+
+  .what-includes { background: color-mix(in srgb, var(--acc-benefits) 30%, #FFFFFF); padding: 2rem; margin-bottom: 2rem; }
+  .what-includes h4 { font-size: 0.63rem; letter-spacing: 0.28em; color: var(--title); margin-bottom: 1rem; }
+  .what-includes ul { list-style: none; }
+  .what-includes li { font-size: 0.92rem; padding: 0.4rem 0; display: flex; gap: 0.75rem; color: var(--body); }
+  .what-includes li::before { content: '✓'; color: var(--title); font-size: 0.8rem; }
+
+  .booking-form-side { }
+  .form-card { border: 1px solid var(--line); padding: 3rem; background: #fff; }
+  .form-card h3 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase; }
+  .form-card .sub { font-size: 0.92rem; color: var(--body); margin-bottom: 2.5rem; }
+
+  .form-group { margin-bottom: 1.5rem; }
+  .form-group label { display: block; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--body); margin-bottom: 0.5rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--line);
+    background: #fff; font-family: var(--sans); font-size: 0.95rem; font-weight: 400;
+    color: var(--body); outline: none; transition: border 0.3s; appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--acc-contact); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group textarea { height: 100px; resize: none; line-height: 1.6; }
+
+  .calendar-mini { margin-bottom: 1.5rem; }
+  .calendar-mini h4 { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--body); font-weight: 500; margin-bottom: 1rem; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-header { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--body); font-weight: 500; text-align: center; padding: 0.3rem 0; }
+  .cal-day {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; cursor: pointer; border: 1px solid transparent;
+    transition: all 0.2s; color: var(--body);
+  }
+  .cal-day:hover { border-color: var(--acc-contact); }
+  .cal-day.available { color: var(--title); }
+  .cal-day.selected { background: var(--acc-contact); color: var(--title); border-color: var(--acc-contact); font-weight: 600; }
+  .cal-day.unavailable { color: rgba(77,77,77,0.25); pointer-events: none; }
+
+  .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1.5rem; }
+  .time-slot {
+    padding: 0.65rem; text-align: center; border: 1px solid var(--line);
+    font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: var(--body);
+  }
+  .time-slot:hover { border-color: var(--acc-contact); }
+  .time-slot.selected { background: var(--acc-contact); color: var(--title); border-color: var(--acc-contact); font-weight: 500; }
+  .time-slot.taken { opacity: 0.35; pointer-events: none; text-decoration: line-through; }
+
+  /* Tarife → galben #fedd92 (decorativ) */
+  .price-summary {
+    background: color-mix(in srgb, var(--acc-pricing) 38%, #FFFFFF);
+    color: var(--body); padding: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .price-row { display: flex; justify-content: space-between; font-size: 0.92rem; margin-bottom: 0.5rem; }
+  .price-row.total { border-top: 1px solid rgba(45,45,45,0.18); padding-top: 0.75rem; margin-top: 0.75rem; font-weight: 500; color: var(--title); }
+  .price-row.total span:last-child { color: var(--title); font-family: var(--serif); font-size: 1.4rem; }
+
+  /* ── PLATĂ ──────────────────────────────────────────────── */
+  .payment-content { padding: 5rem 6rem; display: grid; grid-template-columns: 1.25fr 1fr; gap: 5rem; --accent: var(--acc-pricing); }
+  .payment-summary h2 { font-family: var(--serif); font-size: 2.6rem; font-weight: 400; color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase; }
+  .payment-summary .label { font-size: 0.62rem; letter-spacing: 0.3em; color: var(--body); margin-bottom: 2.5rem; }
+
+  .booking-recap { border: 1px solid var(--line); padding: 2.5rem; margin-bottom: 2rem; background: #fff; }
+  .recap-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 1rem 0; border-bottom: 1px solid var(--line); font-size: 0.95rem;
+  }
+  .recap-row:last-child { border-bottom: none; }
+  .recap-label { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--body); }
+  .recap-value { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--title); text-align: right; }
+
+  .secure-badges { display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .badge { display: flex; align-items: center; gap: 0.5rem; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--body); }
+  .badge-icon { font-size: 1rem; }
+
+  .policy-note { background: color-mix(in srgb, var(--acc-benefits) 30%, #FFFFFF); padding: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--body); }
+  .policy-note strong { font-weight: 600; color: var(--title); }
+
+  .payment-card { border: 1px solid var(--line); padding: 3rem; background: #fff; }
+  .payment-card h3 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase; }
+  .payment-card .sub { font-size: 0.92rem; color: var(--body); margin-bottom: 2.5rem; }
+
+  .payment-methods { display: flex; gap: 0.75rem; margin-bottom: 2rem; }
+  .pay-method {
+    flex: 1; padding: 1rem; border: 1px solid var(--line);
+    text-align: center; cursor: pointer; transition: all 0.2s;
+    font-size: 0.63rem; color: var(--body);
+  }
+  .pay-method:hover { border-color: var(--line-strong); }
+  .pay-method.active {
+    border-color: var(--acc-contact); color: var(--title);
+    background: color-mix(in srgb, var(--acc-contact) 14%, #FFFFFF);
+  }
+
+  .card-input-wrapper { position: relative; }
+  .card-icons { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); display: flex; gap: 0.25rem; font-size: 0.8rem; }
+
+  .total-pay {
+    background: var(--title); color: #fff; padding: 1.25rem; text-align: center;
+    width: 100%; border: none; font-family: var(--sans); font-size: 0.68rem;
+    cursor: pointer; font-weight: 500; margin-top: 1rem; transition: background 0.3s;
+  }
+  .total-pay:hover { background: var(--body); }
+
+  /* ── CONȚINUT / EDUCAȚIE ────────────────────────────────── */
+  .content-hero {
+    background: var(--bg); color: var(--body);
+    padding: 6rem 6rem 4rem; position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    --accent: var(--acc-benefits);
+  }
+  .content-hero::before {
+    content: ''; position: absolute; right: -140px; top: -180px;
+    width: 640px; height: 560px;
+    background: radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--acc-benefits) 55%, transparent) 0%,
+      color-mix(in srgb, var(--acc-contact) 35%, transparent) 48%,
+      transparent 72%);
+    filter: blur(48px); opacity: 0.8; pointer-events: none;
+  }
+  .content-hero::after {
+    content: 'respir'; position: absolute; right: -1rem; bottom: -3rem;
+    font-family: var(--serif); font-size: clamp(8rem, 18vw, 18rem); font-weight: 300;
+    color: rgba(45,45,45,0.045); pointer-events: none; line-height: 1; text-transform: lowercase;
+  }
+  .content-hero h1 { font-size: clamp(2.6rem, 5.2vw, 4.8rem); line-height: 1.02; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+  .content-hero h1 em { font-style: italic; color: var(--title); }
+  .content-hero p { font-size: 1.05rem; color: var(--body); max-width: 560px; line-height: 1.7; position: relative; z-index: 1; }
+
+  .content-tabs {
+    background: #fff; border-bottom: 1px solid var(--line);
+    padding: 0 6rem; display: flex; gap: 0;
+    position: sticky; top: 84px; z-index: 50;
+  }
+  .tab-btn {
+    padding: 1.35rem 1.75rem; font-size: 0.63rem;
+    cursor: pointer; border: none; background: none;
+    border-bottom: 3px solid transparent; color: var(--body);
+    transition: all 0.2s; font-family: var(--sans); white-space: nowrap;
+  }
+  .tab-btn.active { border-bottom-color: var(--acc-benefits); color: var(--title); }
+  .tab-btn:hover { color: var(--title); }
+
+  .content-body { padding: 5rem 6rem; }
+  .content-section { display: none; }
+  .content-section.active { display: block; }
+
+  .article-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 5rem; align-items: start; }
+  .article h2 {
+    font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 3.2rem); font-weight: 300;
+    line-height: 1.1; color: var(--title); margin-bottom: 2rem; text-transform: lowercase;
+  }
+  .article h3 {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 400; color: var(--title);
+    margin-top: 3rem; margin-bottom: 1rem; text-transform: lowercase;
+  }
+  .article p { font-size: 1.02rem; line-height: 1.75; color: var(--body); margin-bottom: 1.5rem; }
+  .article blockquote {
+    border-left: 4px solid var(--acc-contact); padding: 1.5rem 2rem; margin: 2.5rem 0;
+    background: color-mix(in srgb, var(--acc-benefits) 26%, #FFFFFF);
+    font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--title);
+    line-height: 1.5;
+  }
+
+  .sidebar-box {
+    background: color-mix(in srgb, var(--acc-mission) 22%, #FFFFFF);
+    color: var(--body); padding: 2.5rem; margin-bottom: 2rem;
+  }
+  .sidebar-box h4 { font-size: 0.62rem; letter-spacing: 0.28em; color: var(--title); margin-bottom: 1.25rem; }
+  .sidebar-box ul { list-style: none; }
+  .sidebar-box li {
+    font-size: 0.92rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(45,45,45,0.1);
+    display: flex; gap: 0.75rem; color: var(--body);
+  }
+  .sidebar-box li:last-child { border-bottom: none; }
+  .sidebar-box li::before { content: '→'; color: var(--title); }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); margin-top: 1.5rem; }
+  .stat-box { background: color-mix(in srgb, var(--acc-benefits) 26%, #FFFFFF); padding: 1.5rem; }
+  .stat-num { font-family: var(--serif); font-size: 2.6rem; font-weight: 300; color: var(--title); line-height: 1; }
+  .stat-label { font-size: 0.58rem; letter-spacing: 0.18em; color: var(--body); margin-top: 0.35rem; }
+
+  .technique-card {
+    border: 1px solid var(--line); padding: 2.5rem; margin-bottom: 1.5rem;
+    position: relative; overflow: hidden; transition: border-color 0.3s; background: #fff;
+  }
+  .technique-card:hover { border-color: var(--acc-contact); }
+  .technique-card::before {
+    content: attr(data-num); position: absolute; right: 2rem; top: 50%;
+    transform: translateY(-50%); font-family: var(--serif); font-size: 8rem;
+    font-weight: 400; color: rgba(45,45,45,0.05); pointer-events: none;
+  }
+  .technique-card h3 { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; color: var(--title); margin-bottom: 0.4rem; margin-top: 0; text-transform: lowercase; }
+  .technique-card .meta { font-size: 0.6rem; letter-spacing: 0.24em; color: var(--body); margin-bottom: 1rem; }
+  .technique-card p { font-size: 0.95rem; line-height: 1.7; color: var(--body); max-width: 80%; }
+
+  /* ── FAQ (neutru charcoal, fără nor) ────────────────────── */
+  #tab-faq { --accent: var(--acc-faq); }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    padding: 1.5rem 0; font-family: var(--serif); font-size: 1.35rem; font-weight: 400;
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    gap: 2rem; color: var(--title); text-transform: lowercase;
+  }
+  .faq-q::after { content: '+'; font-size: 1.5rem; color: var(--body); transition: transform 0.3s; font-weight: 400; }
+  .faq-q.open::after { transform: rotate(45deg); }
+  .faq-a { font-size: 0.98rem; line-height: 1.75; color: var(--body); padding-bottom: 1.5rem; display: none; }
+  .faq-a.open { display: block; }
+
+  /* ── UTILITARE ──────────────────────────────────────────── */
+  .divider { height: 1px; background: var(--line); margin: 0 6rem; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.06); opacity: 0.8; } }
+  .animate-up { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  .breathe-circle {
+    width: 130px; height: 130px; border-radius: 50%;
+    border: 2px solid var(--acc-contact);
+    background: color-mix(in srgb, var(--acc-benefits) 22%, #FFFFFF);
+    animation: breathe 4s ease-in-out infinite;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--title); font-weight: 500; margin: 3rem auto;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    body { font-size: 16px; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 5rem 1.5rem 4rem; }
+    .hero-title { font-size: clamp(2.4rem, 11vw, 3.4rem); }
+    .who, .booking-content, .payment-content, .methods-grid,
+    .services-grid, .testimonials-grid, .article-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services, .methods, .testimonials, .cta-section, .booking-hero,
+    .booking-content, .payment-content, .content-hero, .content-body {
+      padding-left: 1.5rem; padding-right: 1.5rem;
+    }
+    .services, .methods, .testimonials, .cta-section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .who, .strip { padding: 4rem 1.5rem; }
+    .strip { flex-wrap: wrap; gap: 1.5rem 2rem; }
+    .content-tabs { padding: 0 1.5rem; overflow-x: auto; }
+    .form-card, .payment-card, .method-block, .booking-recap { padding: 1.75rem; }
+    footer { flex-direction: column; gap: 1rem; padding: 2.5rem 1.5rem; text-align: center; }
+    .divider { margin: 0 1.5rem; }
+    .technique-card p { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('home')">
+    Loredana Crișan
+    <span>Breath & Sound</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')">Acasă</a></li>
+    <li><a href="#" onclick="showPage('content-page'); setTab('buteyko')">Metode</a></li>
+    <li><a href="#" onclick="showPage('home'); setTimeout(()=>document.querySelector('.services').scrollIntoView({behavior:'smooth'}),100)">Sesiuni</a></li>
+    <li><a href="#" onclick="showPage('content-page'); setTab('faq')">FAQ</a></li>
+  </ul>
+  <a href="#" class="nav-cta" onclick="showPage('booking')">Programează-te</a>
+</nav>
+
+<!-- ══════════ HOME PAGE ══════════ -->
+<div id="home" class="page active">
+
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow animate-up">Cluj-Napoca · Sesiuni individuale & de grup</p>
+      <h1 class="hero-title animate-up delay-1">
+        Respiri.<br>
+        <em>Te vindeci.</em><br>
+        Devii.
+      </h1>
+      <p class="hero-subtitle animate-up delay-2">
+        Breathwork terapeutic și terapie prin sunet pentru reglare emoțională, eliberare din anxietate și reconectare cu sinele tău autentic.
+      </p>
+      <div class="hero-actions animate-up delay-3">
+        <a href="#" class="btn-primary" onclick="showPage('booking')">Rezervă o sesiune</a>
+        <a href="#" class="btn-secondary" onclick="showPage('content-page')">Descoperă metodele →</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-bg-text">Respir</div>
+      <svg class="hero-wave-svg" viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="180" stroke="rgba(159,103,188,0.35)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="140" stroke="rgba(183,193,132,0.55)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="100" stroke="rgba(195,220,244,0.85)" stroke-width="1"/>
+        <path d="M 50 200 Q 125 160 200 200 Q 275 240 350 200" stroke="rgba(159,103,188,0.55)" stroke-width="1.5" fill="none"/>
+        <path d="M 50 220 Q 125 180 200 220 Q 275 260 350 220" stroke="rgba(195,220,244,0.85)" stroke-width="1" fill="none"/>
+        <path d="M 50 180 Q 125 140 200 180 Q 275 220 350 180" stroke="rgba(195,220,244,0.85)" stroke-width="1" fill="none"/>
+      </svg>
+      <div class="hero-quote">
+        „Respirația este puntea dintre minte și corp — cel mai simplu instrument de vindecare pe care îl ai mereu cu tine."
+        <cite>— Loredana Crișan</cite>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="strip-item"><span>200+</span><span>Sesiuni individuale susținute</span></div>
+    <div class="strip-sep"></div>
+    <div class="strip-item"><span>5+</span><span>Ani de practică & studiu</span></div>
+    <div class="strip-sep"></div>
+    <div class="strip-item"><span>3</span><span>Metode terapeutice</span></div>
+    <div class="strip-sep"></div>
+    <div class="strip-item"><span>Cluj</span><span>& online</span></div>
+  </div>
+
+  <section class="who sec--about">
+    <div>
+      <p class="who-label">Despre mine</p>
+      <h2 class="who-heading">Un ghid pentru<br>călătoria ta<br><em style="font-style:italic">interioară</em></h2>
+      <p class="who-text">Mă numesc Loredana Crișan și lucrez cu oameni care simt că ceva nu este în regulă — chiar dacă nu știu exact ce. Oameni în agitație constantă, epuizați, deconectați, care vor să se regăsească.</p>
+      <p class="who-text">Prin breathwork și terapie prin sunet, creez un spațiu sigur în care poți elibera ceea ce ții înăuntru, fără să fii nevoită să explici sau să analizezi. Corpul știe. Noi îl ajutăm să se exprime.</p>
+      <p class="who-text">Sunt certificată în tehnicile Buteyko și respirație circulară, și am o formare aprofundată în terapia cu boluri tibetane și cristal.</p>
+      <a href="#" class="btn-secondary" onclick="showPage('booking')">Lucrează cu mine →</a>
+    </div>
+    <div class="who-img">
+      <div class="who-img-inner">
+        <div class="who-signature">Loredana<br>Crișan</div>
+      </div>
+      <div class="who-circle-deco"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="services sec--services" id="services-section">
+    <div class="section-header">
+      <p class="section-label">Sesiunile mele</p>
+      <h2 class="section-title">Ce <em>oferim</em><br>împreună</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" onclick="showPage('booking')">
+        <div class="service-number">01</div>
+        <h3 class="service-name">Sesiune individuală de Breathwork</h3>
+        <p class="service-desc">O călătorie personalizată prin respirație conștientă. Identificăm blocajele emoționale și le eliberăm printr-un protocol adaptat nevoilor tale. Ideală pentru anxietate, burnout și reglare emoțională.</p>
+        <div class="service-price">90 min · 350 RON</div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" onclick="showPage('booking')">
+        <div class="service-number">02</div>
+        <h3 class="service-name">Terapie prin sunet — Boluri tibetane</h3>
+        <p class="service-desc">Vibrațiile bolurilor tibetane și cristal acționează direct asupra sistemului nervos, inducând o stare profundă de relaxare și vindecare. Poți simți cum tensiunea se dizolvă strat cu strat.</p>
+        <div class="service-price">60 min · 250 RON</div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" onclick="showPage('booking')">
+        <div class="service-number">03</div>
+        <h3 class="service-name">Sesiune combinată Breath + Sound</h3>
+        <p class="service-desc">Cel mai complet protocol terapeutic — respirația deschide ușa, sunetul adâncește vindecarea. Recomandată pentru experiențe transformationale profunde și pentru cei care vor mai mult dintr-o singură sesiune.</p>
+        <div class="service-price">120 min · 450 RON</div>
+        <div class="service-arrow">→</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="methods sec--benefits" id="methods-section">
+    <div class="section-header" style="text-align:left;">
+      <p class="section-label">Tehnicile utilizate</p>
+      <h2 class="section-title" style="color:var(--title);font-size:clamp(2.5rem,5vw,4.5rem);">Știință &amp; <em style="font-style:italic">practică</em></h2>
+    </div>
+    <div class="methods-grid">
+      <div class="method-block">
+        <h3 class="method-name">Metoda Buteyko</h3>
+        <p class="method-origin">Origine: Dr. Konstantin Buteyko, Ucraina, 1950s</p>
+        <p class="method-text">Buteyko este o tehnică bazată pe reducerea volumului de respirație și creșterea CO₂ în corp. Contrar intuiției, mai puțin aer înseamnă mai mult oxigen livrat celulelor. Ideală pentru anxietate, astm și tulburări de somn.</p>
+        <ul class="method-benefits">
+          <li>Calmează sistemul nervos în câteva minute</li>
+          <li>Reduce simptomele de anxietate și panică</li>
+          <li>Îmbunătățește somnul profund</li>
+          <li>Ajută în managementul astmului</li>
+        </ul>
+        <a href="#" class="btn-secondary" style="margin-top:1.5rem;display:inline-block;" onclick="showPage('content-page');setTab('buteyko')">Citește mai mult →</a>
+      </div>
+      <div class="method-block">
+        <h3 class="method-name">Respirație circulară</h3>
+        <p class="method-origin">Origine: Tradițiile terapeutice shamane & Holotropic Breathwork</p>
+        <p class="method-text">Respirația circulară (fără pauze între inhale și exhale) activează stări modificate de conștiință, permite accesul la emoții profunde și facilitează eliberarea traumelor stocate în corp.</p>
+        <ul class="method-benefits">
+          <li>Eliberare emoțională profundă</li>
+          <li>Acces la resurse interioare neexplorate</li>
+          <li>Procesarea traumelor somatice</li>
+          <li>Stări de profundă pace și claritate</li>
+        </ul>
+        <a href="#" class="btn-secondary" style="margin-top:1.5rem;display:inline-block;" onclick="showPage('content-page');setTab('circular')">Citește mai mult →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials sec--mission">
+    <div class="section-header">
+      <p class="section-label">Ce spun cei care au lucrat cu mine</p>
+      <h2 class="section-title" style="color:var(--title);">Transformări <em>reale</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="testimonial-text">„Mergeam la psiholog de 3 ani pentru anxietate. Într-o singură sesiune cu Loredana am simțit o eliberare pe care nu o experimentasem în tot acest timp. Nu pot explica ce s-a întâmplat, dar știu că ceva s-a schimbat."</p>
+        <p class="testimonial-author">Maria C., 34 ani · Cluj-Napoca</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">„Eram sceptic. Mă gândeam cum poate respiratul să rezolve ceva. Dar după prima sesiune de boluri nu mai aveam nevoie să înțeleg — eram pur și simplu prezent, calm, acasă în propriul corp."</p>
+        <p class="testimonial-author">Andrei M., 41 ani · București</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">„Loredana are un dar al prezenței care te face să te simți în siguranță să te deschizi complet. Spațiul pe care îl creează este unic — cald, sigur și profund transformator."</p>
+        <p class="testimonial-author">Elena R., 28 ani · Cluj-Napoca</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section sec--contact">
+    <div class="cta-bg-circle"></div>
+    <h2>Ești gata să<br><em>respiri</em> diferit?</h2>
+    <p>Prima sesiune este o explorare. Nu trebuie să știi nimic. Trebuie doar să vii.</p>
+    <a href="#" class="btn-primary" onclick="showPage('booking')">Rezervă acum →</a>
+  </section>
+
+  <footer>
+    <span class="footer-logo">Loredana Crișan</span>
+    <span>© 2026 · breathsound.ro · Cluj-Napoca</span>
+    <div style="display:flex;gap:2rem;">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Email</a>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ══════════ BOOKING PAGE ══════════ -->
+<div id="booking" class="page">
+
+  <div class="booking-hero">
+    <p class="section-label" style="margin-bottom:1rem;">Programare sesiune</p>
+    <h1>Rezervă <em>spațiul</em><br>tău de vindecare</h1>
+    <p>Alege sesiunea care ți se potrivește și selectează un slot disponibil. Confirmarea vine în maxim 2 ore.</p>
+  </div>
+
+  <div class="booking-content sec--contact">
+    <div class="booking-info">
+      <p class="label">Pasul 1 — Alege sesiunea</p>
+      <h2>Ce tip de<br>sesiune dorești?</h2>
+
+      <div class="session-types" style="margin-top:2rem;">
+        <div class="session-type selected" onclick="selectSession(this, 'Sesiune individuală Breathwork', '350 RON', '90 min')">
+          <div class="check">✓</div>
+          <h3>Sesiune individuală Breathwork</h3>
+          <div class="meta"><span>90 minute</span><span>350 RON</span></div>
+          <p>Sesiune personalizată de respirație terapeutică. Include intake, protocol adaptat și integrare post-sesiune.</p>
+        </div>
+        <div class="session-type" onclick="selectSession(this, 'Terapie prin sunet', '250 RON', '60 min')">
+          <div class="check">✓</div>
+          <h3>Terapie prin sunet — Boluri tibetane</h3>
+          <div class="meta"><span>60 minute</span><span>250 RON</span></div>
+          <p>Imersiune în vibrațiile vindecătoare ale bolurilor tibetane și cristal.</p>
+        </div>
+        <div class="session-type" onclick="selectSession(this, 'Sesiune combinată Breath + Sound', '450 RON', '120 min')">
+          <div class="check">✓</div>
+          <h3>Sesiune combinată Breath + Sound</h3>
+          <div class="meta"><span>120 minute</span><span>450 RON</span></div>
+          <p>Protocolul complet: breathwork + terapie prin sunet. Cea mai profundă experiență.</p>
+        </div>
+      </div>
+
+      <div class="what-includes">
+        <h4>Ce include sesiunea</h4>
+        <ul>
+          <li>Conversație inițială de intake (10 min)</li>
+          <li>Protocol terapeutic personalizat</li>
+          <li>Integrare și reflecție post-sesiune</li>
+          <li>Recomandări și exerciții pentru acasă</li>
+          <li>Suport WhatsApp 48h după sesiune</li>
+        </ul>
+      </div>
+
+      <div style="padding:1.5rem;border:1px solid var(--border);font-size:0.8rem;line-height:1.7;font-weight:400;">
+        <strong style="font-weight:500;">📍 Locație:</strong> Cluj-Napoca (adresa exactă se trimite la confirmare) sau online via Zoom.<br>
+        <strong style="font-weight:500;">⚡ Anulare:</strong> Poți anula sau reprograma cu minimum 24h înainte.
+      </div>
+    </div>
+
+    <div class="booking-form-side">
+      <div class="form-card">
+        <h3>Detalii programare</h3>
+        <p class="sub">Completează formularul și te contactez în maxim 2 ore pentru confirmare.</p>
+
+        <div class="form-group">
+          <label>Tipul sesiunii selectate</label>
+          <input type="text" id="selected-session-display" value="Sesiune individuală Breathwork — 90 min — 350 RON" readonly style="background:color-mix(in srgb,var(--acc-benefits) 30%,#fff);color:var(--title);">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Prenume</label>
+            <input type="text" placeholder="Ana">
+          </div>
+          <div class="form-group">
+            <label>Nume</label>
+            <input type="text" placeholder="Ionescu">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="ana@email.com">
+        </div>
+
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+40 700 000 000">
+        </div>
+
+        <div class="form-group">
+          <label>Preferință locație</label>
+          <select>
+            <option>Cluj-Napoca (fizic)</option>
+            <option>Online (Zoom)</option>
+          </select>
+        </div>
+
+        <div class="calendar-mini">
+          <h4>Alege o dată</h4>
+          <div class="cal-grid" id="calendar">
+            <div class="cal-header">Lu</div><div class="cal-header">Ma</div><div class="cal-header">Mi</div><div class="cal-header">Jo</div><div class="cal-header">Vi</div><div class="cal-header">Sâ</div><div class="cal-header">Du</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Interval orar preferat</label>
+        </div>
+        <div class="time-slots" id="time-slots">
+          <div class="time-slot" onclick="selectSlot(this)">09:00</div>
+          <div class="time-slot" onclick="selectSlot(this)">10:30</div>
+          <div class="time-slot taken">12:00</div>
+          <div class="time-slot" onclick="selectSlot(this)">14:00</div>
+          <div class="time-slot" onclick="selectSlot(this)">15:30</div>
+          <div class="time-slot taken">17:00</div>
+          <div class="time-slot" onclick="selectSlot(this)">18:30</div>
+          <div class="time-slot" onclick="selectSlot(this)">10:00</div>
+          <div class="time-slot" onclick="selectSlot(this)">11:30</div>
+        </div>
+
+        <div class="form-group">
+          <label>Mesaj (opțional)</label>
+          <textarea placeholder="Spune-mi pe scurt cu ce ai vrea să lucrăm în sesiunea noastră..."></textarea>
+        </div>
+
+        <div class="price-summary" id="price-summary">
+          <div class="price-row"><span>Sesiune individuală Breathwork</span><span>350 RON</span></div>
+          <div class="price-row"><span>Durată</span><span>90 min</span></div>
+          <div class="price-row total"><span>Total de plată</span><span id="total-price">350 RON</span></div>
+        </div>
+
+        <button class="btn-primary" style="width:100%;text-align:center;font-size:0.75rem;" onclick="showPage('payment')">
+          Continuă spre plată →
+        </button>
+        <p style="font-size:0.7rem;color:var(--charcoal);text-align:center;margin-top:1rem;font-weight:400;">
+          Nu se percepe niciun cost acum. Plata se face după confirmare.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer style="background:var(--title);color:rgba(255,255,255,0.6);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
+    <span class="footer-logo" style="font-family:var(--serif);font-size:1.2rem;color:white;font-weight:300;">Loredana Crișan</span>
+    <span>breathsound.ro · Cluj-Napoca</span>
+    <a href="#" onclick="showPage('home')" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.7rem;">← Înapoi la site</a>
+  </footer>
+</div>
+
+
+<!-- ══════════ PAYMENT PAGE ══════════ -->
+<div id="payment" class="page">
+
+  <div class="booking-hero" style="padding:5rem 6rem 3rem;">
+    <p class="section-label" style="margin-bottom:1rem;">Plată securizată</p>
+    <h1>Confirmă <em>rezervarea</em></h1>
+    <p>Completează datele de plată pentru a-ți asigura locul. Sesiunea se confirmă în maxim 2 ore.</p>
+  </div>
+
+  <div class="payment-content sec--pricing">
+    <div class="payment-summary">
+      <p class="label">Sumar rezervare</p>
+      <h2>Înainte de a plăti</h2>
+
+      <div class="booking-recap">
+        <div class="recap-row">
+          <span class="recap-label">Sesiune</span>
+          <span class="recap-value" id="pay-session-name">Sesiune individuală Breathwork</span>
+        </div>
+        <div class="recap-row">
+          <span class="recap-label">Durată</span>
+          <span class="recap-value" id="pay-duration">90 minute</span>
+        </div>
+        <div class="recap-row">
+          <span class="recap-label">Data & ora</span>
+          <span class="recap-value">La confirmare</span>
+        </div>
+        <div class="recap-row">
+          <span class="recap-label">Locație</span>
+          <span class="recap-value">Cluj-Napoca / Online</span>
+        </div>
+        <div class="recap-row" style="background:color-mix(in srgb,var(--acc-benefits) 30%,#fff);margin:-0px;padding:1rem;margin-top:0.5rem;">
+          <span class="recap-label">Total</span>
+          <span class="recap-value" id="pay-total" style="font-family:var(--serif);font-size:2rem;color:var(--title);">350 RON</span>
+        </div>
+      </div>
+
+      <div class="secure-badges">
+        <div class="badge"><span class="badge-icon">🔒</span>Plată securizată SSL</div>
+        <div class="badge"><span class="badge-icon">✓</span>Confirmare în 2h</div>
+        <div class="badge"><span class="badge-icon">↩</span>Anulare gratuită</div>
+      </div>
+
+      <div class="policy-note">
+        <strong>Politica de anulare:</strong> Poți anula sau reprograma sesiunea gratuit cu minimum <strong>24 de ore înainte</strong>. Anulările în mai puțin de 24h se taxează cu 50% din valoarea sesiunii. Dacă nu te prezinți fără anunț prealabil, suma plătită nu se returnează.
+      </div>
+
+      <div style="margin-top:2rem;padding:1.5rem;border:1px solid var(--border);">
+        <p style="font-size:0.8rem;line-height:1.8;font-weight:400;">
+          🌿 <strong style="font-weight:500;">Ce se întâmplă după plată?</strong><br>
+          Vei primi un email de confirmare, iar Loredana te va contacta în maxim 2 ore pentru a confirma data și a îți trimite adresa exactă (sau linkul Zoom).
+        </p>
+      </div>
+    </div>
+
+    <div class="payment-form-side">
+      <div class="payment-card">
+        <h3>Date de plată</h3>
+        <p class="sub">Plata se procesează securizat prin Stripe / NetOpia.</p>
+
+        <div class="payment-methods">
+          <div class="pay-method active" onclick="selectPayMethod(this)">Card</div>
+          <div class="pay-method" onclick="selectPayMethod(this)">Transfer bancar</div>
+        </div>
+
+        <div id="card-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Prenume</label>
+              <input type="text" placeholder="Ana">
+            </div>
+            <div class="form-group">
+              <label>Nume</label>
+              <input type="text" placeholder="Ionescu">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email confirmare</label>
+            <input type="email" placeholder="ana@email.com">
+          </div>
+
+          <div class="form-group">
+            <label>Număr card</label>
+            <div class="card-input-wrapper">
+              <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+              <div class="card-icons">💳</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Data expirare</label>
+              <input type="text" placeholder="MM / YY" maxlength="7">
+            </div>
+            <div class="form-group">
+              <label>CVV</label>
+              <input type="text" placeholder="•••" maxlength="4">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Cod postal (opțional)</label>
+            <input type="text" placeholder="400000">
+          </div>
+        </div>
+
+        <div id="transfer-form" style="display:none;">
+          <div style="background:color-mix(in srgb,var(--acc-benefits) 30%,#fff);padding:2rem;margin-bottom:1.5rem;">
+            <p style="font-size:0.8rem;line-height:1.9;font-weight:400;">
+              <strong style="font-weight:500;">Date transfer bancar:</strong><br>
+              Titular: Loredana Crișan<br>
+              IBAN: RO00 RNCB 0000 0000 0000 0000<br>
+              Bancă: BCR<br>
+              Referință: <strong style="font-weight:500;">BREATH + Prenumele tău</strong><br><br>
+              <span style="color:var(--body);">Trimite dovada plății pe email / WhatsApp pentru confirmare rapidă.</span>
+            </p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1.5rem;font-size:0.75rem;color:var(--charcoal);font-weight:400;">
+          <input type="checkbox" id="agree" style="margin-top:2px;accent-color:var(--title);">
+          <label for="agree">Am citit și sunt de acord cu <a href="#" style="color:var(--title);border-bottom:2px solid var(--acc-contact);text-decoration:none;">politica de anulare</a> și <a href="#" style="color:var(--title);border-bottom:2px solid var(--acc-contact);text-decoration:none;">termenii de utilizare</a>.</label>
+        </div>
+
+        <button class="total-pay" onclick="showSuccess()">
+          Plătește 350 RON în siguranță 🔒
+        </button>
+
+        <div id="success-msg" style="display:none;margin-top:1.5rem;background:color-mix(in srgb,var(--acc-benefits) 30%,#fff);border:1px solid var(--acc-contact);padding:2rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:1rem;">✅</div>
+          <h4 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:0.5rem;">Rezervare confirmată!</h4>
+          <p style="font-size:0.8rem;font-weight:400;line-height:1.7;">Vei primi un email de confirmare în câteva minute. Loredana te contactează în maxim 2 ore. 🌿</p>
+        </div>
+
+        <p style="font-size:0.65rem;color:var(--muted);text-align:center;margin-top:1.5rem;font-weight:400;line-height:1.7;">
+          Datele tale sunt protejate. Nu stocăm datele cardului.<br>Procesare securizată prin Stripe / NetOpia.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer style="background:var(--title);color:rgba(255,255,255,0.6);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
+    <span class="footer-logo" style="font-family:var(--serif);font-size:1.2rem;color:white;font-weight:300;">Loredana Crișan</span>
+    <span>breathsound.ro · Plată securizată</span>
+    <a href="#" onclick="showPage('booking')" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.7rem;">← Înapoi la programare</a>
+  </footer>
+</div>
+
+
+<!-- ══════════ CONTENT PAGE ══════════ -->
+<div id="content-page" class="page">
+
+  <div class="content-hero">
+    <p class="section-label" style="margin-bottom:1.5rem;">Educație & informare</p>
+    <h1>Știința din spatele<br><em>respirației</em> vindecătoare</h1>
+    <p>Tot ce trebuie să știi despre Buteyko, respirația circulară și terapia prin sunet — documentat, clar și aplicabil.</p>
+  </div>
+
+  <div class="content-tabs">
+    <button class="tab-btn active" onclick="setTab('buteyko')">Metoda Buteyko</button>
+    <button class="tab-btn" onclick="setTab('circular')">Respirație circulară</button>
+    <button class="tab-btn" onclick="setTab('sound')">Terapie prin sunet</button>
+    <button class="tab-btn" onclick="setTab('science')">Știința respirației</button>
+    <button class="tab-btn" onclick="setTab('faq')">FAQ</button>
+  </div>
+
+  <div class="content-body">
+
+    <!-- BUTEYKO -->
+    <div class="content-section active" id="tab-buteyko">
+      <div class="article-grid">
+        <div class="article">
+          <h2>Metoda Buteyko — respiri mai puțin, trăiești mai bine</h2>
+          <p>În 1952, dr. Konstantin Buteyko, fiziolog ucrainean, a observat ceva paradoxal: pacienții cu probleme de sănătate respirau <em>mai mult</em> decât cei sănătoși. Hiperventilația cronică — respirația în volum prea mare — scade nivelul de CO₂ din sânge, provocând o cascadă de efecte negative: constricția vaselor de sânge, activarea sistemului nervos simpatic și reducerea oxigenului livrat celulelor.</p>
+          <blockquote>
+            „Respirăm ca și cum am fugi de un tigru, chiar și când suntem pe canapea. Sistemul nervos nu știe că pericolul nu există."
+          </blockquote>
+          <h3>Ce este CO₂ și de ce contează?</h3>
+          <p>CO₂ nu este doar un produs rezidual al respirației. Este molecula care determină eliberarea oxigenului din hemoglobină (efectul Bohr). Fără suficient CO₂, oxigenul rămâne legat de hemoglobină și nu ajunge la celule — chiar dacă sângele este satururat.</p>
+          <p>Prin reducerea volumului respirator și creșterea toleranței la CO₂, Buteyko antrenează corpul să funcționeze mai eficient cu mai puțin efort.</p>
+          <h3>Cui se adresează?</h3>
+          <p>Metoda Buteyko este documentată clinic pentru: anxietate și atacuri de panică, astm bronșic, apnee în somn, sindrom de hiperventilație, oboseală cronică și probleme de concentrare.</p>
+          <h3>Tehnici Buteyko de bază</h3>
+          <div class="technique-card" data-num="01">
+            <h3>Testul CP (Control Pause)</h3>
+            <p class="meta">Evaluare · 1 minut</p>
+            <p>Expiră normal, ține respirația până la primul semnal inconfortabil. Sub 25 secunde indică hiperventilație cronică. Scopul este 40–60 secunde.</p>
+          </div>
+          <div class="technique-card" data-num="02">
+            <h3>Respirația redusă (Reduced Breathing)</h3>
+            <p class="meta">Practică zilnică · 5–15 minute</p>
+            <p>Respiră ușor, reducând volumul cu ~30% față de obișnuit. Vei simți o ușoară senzație de foame de aer — aceasta este semnul că CO₂ crește sănătos.</p>
+          </div>
+          <div class="technique-card" data-num="03">
+            <h3>Respirația nazală exclusivă</h3>
+            <p class="meta">Stil de viață</p>
+            <p>Respirati mereu pe nas — ziua și noaptea. Nasul filtrează, umidifică și încălzește aerul și produce NO (oxid nitric) cu efecte vasodilatatoare puternice.</p>
+          </div>
+        </div>
+        <div>
+          <div class="sidebar-box">
+            <h4>Beneficii documentate</h4>
+            <ul>
+              <li>Reducerea atacurilor de panică</li>
+              <li>Îmbunătățirea somnului</li>
+              <li>Reducerea simptomelor de astm</li>
+              <li>Creșterea energiei</li>
+              <li>Claritate mentală îmbunătățită</li>
+              <li>Reducerea tensiunii arteriale</li>
+            </ul>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-box"><div class="stat-num">90%</div><div class="stat-label">Reducere simptome astm (studii)</div></div>
+            <div class="stat-box"><div class="stat-num">3–4</div><div class="stat-label">Săptămâni pentru primele rezultate</div></div>
+            <div class="stat-box"><div class="stat-num">1952</div><div class="stat-label">Anul descoperirii metodei</div></div>
+            <div class="stat-box"><div class="stat-num">6L</div><div class="stat-label">Volum ideal per minut (vs. 12–15L obișnuit)</div></div>
+          </div>
+          <div class="breathe-circle">respiri</div>
+          <div class="sidebar-box" style="margin-top:1.5rem;">
+            <h4>Resurse recomandate</h4>
+            <ul>
+              <li>„The Oxygen Advantage" — Patrick McKeown</li>
+              <li>„Breath" — James Nestor</li>
+              <li>buteyko.com — resurse oficiale</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CIRCULAR BREATHING -->
+    <div class="content-section" id="tab-circular">
+      <div class="article-grid">
+        <div class="article">
+          <h2>Respirația circulară — de la corp la suflet</h2>
+          <p>Spre deosebire de Buteyko, respirația circulară (sau connected breathing) funcționează pe principiul opus: respirație continuă, fără pauze între inhale și exhale, cu volum crescut. Aceasta activează sistemul nervos parasimpatic și poate induce stări modificate de conștiință similare meditației profunde.</p>
+          <blockquote>
+            „Corpul tău știe ce trebuie să elibereze. Respirația circulară îi dă permisiunea să o facă."
+          </blockquote>
+          <h3>Ce se întâmplă în corp?</h3>
+          <p>Respirația circulară crește inițial CO₂ și alcalinizează ușor sângele, ceea ce poate genera senzații corporale intense: furnicături, căldură, emoții care ies la suprafață. Acestea sunt răspunsuri normale, nu pericole — sunt semne că corpul procesează și eliberează tensiuni stocate.</p>
+          <h3>Origini și forme</h3>
+          <p><strong>Holotropic Breathwork</strong> (Stanislav Grof) — folosit în context terapeutic, cu muzică și facilitator. <strong>Rebirthing</strong> (Leonard Orr) — focusat pe procesarea traumelor timpurii. <strong>Transformational Breath</strong> — abordare integrativă modernă.</p>
+          <h3>Siguranță și contraindicații</h3>
+          <p>Respirația circulară se practică mereu cu un facilitator certificat. Nu este recomandată în: sarcină, epilepsie, boli cardiovasculare severe, glaucom sau tulburări psihotice active.</p>
+          <div class="technique-card" data-num="01">
+            <h3>Inhala activă, exhala pasivă</h3>
+            <p class="meta">Principiu de bază</p>
+            <p>Inspiră activ, din piept sau abdomen — exhala se face relaxat, fără efort. Nicio pauză. Ritmul devine o undă continuă.</p>
+          </div>
+          <div class="technique-card" data-num="02">
+            <h3>Integrarea cu sunete</h3>
+            <p class="meta">Tehnica avansată</p>
+            <p>Combinat cu boluri tibetane, respirația circulară adâncește experiența și accelerează procesarea emoțională.</p>
+          </div>
+        </div>
+        <div>
+          <div class="sidebar-box">
+            <h4>Pentru cine este?</h4>
+            <ul>
+              <li>Persoane cu traumă somatică stocată</li>
+              <li>Blocaje emoționale inexplicabile</li>
+              <li>Dorință de autoexplorare profundă</li>
+              <li>Practicanți de meditație & yoga</li>
+              <li>Epuizare și burn-out</li>
+            </ul>
+          </div>
+          <div class="sidebar-box" style="margin-top:1.5rem;">
+            <h4>Nu este pentru tine dacă ai</h4>
+            <ul>
+              <li>Sarcină</li>
+              <li>Epilepsie</li>
+              <li>Boli cardiovasculare severe</li>
+              <li>Glaucom</li>
+              <li>Tulburări psihotice active</li>
+            </ul>
+          </div>
+          <div style="background:color-mix(in srgb,var(--acc-about) 12%,#fff);padding:2rem;margin-top:1.5rem;border-left:4px solid var(--acc-about);">
+            <p style="font-size:0.8rem;line-height:1.9;font-weight:400;"><strong style="font-weight:500;">Important:</strong> Respirația circulară se practică MEREU cu un facilitator certificat și pregătit. Prima ta sesiune include o discuție de pregătire detaliată.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOUND THERAPY -->
+    <div class="content-section" id="tab-sound">
+      <div class="article-grid">
+        <div class="article">
+          <h2>Terapia prin sunet — vibrația care vindecă</h2>
+          <p>Terapia prin sunet este una dintre cele mai vechi forme de vindecare. De la bolurile tibetane la diapazone și gonguri, sunetul a fost folosit mii de ani pentru a restabili echilibrul în corp și minte. Știința modernă confirmă: expunerea la anumite frecvențe reduce cortizolul, scade tensiunea arterială și induce undele cerebrale alfa și theta asociate stărilor de relaxare profundă.</p>
+          <blockquote>
+            „Sunetul nu se aude doar cu urechile — se simte în fiecare celulă a corpului."
+          </blockquote>
+          <h3>Cum funcționează bolurile tibetane?</h3>
+          <p>Bolurile tibetane produc frecvențe între 110 și 800 Hz, cu armonice bogate. Când sunt plasate pe corp sau în apropierea acestuia, vibrațiile se propagă în țesuturi, mușchi și organe. Efectul este comparabil cu un masaj de profunzime — fără atingere.</p>
+          <p>Fenomenul de <strong>entrainment</strong> (sincronizare) face ca undele cerebrale să se alinieze cu frecvența sunetului, inducând rapid stări de calm profund sau meditație.</p>
+          <h3>Tipuri de instrumente utilizate</h3>
+          <div class="technique-card" data-num="♪">
+            <h3>Boluri tibetane</h3>
+            <p class="meta">Aliaj de 7 metale · frecvențe 110–450 Hz</p>
+            <p>Produse artizanal în Nepal și Tibet. Frecvențele joase acționează asupra corpului fizic și sistemului nervos.</p>
+          </div>
+          <div class="technique-card" data-num="◎">
+            <h3>Boluri de cristal de cuarț</h3>
+            <p class="meta">Cristal pur 99.9% · frecvențe 200–800 Hz</p>
+            <p>Vibrații clare, pure, care lucrează mai subtil la nivelul energetic și emoțional.</p>
+          </div>
+        </div>
+        <div>
+          <div class="sidebar-box">
+            <h4>Efecte documentate</h4>
+            <ul>
+              <li>Reducerea cortizolului (hormonul stresului)</li>
+              <li>Scăderea tensiunii arteriale</li>
+              <li>Inducerea undelor theta (meditație)</li>
+              <li>Reducerea durerii cronice</li>
+              <li>Îmbunătățirea somnului</li>
+              <li>Reducerea simptomelor de anxietate</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCIENCE -->
+    <div class="content-section" id="tab-science">
+      <div class="article-grid">
+        <div class="article">
+          <h2>Știința respirației — ce se întâmplă când respiri</h2>
+          <p>Respirăm de aproximativ 20.000 de ori pe zi. Și totuși, puțini știm că <em>cum</em> respirăm influențează direct starea sistemului nervos, nivelul de energie, claritatea mentală și sănătatea emoțională.</p>
+          <h3>Sistemul nervos autonom</h3>
+          <p>Respirația este singura funcție autonomă pe care o putem controla conștient. Această proprietate unică ne oferă acces direct la sistemul nervos — putem activa voluntar modul „odihnă și digestie" (parasimpatic) sau modul „luptă sau fugi" (simpatic).</p>
+          <blockquote>
+            „Respitația este telecomanda sistemului nervos. Știind să o folosești, poți schimba canalul din anxietate în calm în câteva minute."
+          </blockquote>
+          <h3>Nervul vag și respirația</h3>
+          <p>Nervul vag conectează creierul cu inima, plămânii și sistemul digestiv. Respirația lentă, diafragmatică stimulează nervul vag și activează răspunsul parasimpatic — starea de calm, recuperare și creativitate.</p>
+          <h3>CO₂ — molecula neînțeleasă</h3>
+          <p>CO₂ nu este doar un deșeu — este un vasodilatator natural și reglator al pH-ului sanguin. Nivelul optim de CO₂ în sânge (40 mmHg) este esențial pentru ca oxigenul să fie eliberat eficient din hemoglobină (efectul Bohr, descoperit în 1904).</p>
+        </div>
+        <div>
+          <div class="stats-grid" style="margin-bottom:1.5rem;">
+            <div class="stat-box"><div class="stat-num">20k</div><div class="stat-label">Respirații pe zi</div></div>
+            <div class="stat-box"><div class="stat-num">6L</div><div class="stat-label">Volum ideal pe minut</div></div>
+            <div class="stat-box"><div class="stat-num">40%</div><div class="stat-label">Oameni respiră pe gură</div></div>
+            <div class="stat-box"><div class="stat-num">80%</div><div class="stat-label">Din noi hiperventilăm</div></div>
+          </div>
+          <div class="sidebar-box">
+            <h4>Lecturi recomandate</h4>
+            <ul>
+              <li>„Breath" — James Nestor (2020)</li>
+              <li>„The Oxygen Advantage" — McKeown</li>
+              <li>„Just Breathe" — Dan Brulé</li>
+              <li>PubMed: Slow breathing effects on HRV</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="content-section sec--faq" id="tab-faq">
+      <div style="max-width:800px;">
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--title);margin-bottom:3rem;">Întrebări frecvente</h2>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Trebuie să am experiență anterioară cu meditația sau yoga?</div>
+          <div class="faq-a">Nu. Absolut nicio experiență nu este necesară. Tot ce ai nevoie este curiozitate și dorința de a te simți mai bine. Eu ghidez întregul proces pas cu pas.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Ce simt în timpul unei sesiuni de breathwork?</div>
+          <div class="faq-a">Experiențele variază. Poți simți căldură sau furnicături în mâini și față (normal, din cauza schimbărilor în CO₂), emoții care ies la suprafață, imagini, amintiri sau o stare profundă de calm și prezență. Unii plâng. Alții râd. Toate sunt binevenite.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Este breathwork-ul sigur?</div>
+          <div class="faq-a">Da, cu un facilitator pregătit. Există contraindicații (sarcină, epilepsie, boli cardiovasculare severe) pe care le discutăm la intake. Dacă ai dubii, consultă medicul înainte.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Câte sesiuni am nevoie?</div>
+          <div class="faq-a">Mulți simt un impact după prima sesiune. Pentru schimbări durabile — în obiceiuri de respirație sau procesarea unor traumatisme — recomand un pachet de 4–6 sesiuni în 6–8 săptămâni.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Pot face sesiunile online?</div>
+          <div class="faq-a">Da! Sesiunile online funcționează la fel de bine. Ai nevoie de un spațiu liniștit, o saltea sau un covor confortabil și o conexiune bună la internet.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Ce diferență e între breathwork și meditație?</div>
+          <div class="faq-a">Meditația lucrează cu mintea — observi gândurile. Breathwork-ul lucrează cu corpul — eliberezi fizic tensiunile stocate. Sunt complementare și se potențează reciproc.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Cum mă îmbrac / ce aduc la sesiune?</div>
+          <div class="faq-a">Îmbracă-te confortabil, în straturi (temperatura corpului poate varia). Aduce o sticlă de apă. Nu mânca copios cu 2h înainte. Poți aduce o pătură sau o pernă pentru confort.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Ce se întâmplă după sesiune?</div>
+          <div class="faq-a">Integrarea este o parte esențială a procesului. Vei primi recomandări personalizate și un ghid de exerciții pentru acasă. Ai suport WhatsApp 48h după sesiune pentru orice întrebări sau observații.</div>
+        </div>
+
+        <div style="margin-top:4rem;padding:3rem;background:color-mix(in srgb,var(--acc-benefits) 26%,#fff);color:var(--body);text-align:center;">
+          <p style="font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--title);margin-bottom:1rem;text-transform:lowercase;">Mai ai întrebări?</p>
+          <p style="font-size:1rem;color:var(--body);margin-bottom:2rem;">Scrie-mi direct pe WhatsApp sau email — răspund personal în câteva ore.</p>
+          <a href="#" class="btn-primary" onclick="showPage('booking')">Rezervă o sesiune de descoperire →</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end content-body -->
+
+  <footer style="background:var(--title);color:rgba(255,255,255,0.6);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
+    <span class="footer-logo" style="font-family:var(--serif);font-size:1.2rem;color:white;font-weight:300;">Loredana Crișan</span>
+    <span>breathsound.ro · Educație</span>
+    <a href="#" onclick="showPage('home')" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.7rem;">← Înapoi la site</a>
+  </footer>
+</div><!-- end content-page -->
+
+<script>
+// Page routing
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// Content tabs
+function setTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+  const tab = document.getElementById('tab-' + id);
+  if (tab) {
+    tab.classList.add('active');
+    const idx = ['buteyko','circular','sound','science','faq'].indexOf(id);
+    document.querySelectorAll('.tab-btn')[idx]?.classList.add('active');
+  }
+  if (document.getElementById('content-page')) {
+    // scroll content-tabs into view
+  }
+}
+
+// Session selection
+let currentPrice = '350 RON';
+let currentSession = 'Sesiune individuală Breathwork';
+let currentDuration = '90 min';
+
+function selectSession(el, name, price, duration) {
+  document.querySelectorAll('.session-type').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  currentPrice = price;
+  currentSession = name;
+  currentDuration = duration;
+  document.getElementById('selected-session-display').value = name + ' — ' + duration + ' — ' + price;
+  document.getElementById('total-price').textContent = price;
+  // Update payment page
+  if (document.getElementById('pay-session-name')) {
+    document.getElementById('pay-session-name').textContent = name;
+    document.getElementById('pay-duration').textContent = duration;
+    document.getElementById('pay-total').textContent = price;
+  }
+  const btn = document.querySelector('.total-pay');
+  if (btn) btn.textContent = 'Plătește ' + price + ' în siguranță 🔒';
+}
+
+// Time slots
+function selectSlot(el) {
+  document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// Payment methods
+function selectPayMethod(el) {
+  document.querySelectorAll('.pay-method').forEach(m => m.classList.remove('active'));
+  el.classList.add('active');
+  const isCard = el.textContent.trim() === 'Card';
+  document.getElementById('card-form').style.display = isCard ? 'block' : 'none';
+  document.getElementById('transfer-form').style.display = isCard ? 'none' : 'block';
+}
+
+// FAQ toggle
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  const answer = el.nextElementSibling;
+  answer.classList.toggle('open');
+}
+
+// Success
+function showSuccess() {
+  document.getElementById('success-msg').style.display = 'block';
+  document.querySelector('.total-pay').style.display = 'none';
+}
+
+// Generate calendar
+function generateCalendar() {
+  const cal = document.getElementById('calendar');
+  if (!cal) return;
+  // Remove existing day cells
+  const headers = cal.querySelectorAll('.cal-header');
+  // Clear and re-add headers
+  cal.innerHTML = '';
+  ['Lu','Ma','Mi','Jo','Vi','Sâ','Du'].forEach(d => {
+    const h = document.createElement('div');
+    h.className = 'cal-header'; h.textContent = d; cal.appendChild(h);
+  });
+  // April 2026 starts on Wednesday (day index 2)
+  const start = 2; // Wednesday
+  for (let i = 0; i < start; i++) {
+    const e = document.createElement('div'); cal.appendChild(e);
+  }
+  const unavail = [6,7,13,14,20,21,27,28]; // weekends
+  const past = [1,2,3,4,5];
+  for (let d = 1; d <= 30; d++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day';
+    el.textContent = d;
+    if (past.includes(d)) { el.classList.add('unavailable'); }
+    else if (unavail.includes(d)) { el.classList.add('unavailable'); }
+    else { el.classList.add('available'); el.onclick = () => selectDay(el); }
+    cal.appendChild(el);
+  }
+}
+
+function selectDay(el) {
+  document.querySelectorAll('.cal-day').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+generateCalendar();
+</script>
+</body>
+</html>
