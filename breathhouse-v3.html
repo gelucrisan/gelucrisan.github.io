@@ -46,8 +46,7 @@ body {
 /* ─────────────────────────────────────────
    PAGE SYSTEM
 ───────────────────────────────────────── */
-.page { display:none; }
-.page.active { display:block; }
+.page { display:block; scroll-margin-top: 72px; }
 
 /* ─────────────────────────────────────────
    NAV
@@ -877,6 +876,11 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
   hr.thin { margin:0 1.5rem; }
   .site-footer { flex-direction:column; gap:1rem; padding:2rem 1.5rem; text-align:center; }
 }
+/* Ensure sec-body content is always above blobs */
+.sec-body > *:not([style*="position:absolute"]) {
+  position: relative;
+  z-index: 1;
+}
 </style>
 </head>
 <body>
@@ -885,26 +889,26 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
      NAV
 ═══════════════════════════════════════ -->
 <nav>
-  <a href="#" class="nav-logo" onclick="go('home')">
+  <a href="#home" class="nav-logo">
     <img src="https://media.canva.com/v2/document-image/hash:209870851/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAANvaxuxp5IqcqavoEjSYGpibqTAAQrItjci3iU7DiUM8&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0012.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T182435Z%26X-Amz-Expires%3D73469%26X-Amz-Signature%3D2f0dcdc68d5af75cb38420e0815f3b61392ef10dd047387379c170983cc1ba1d%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAMNK42Rx-IdFxGZbifvuOhhPILA2-8gChpyJRK-QRBgd&page=15&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" style="height:44px;width:auto;display:block;">
     <small>Breath & Sound Healing</small>
   </a>
   <ul class="nav-links">
-    <li><a href="#" onclick="go('despre-mine')">Despre mine</a></li>
-    <li><a href="#" onclick="go('misiunea')">Misiune</a></li>
-    <li><a href="#" onclick="go('servicii')">Servicii</a></li>
-    <li><a href="#" onclick="go('tarife')">Tarife</a></li>
-    <li><a href="#" onclick="go('beneficii')">Beneficii</a></li>
-    <li><a href="#" onclick="go('faq')">FAQ</a></li>
+    <li><a href="#despre-mine">Despre mine</a></li>
+    <li><a href="#misiunea">Misiune</a></li>
+    <li><a href="#servicii">Servicii</a></li>
+    <li><a href="#tarife">Tarife</a></li>
+    <li><a href="#beneficii">Beneficii</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="#" class="nav-cta" onclick="go('programeaza')">Programează-te</a>
+  <a href="programeaza.html" target="_blank" class="nav-cta">Programează-te</a>
 </nav>
 
 
 <!-- ═══════════════════════════════════════
      HOME
 ═══════════════════════════════════════ -->
-<div id="home" class="page active pt-nav">
+<div id="home" class="page pt-nav" style="scroll-margin-top:72px;">
 
   <!-- HERO -->
   <section class="home-hero">
@@ -919,8 +923,8 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
         Breathwork terapeutic și terapie prin sunet pentru reglare emoțională, eliberare din anxietate și reconectare cu sinele tău autentic.
       </p>
       <div class="home-hero-actions">
-        <a href="#" class="btn-dark" onclick="go('programeaza')">Rezervă o sesiune</a>
-        <a href="#" class="btn-outline" onclick="go('despre-mine')">Descoperă →</a>
+        <a href="programeaza.html" target="_blank" class="btn-dark">Rezervă o sesiune</a>
+        <a href="#despre-mine" class="btn-outline">Descoperă →</a>
       </div>
     </div>
     <div class="home-hero-right">
@@ -960,37 +964,37 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
 
   <!-- NAVIGATION CARDS -->
   <div class="home-pages-grid">
-    <a href="#" class="home-page-card" onclick="go('despre-mine')">
+    <a href="#despre-mine" class="home-page-card">
       <div class="home-card-dot" style="background:var(--purple)"></div>
       <span class="home-card-title">Despre mine</span>
       <span class="home-card-arrow">→</span>
     </a>
-    <a href="#" class="home-page-card" onclick="go('misiunea')">
+    <a href="#misiunea" class="home-page-card">
       <div class="home-card-dot" style="background:var(--sky)"></div>
       <span class="home-card-title">Misiune & Viziune</span>
       <span class="home-card-arrow">→</span>
     </a>
-    <a href="#" class="home-page-card" onclick="go('servicii')">
+    <a href="#servicii" class="home-page-card">
       <div class="home-card-dot" style="background:var(--orange)"></div>
       <span class="home-card-title">Servicii & Activități</span>
       <span class="home-card-arrow">→</span>
     </a>
-    <a href="#" class="home-page-card" onclick="go('tarife')">
+    <a href="#tarife" class="home-page-card">
       <div class="home-card-dot" style="background:var(--yellow)"></div>
       <span class="home-card-title">Tarife</span>
       <span class="home-card-arrow">→</span>
     </a>
-    <a href="#" class="home-page-card" onclick="go('beneficii')">
+    <a href="#beneficii" class="home-page-card">
       <div class="home-card-dot" style="background:var(--green)"></div>
       <span class="home-card-title">Beneficii</span>
       <span class="home-card-arrow">→</span>
     </a>
-    <a href="#" class="home-page-card" onclick="go('programeaza')">
+    <a href="programeaza.html" target="_blank" class="home-page-card">
       <div class="home-card-dot" style="background:var(--sage)"></div>
       <span class="home-card-title">Programează & Contact</span>
       <span class="home-card-arrow">→</span>
     </a>
-    <a href="#" class="home-page-card" onclick="go('faq')">
+    <a href="#faq" class="home-page-card">
       <div class="home-card-dot" style="background:var(--charcoal)"></div>
       <span class="home-card-title">FAQ</span>
       <span class="home-card-arrow">→</span>
@@ -1007,7 +1011,7 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
       <p>Mă numesc Loredana Crișan și lucrez cu oameni care simt că ceva nu este în regulă — chiar dacă nu știu exact ce. Oameni în agitație constantă, epuizați, deconectați.</p>
       <p>Prin breathwork și terapie prin sunet, creez un spațiu sigur în care poți elibera ceea ce ții înăuntru, fără să fii nevoită să explici sau să analizezi.</p>
       <br>
-      <a href="#" class="btn-dark" onclick="go('despre-mine')">Află mai multe →</a>
+      <a href="#despre-mine" class="btn-dark">Află mai multe →</a>
     </div>
     <div class="home-intro-visual">
       <div class="intro-circle" style="width:300px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
@@ -1020,7 +1024,7 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
   <section class="home-cta">
     <h2>Ești gata să<br><em>respiri</em> diferit?</h2>
     <p>Prima sesiune este o explorare. Nu trebuie să știi nimic. Trebuie doar să vii.</p>
-    <a href="#" class="btn-dark" style="background:var(--sage);color:var(--title);" onclick="go('programeaza')">Rezervă acum →</a>
+    <a href="programeaza.html" target="_blank" class="btn-dark" style="background:var(--sage);color:var(--title);">Rezervă acum →</a>
   </section>
 
   <footer class="site-footer">
@@ -1038,28 +1042,53 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
 <!-- ═══════════════════════════════════════
      1 — DESPRE MINE
 ═══════════════════════════════════════ -->
-<div id="despre-mine" class="page sec-page pt-nav">
+<div id="despre-mine" class="page sec-page pt-nav" style="scroll-margin-top:72px;border-top:4px solid #9f67bc;">
 
-  <section style="display:grid;grid-template-columns:1fr 1fr;min-height:58vh;border-bottom:1px solid var(--border);">
-    <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 4rem;border-right:1px solid var(--border);background:var(--cream);">
-      <span style="font-size:0.56rem;letter-spacing:0.42em;text-transform:uppercase;font-weight:600;color:var(--purple);display:block;margin-bottom:1.5rem;">Despre mine</span>
-      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:0.92;color:var(--title);">Loredana<br><em>Crișan</em></h1>
-      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:380px;margin-top:1.75rem;font-weight:300;">Terapeut prin respirație și sunet, facilitator de transformare — ghid pentru cei care vor să se regăsească.</p>
+  <section style="position:relative;background:var(--cream);min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:3px solid #c3dcf4;">
+    <div style="position:absolute;top:-30px;right:-40px;width:55%;height:110%;pointer-events:none;z-index:1;">
+      <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="h1dm2" cx="65%" cy="25%" r="55%">
+            <stop offset="0%" stop-color="#c3dcf4" stop-opacity="1"/><stop offset="100%" stop-color="#c3dcf4" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h2dm2" cx="88%" cy="10%" r="42%">
+            <stop offset="0%" stop-color="#ddeefa" stop-opacity="0.9"/><stop offset="100%" stop-color="#ddeefa" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h3dm2" cx="45%" cy="65%" r="48%">
+            <stop offset="0%" stop-color="#a8c8f2" stop-opacity="0.7"/><stop offset="100%" stop-color="#a8c8f2" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="280" cy="120" rx="220" ry="185" fill="url(#h1dm2)"/>
+        <ellipse cx="420" cy="60"  rx="165" ry="135" fill="url(#h2dm2)"/>
+        <ellipse cx="360" cy="255" rx="155" ry="140" fill="url(#h3dm2)"/>
+        <path d="M 390 8   C 355 62, 300 50, 272 105 C 252 148, 278 178, 252 222 C 228 264, 188 252, 168 295" stroke="#9f67bc" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.75"/>
+        <path d="M 430 25  C 392 80, 340 68, 314 123 C 295 166, 318 196, 294 240 C 270 284, 232 272, 212 315" stroke="#9f67bc" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.50"/>
+        <path d="M 468 6   C 428 64, 378 50, 354 108 C 336 152, 356 180, 334 222" stroke="#9f67bc" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.33"/>
+      </svg>
     </div>
-    <div style="background:var(--purple);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;">
-      <div class="hero-bg-letter" style="color:rgba(255,255,255,0.06);">LC</div>
-      <div class="canva-band" style="background:rgba(0,0,0,0.22);">
-        <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan">
-        <span class="canva-band-tag" style="color:white;">DESPRE MINE</span>
-      </div>
+    <div style="position:relative;z-index:2;padding:5rem 4rem 4rem;max-width:640px;">
+      <div style="width:44px;height:2px;background:var(--purple);margin-bottom:1.5rem;opacity:0.8;"></div>
+      <span style="font-size:0.56rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:var(--purple);display:block;margin-bottom:1.25rem;">Despre mine</span>
+      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:0.92;color:var(--title);margin-bottom:2rem;">Loredana<br><em>Crișan</em></h1>
+      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:460px;font-weight:300;">Terapeut prin respirație și sunet, facilitator de transformare — ghid pentru cei care vor să se regăsească.</p>
     </div>
   </section>
-  <div class="sub-band" style="background:var(--purple);">
-    <span class="sub-band-label" style="color:white;">TERAPIE PRIN RESPIRAȚIE &amp; SUNET</span>
-    <span class="sub-band-label" style="color:rgba(255,255,255,0.55);">Cluj-Napoca</span>
-  </div>
-
-  <div class="sec-body">
+    <div style="position:absolute;bottom:0;left:0;width:30%;height:35%;pointer-events:none;z-index:0;overflow:hidden;">
+  <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+    <defs>
+      <radialGradient id="blobbl" cx="20%" cy="80%" r="60%">
+        <stop offset="0%" stop-color="#c3dcf4" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#c3dcf4" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="30" cy="150" rx="120" ry="90" fill="url(#blobbl)"/>
+    <path d="M 5 180 C 20 150, 50 155, 60 125 C 70 95, 45 80, 55 55" 
+          stroke="#c3dcf4" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <path d="M 25 180 C 38 148, 65 152, 75 120" 
+          stroke="#c3dcf4" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+</div>
+<div class="sec-body" style="position:relative;">
     <div class="despre-grid">
       <div class="despre-text">
         <h3>Cine sunt</h3>
@@ -1071,7 +1100,7 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
         <p>Nu folosesc protocoale generice. Fiecare sesiune începe cu o conversație — ascult, observ, simt. Abia după aceea construim împreună calea prin care respirația și sunetul pot ajunge acolo unde ai nevoie.</p>
         <p>Spațiul pe care îl creez este sigur, cald și fără judecată. Poți veni exact așa cum ești.</p>
         <br>
-        <a href="#" class="btn-dark" onclick="go('programeaza')">Lucrează cu mine →</a>
+        <a href="programeaza.html" target="_blank" class="btn-dark">Lucrează cu mine →</a>
       </div>
       <div class="despre-sidebar">
         <div class="despre-photo">
@@ -1092,33 +1121,90 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
     </div>
   </div>
 
-  <footer class="site-footer">
-    <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" class="footer-logo" style="height:36px;width:auto;">
-    <span>breathsound.ro</span>
-    <div class="footer-links">
-      <a href="#" onclick="go('home')">← Acasă</a>
-      <a href="#" onclick="go('misiunea')">Misiune →</a>
-    </div>
-  </footer>
 </div>
 
 
 <!-- ═══════════════════════════════════════
      2 — MISIUNEA & VIZIUNEA
 ═══════════════════════════════════════ -->
-<div id="misiunea" class="page sec-page pt-nav">
+<div id="misiunea" class="page sec-page pt-nav" style="scroll-margin-top:72px;border-top:4px solid #c3dcf4;">
 
-  <div class="sec-hero">
-    <div class="sec-hero-bg" style="background:var(--sky)"></div>
-    <div class="sec-hero-content">
-      <div class="accent-bar" style="background:var(--sky); filter:saturate(1.5) brightness(0.7)"></div>
-      <span class="section-eyebrow" style="color:#5080a0">Misiune & Viziune</span>
-      <h1 class="section-title">De ce fac<br><em>ceea ce fac</em></h1>
-      <p class="sec-hero-sub">Cred că vindecarea este posibilă. Că fiecare persoană are înăuntrul ei resursele necesare. Rolul meu este să creez spațiul în care acestea pot emerge.</p>
+  <section style="position:relative;background:var(--cream);min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:3px solid #c3dcf4;">
+    <div style="position:absolute;top:-30px;right:-40px;width:55%;height:110%;pointer-events:none;z-index:1;">
+      <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="h1mv" cx="65%" cy="25%" r="55%">
+            <stop offset="0%" stop-color="#c3dcf4" stop-opacity="1"/><stop offset="100%" stop-color="#c3dcf4" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h2mv" cx="88%" cy="10%" r="42%">
+            <stop offset="0%" stop-color="#e0eef8" stop-opacity="0.9"/><stop offset="100%" stop-color="#e0eef8" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h3mv" cx="45%" cy="65%" r="48%">
+            <stop offset="0%" stop-color="#b2d0ee" stop-opacity="0.7"/><stop offset="100%" stop-color="#b2d0ee" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="280" cy="120" rx="220" ry="185" fill="url(#h1mv)"/>
+        <ellipse cx="420" cy="60"  rx="165" ry="135" fill="url(#h2mv)"/>
+        <ellipse cx="360" cy="255" rx="155" ry="140" fill="url(#h3mv)"/>
+        <path d="M 390 8   C 355 62, 300 50, 272 105 C 252 148, 278 178, 252 222 C 228 264, 188 252, 168 295" stroke="#88aac8" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.75"/>
+        <path d="M 430 25  C 392 80, 340 68, 314 123 C 295 166, 318 196, 294 240 C 270 284, 232 272, 212 315" stroke="#88aac8" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.50"/>
+        <path d="M 468 6   C 428 64, 378 50, 354 108 C 336 152, 356 180, 334 222" stroke="#88aac8" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.33"/>
+      </svg>
+    </div>
+    <div style="position:relative;z-index:2;padding:5rem 4rem 4rem;max-width:640px;">
+      <div style="width:44px;height:2px;background:#5080a0;margin-bottom:1.5rem;opacity:0.8;"></div>
+      <span style="font-size:0.56rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:#5080a0;display:block;margin-bottom:1.25rem;">Misiune &amp; Viziune</span>
+      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:0.92;color:var(--title);margin-bottom:2rem;">De ce fac<br><em>ceea ce fac</em></h1>
+      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:460px;font-weight:300;">Cred că vindecarea este posibilă. Că fiecare persoană are înăuntrul ei resursele necesare.</p>
+    </div>
+  </section>
+    <div style="position:absolute;bottom:0;left:0;width:28%;height:38%;pointer-events:none;z-index:0;overflow:hidden;">
+  <svg viewBox="0 0 180 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+    <defs>
+      <radialGradient id="dblMIS" cx="15%" cy="85%" r="55%">
+        <stop offset="0%" stop-color="#c3dcf4" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#c3dcf4" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="25" cy="140" rx="115" ry="88" fill="url(#dblMIS)"/>
+    <path d="M 4 160 C 18 132, 46 137, 56 108 C 66 79, 40 65, 50 40" 
+          stroke="#c3dcf4" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.55"/>
+  </svg>
+</div>
+  
+    <!-- blob bottom-left -->
+    <div style="position:absolute;bottom:-10px;left:-10px;width:28%;height:140px;pointer-events:none;">
+      <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="bl-mv" cx="10%" cy="90%" r="60%">
+            <stop offset="0%" stop-color="#c3dcf4" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#c3dcf4" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="20" cy="160" rx="140" ry="110" fill="url(#bl-mv)"/>
+        <path d="M 0 180 C 18 148, 52 155, 64 122 C 76 89, 48 72, 60 44"
+              stroke="#c3dcf4" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M 22 180 C 38 145, 68 152, 80 118"
+              stroke="#c3dcf4" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.35"/>
+      </svg>
+    </div>
+    <!-- text content -->
+    <div style="position:relative;z-index:1;padding:2.5rem 4rem 2.5rem;">
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:0.45rem;">
+        <span style="font-size:0.58rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:var(--title);">MISIUNEA MEA</span>
+        <span style="width:90px;height:1px;background:var(--border);display:block;flex-shrink:0;"></span>
+      </div>
+      <span style="font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--body);font-weight:400;">CE FAC ȘI DE CE?</span>
+    </div>
+    <!-- arrow → -->
+    <div style="position:absolute;bottom:1.25rem;right:2rem;z-index:1;">
+      <svg width="34" height="12" viewBox="0 0 34 12" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="6" x2="28" y2="6" stroke="#8ab0cc" stroke-width="1.8"/>
+        <polyline points="22,1 29,6 22,11" stroke="#8ab0cc" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </div>
-
-  <div class="sec-body">
+<div class="sec-body" style="position:relative;">
     <div class="misiunea-grid" style="margin-bottom:5rem;">
       <div class="misiunea-half">
         <h2>Misiunea mea</h2>
@@ -1153,37 +1239,53 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
     </div>
   </div>
 
-  <footer class="site-footer">
-    <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" class="footer-logo" style="height:36px;width:auto;">
-    <span>breathsound.ro</span>
-    <div class="footer-links">
-      <a href="#" onclick="go('despre-mine')">← Despre mine</a>
-      <a href="#" onclick="go('servicii')">Servicii →</a>
-    </div>
-  </footer>
 </div>
 
 
 <!-- ═══════════════════════════════════════
      3 — SERVICII & ACTIVITĂȚI
 ═══════════════════════════════════════ -->
-<div id="servicii" class="page sec-page pt-nav">
+<div id="servicii" class="page sec-page pt-nav" style="scroll-margin-top:72px;border-top:4px solid #fd9d43;">
 
-  <div class="sec-hero">
-    <div class="sec-hero-bg" style="background:var(--orange)"></div>
-    <div class="sec-hero-content">
-      <div class="accent-bar" style="background:var(--orange)"></div>
-      <span class="section-eyebrow" style="color:var(--orange)">Servicii & Activități</span>
-      <h1 class="section-title">Ce oferim<br><em>împreună</em></h1>
-      <p class="sec-hero-sub">Sesiuni individuale, experiențe de grup și activități comunitare — totul construit în jurul respirației și sunetului ca instrumente de vindecare.</p>
+
+  
+    <!-- blob bottom-left -->
+    <div style="position:absolute;bottom:-10px;left:-10px;width:28%;height:140px;pointer-events:none;">
+      <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="bl-sv" cx="10%" cy="90%" r="60%">
+            <stop offset="0%" stop-color="#fde0be" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#fde0be" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="20" cy="160" rx="140" ry="110" fill="url(#bl-sv)"/>
+        <path d="M 0 180 C 18 148, 52 155, 64 122 C 76 89, 48 72, 60 44"
+              stroke="#fde0be" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M 22 180 C 38 145, 68 152, 80 118"
+              stroke="#fde0be" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.35"/>
+      </svg>
+    </div>
+    <!-- text content -->
+    <div style="position:relative;z-index:1;padding:2.5rem 4rem 2.5rem;">
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:0.45rem;">
+        <span style="font-size:0.58rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:var(--title);">SERVICII & ACTIVITĂȚI</span>
+        <span style="width:90px;height:1px;background:var(--border);display:block;flex-shrink:0;"></span>
+      </div>
+      <span style="font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--body);font-weight:400;">CE FAC ȘI CUM TE POT AJUTA.</span>
+    </div>
+    <!-- arrow → -->
+    <div style="position:absolute;bottom:1.25rem;right:2rem;z-index:1;">
+      <svg width="34" height="12" viewBox="0 0 34 12" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="6" x2="28" y2="6" stroke="#fd9d43" stroke-width="1.8"/>
+        <polyline points="22,1 29,6 22,11" stroke="#fd9d43" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </div>
-
-  <div class="sec-body">
+<div class="sec-body" style="position:relative;">
     <!-- SERVICII -->
     <span class="section-eyebrow" style="color:var(--orange); margin-bottom:2rem; display:block;">Sesiuni individuale</span>
     <div class="servicii-grid" style="margin-bottom:5rem;">
-      <div class="serviciu-card" onclick="go('programeaza')">
+      <div class="serviciu-card" onclick="window.open('programeaza.html','_blank');return false;">
         <span class="serviciu-tag">Breathwork</span>
         <h3 class="serviciu-name">Sesiune individuală de Breathwork</h3>
         <p class="serviciu-desc">O călătorie personalizată prin respirație conștientă. Identificăm blocajele emoționale și le eliberăm printr-un protocol adaptat nevoilor tale. Ideală pentru anxietate, burnout și reglare emoțională.</p>
@@ -1191,7 +1293,7 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
         <span class="serviciu-price">350 RON</span>
         <span class="serviciu-arrow">→</span>
       </div>
-      <div class="serviciu-card" onclick="go('programeaza')">
+      <div class="serviciu-card" onclick="window.open('programeaza.html','_blank');return false;">
         <span class="serviciu-tag">Sound Healing</span>
         <h3 class="serviciu-name">Terapie prin sunet — Boluri tibetane</h3>
         <p class="serviciu-desc">Vibrațiile bolurilor tibetane și cristal acționează direct asupra sistemului nervos, inducând o stare profundă de relaxare și vindecare. Simți cum tensiunea se dizolvă strat cu strat.</p>
@@ -1199,7 +1301,7 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
         <span class="serviciu-price">250 RON</span>
         <span class="serviciu-arrow">→</span>
       </div>
-      <div class="serviciu-card" onclick="go('programeaza')">
+      <div class="serviciu-card" onclick="window.open('programeaza.html','_blank');return false;">
         <span class="serviciu-tag">Sesiune combinată</span>
         <h3 class="serviciu-name">Breath + Sound — Protocolul complet</h3>
         <p class="serviciu-desc">Cel mai complet protocol terapeutic — respirația deschide ușa, sunetul adâncește vindecarea. Recomandată pentru experiențe transformationale profunde și pentru cei care vor mai mult dintr-o singură sesiune.</p>
@@ -1243,42 +1345,78 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
     </div>
   </div>
 
-  <footer class="site-footer">
-    <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" class="footer-logo" style="height:36px;width:auto;">
-    <span>breathsound.ro</span>
-    <div class="footer-links">
-      <a href="#" onclick="go('misiunea')">← Misiune</a>
-      <a href="#" onclick="go('tarife')">Tarife →</a>
-    </div>
-  </footer>
 </div>
 
 
 <!-- ═══════════════════════════════════════
      4 — TARIFE
 ═══════════════════════════════════════ -->
-<div id="tarife" class="page sec-page pt-nav">
+<div id="tarife" class="page sec-page pt-nav" style="scroll-margin-top:72px;border-top:4px solid #fedd92;">
 
-  <section style="display:grid;grid-template-columns:1fr 1fr;min-height:58vh;border-bottom:1px solid var(--border);">
-    <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 4rem;border-right:1px solid var(--border);background:var(--cream);">
-      <span style="font-size:0.56rem;letter-spacing:0.42em;text-transform:uppercase;font-weight:600;color:#8a6a00;display:block;margin-bottom:1.5rem;">Tarife</span>
-      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:0.92;color:var(--title);">Investiția în<br><em>tine însuți</em></h1>
-      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:380px;margin-top:1.75rem;font-weight:300;">Prețuri clare, fără surprize. Fiecare sesiune este o investiție în sănătatea ta emoțională și fizică.</p>
+  <section style="position:relative;background:var(--cream);min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:3px solid #fedd92;">
+    <div style="position:absolute;top:-30px;right:-40px;width:55%;height:110%;pointer-events:none;z-index:1;">
+      <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="h1tf2" cx="65%" cy="25%" r="55%">
+            <stop offset="0%" stop-color="#fedd92" stop-opacity="1"/><stop offset="100%" stop-color="#fedd92" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h2tf2" cx="88%" cy="10%" r="42%">
+            <stop offset="0%" stop-color="#fffae0" stop-opacity="0.9"/><stop offset="100%" stop-color="#fffae0" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h3tf2" cx="45%" cy="65%" r="48%">
+            <stop offset="0%" stop-color="#fef0b5" stop-opacity="0.7"/><stop offset="100%" stop-color="#fef0b5" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="280" cy="120" rx="220" ry="185" fill="url(#h1tf2)"/>
+        <ellipse cx="420" cy="60"  rx="165" ry="135" fill="url(#h2tf2)"/>
+        <ellipse cx="360" cy="255" rx="155" ry="140" fill="url(#h3tf2)"/>
+        <path d="M 390 8   C 355 62, 300 50, 272 105 C 252 148, 278 178, 252 222 C 228 264, 188 252, 168 295" stroke="#c9a800" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.75"/>
+        <path d="M 430 25  C 392 80, 340 68, 314 123 C 295 166, 318 196, 294 240 C 270 284, 232 272, 212 315" stroke="#c9a800" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.50"/>
+        <path d="M 468 6   C 428 64, 378 50, 354 108 C 336 152, 356 180, 334 222" stroke="#c9a800" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.33"/>
+      </svg>
     </div>
-    <div style="background:var(--yellow);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;">
-      <div class="hero-bg-letter" style="color:rgba(45,45,45,0.06);">T</div>
-      <div class="canva-band" style="background:rgba(45,45,45,0.1);">
-        <img src="https://media.canva.com/v2/document-image/hash:209870851/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAANvaxuxp5IqcqavoEjSYGpibqTAAQrItjci3iU7DiUM8&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0012.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T182435Z%26X-Amz-Expires%3D73469%26X-Amz-Signature%3D2f0dcdc68d5af75cb38420e0815f3b61392ef10dd047387379c170983cc1ba1d%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAMNK42Rx-IdFxGZbifvuOhhPILA2-8gChpyJRK-QRBgd&page=15&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" style="opacity:0.65;">
-        <span class="canva-band-tag" style="color:var(--title);opacity:0.6;">TARIFE</span>
-      </div>
+    <div style="position:relative;z-index:2;padding:5rem 4rem 4rem;max-width:640px;">
+      <div style="width:44px;height:2px;background:#8a6a00;margin-bottom:1.5rem;opacity:0.8;"></div>
+      <span style="font-size:0.56rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:#8a6a00;display:block;margin-bottom:1.25rem;">Tarife</span>
+      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:0.92;color:var(--title);margin-bottom:2rem;">Investiția în<br><em>tine însuți</em></h1>
+      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:460px;font-weight:300;">Prețuri clare, fără surprize. Fiecare sesiune este o investiție în sănătatea ta emoțională și fizică.</p>
     </div>
   </section>
-  <div class="sub-band" style="background:var(--yellow);">
-    <span class="sub-band-label" style="color:var(--title);opacity:0.65;">SESIUNI INDIVIDUALE &amp; PACHETE</span>
-    <span class="sub-band-label" style="color:var(--title);opacity:0.4;">Fără avans la rezervare</span>
-  </div>
 
-  <div class="sec-body">
+  
+    <!-- blob bottom-left -->
+    <div style="position:absolute;bottom:-10px;left:-10px;width:28%;height:140px;pointer-events:none;">
+      <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="bl-tf" cx="10%" cy="90%" r="60%">
+            <stop offset="0%" stop-color="#fedd92" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#fedd92" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="20" cy="160" rx="140" ry="110" fill="url(#bl-tf)"/>
+        <path d="M 0 180 C 18 148, 52 155, 64 122 C 76 89, 48 72, 60 44"
+              stroke="#fedd92" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M 22 180 C 38 145, 68 152, 80 118"
+              stroke="#fedd92" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.35"/>
+      </svg>
+    </div>
+    <!-- text content -->
+    <div style="position:relative;z-index:1;padding:2.5rem 4rem 2.5rem;">
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:0.45rem;">
+        <span style="font-size:0.58rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:var(--title);">TARIFE</span>
+        <span style="width:90px;height:1px;background:var(--border);display:block;flex-shrink:0;"></span>
+      </div>
+      <span style="font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--body);font-weight:400;">INVESTIȚIA ÎN TINE ÎNSUȚI.</span>
+    </div>
+    <!-- arrow → -->
+    <div style="position:absolute;bottom:1.25rem;right:2rem;z-index:1;">
+      <svg width="34" height="12" viewBox="0 0 34 12" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="6" x2="28" y2="6" stroke="#c9a800" stroke-width="1.8"/>
+        <polyline points="22,1 29,6 22,11" stroke="#c9a800" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+<div class="sec-body" style="position:relative;">
     <div class="tarife-grid" style="margin-bottom:3rem;">
       <!-- Card 1 -->
       <div class="tarif-card">
@@ -1293,7 +1431,7 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
           <li>Exerciții pentru acasă</li>
           <li>Suport WhatsApp 48h</li>
         </ul>
-        <a href="#" class="btn-outline" onclick="go('programeaza')">Rezervă →</a>
+        <a href="programeaza.html" target="_blank" class="btn-outline">Rezervă →</a>
       </div>
       <!-- Card 2 — featured -->
       <div class="tarif-card featured">
@@ -1309,7 +1447,7 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
           <li>Recomandări personalizate</li>
           <li>Suport WhatsApp 48h</li>
         </ul>
-        <a href="#" class="btn-dark" onclick="go('programeaza')">Rezervă →</a>
+        <a href="programeaza.html" target="_blank" class="btn-dark">Rezervă →</a>
       </div>
       <!-- Card 3 -->
       <div class="tarif-card">
@@ -1323,7 +1461,7 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
           <li>Integrare finală</li>
           <li>Recomandări post-sesiune</li>
         </ul>
-        <a href="#" class="btn-outline" onclick="go('programeaza')">Rezervă →</a>
+        <a href="programeaza.html" target="_blank" class="btn-outline">Rezervă →</a>
       </div>
     </div>
 
@@ -1341,192 +1479,82 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
     </div>
   </div>
 
-  <footer class="site-footer">
-    <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" class="footer-logo" style="height:36px;width:auto;">
-    <span>breathsound.ro</span>
-    <div class="footer-links">
-      <a href="#" onclick="go('servicii')">← Servicii</a>
-      <a href="#" onclick="go('beneficii')">Beneficii →</a>
-    </div>
-  </footer>
 </div>
 
 
 <!-- ═══════════════════════════════════════
      5 — PROGRAMEAZĂ & CONTACT
 ═══════════════════════════════════════ -->
-<div id="programeaza" class="page sec-page pt-nav">
-
-  <div class="sec-hero">
-    <div class="sec-hero-bg" style="background:var(--sage)"></div>
-    <div class="sec-hero-content">
-      <div class="accent-bar" style="background:var(--sage); filter:brightness(0.75)"></div>
-      <span class="section-eyebrow" style="color:#4a5a30">Programează & Contact</span>
-      <h1 class="section-title">Rezervă<br><em>spațiul tău</em></h1>
-      <p class="sec-hero-sub">Alege sesiunea, completează formularul și te contactez în maxim 2 ore pentru confirmare.</p>
-    </div>
-  </div>
-
-  <div class="sec-body">
-    <div class="contact-split">
-      <!-- FORM -->
-      <div class="contact-form-side">
-        <span class="section-eyebrow" style="color:#4a5a30; margin-bottom:2rem; display:block;">Formular de programare</span>
-
-        <!-- sesiune -->
-        <div class="session-select">
-          <div class="session-opt active" onclick="selSes(this,'Sesiune Breathwork','350 RON','90 min')">
-            <span class="session-opt-name">Sesiune Breathwork · 90 min</span>
-            <span class="session-opt-price">350 RON</span>
-          </div>
-          <div class="session-opt" onclick="selSes(this,'Sound Bath','250 RON','60 min')">
-            <span class="session-opt-name">Sound Bath · 60 min</span>
-            <span class="session-opt-price">250 RON</span>
-          </div>
-          <div class="session-opt" onclick="selSes(this,'Breath + Sound','450 RON','120 min')">
-            <span class="session-opt-name">Breath + Sound · 120 min</span>
-            <span class="session-opt-price">450 RON</span>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Prenume</label>
-            <input class="form-input" type="text" placeholder="Ana">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Nume</label>
-            <input class="form-input" type="text" placeholder="Ionescu">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input class="form-input" type="email" placeholder="ana@email.com">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Telefon</label>
-          <input class="form-input" type="tel" placeholder="+40 700 000 000">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Locație</label>
-          <select class="form-select">
-            <option>Cluj-Napoca (fizic)</option>
-            <option>Online (Zoom)</option>
-          </select>
-        </div>
-
-        <!-- calendar -->
-        <div class="cal-wrap">
-          <p class="cal-title-row">Alege o dată — August 2026</p>
-          <div class="cal-grid" id="cal">
-            <div class="cal-hd">Lu</div><div class="cal-hd">Ma</div><div class="cal-hd">Mi</div>
-            <div class="cal-hd">Jo</div><div class="cal-hd">Vi</div><div class="cal-hd">Sâ</div><div class="cal-hd">Du</div>
-          </div>
-        </div>
-
-        <!-- time -->
-        <p class="form-label" style="margin-bottom:0.5rem;">Interval orar preferat</p>
-        <div class="time-grid">
-          <div class="time-btn" onclick="selTime(this)">09:00</div>
-          <div class="time-btn" onclick="selTime(this)">10:30</div>
-          <div class="time-btn taken">12:00</div>
-          <div class="time-btn" onclick="selTime(this)">14:00</div>
-          <div class="time-btn" onclick="selTime(this)">15:30</div>
-          <div class="time-btn taken">17:00</div>
-          <div class="time-btn" onclick="selTime(this)">18:30</div>
-          <div class="time-btn" onclick="selTime(this)">10:00</div>
-          <div class="time-btn" onclick="selTime(this)">11:30</div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Mesaj (opțional)</label>
-          <textarea class="form-textarea" placeholder="Spune-mi pe scurt cu ce ai vrea să lucrăm..."></textarea>
-        </div>
-
-        <button class="btn-dark" style="width:100%;text-align:center;" onclick="document.getElementById('prog-success').style.display='block';this.style.display='none'">
-          Trimite cererea de programare →
-        </button>
-        <div id="prog-success" style="display:none;margin-top:1.5rem;background:rgba(183,193,132,0.15);border:1px solid var(--sage);padding:2rem;text-align:center;">
-          <div style="font-size:2rem;margin-bottom:0.75rem;">✓</div>
-          <p style="font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--title);margin-bottom:0.5rem;">Cerere trimisă!</p>
-          <p style="font-size:0.82rem;font-weight:300;color:var(--body);">Te contactez în maxim 2 ore pentru confirmare. 🌿</p>
-        </div>
-      </div>
-
-      <!-- INFO -->
-      <div class="contact-info-side">
-        <h3>Informații de contact</h3>
-
-        <div class="contact-detail">
-          <p class="contact-detail-label">Locație</p>
-          <p class="contact-detail-value">Cluj-Napoca, România<br>(adresa exactă la confirmare)</p>
-        </div>
-        <div class="contact-detail">
-          <p class="contact-detail-label">Email</p>
-          <p class="contact-detail-value">loredana@breathsound.ro</p>
-        </div>
-        <div class="contact-detail">
-          <p class="contact-detail-label">WhatsApp</p>
-          <p class="contact-detail-value">+40 700 000 000</p>
-        </div>
-        <div class="contact-detail">
-          <p class="contact-detail-label">Program</p>
-          <p class="contact-detail-value">Luni–Vineri: 09:00–20:00<br>Sâmbătă: 10:00–16:00</p>
-        </div>
-        <div class="contact-detail">
-          <p class="contact-detail-label">Instagram</p>
-          <p class="contact-detail-value">@loredana.breathsound</p>
-        </div>
-
-        <div style="margin-top:3rem; padding:2rem; border:1px solid rgba(45,45,45,0.15); background:rgba(255,255,255,0.4);">
-          <p style="font-size:0.82rem;line-height:1.9;color:var(--title);font-weight:300;">
-            <strong style="font-weight:600;">Ce se întâmplă după trimitere?</strong><br>
-            Vei primi un răspuns în maxim 2 ore în care confirmăm data, ora și locația (sau linkul Zoom). Nu se percepe niciun cost la rezervare.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" class="footer-logo" style="height:36px;width:auto;">
-    <span>breathsound.ro</span>
-    <div class="footer-links">
-      <a href="#" onclick="go('tarife')">← Tarife</a>
-      <a href="#" onclick="go('beneficii')">Beneficii →</a>
-    </div>
-  </footer>
-</div>
-
 
 <!-- ═══════════════════════════════════════
      6 — BENEFICII
 ═══════════════════════════════════════ -->
-<div id="beneficii" class="page sec-page pt-nav">
+<div id="beneficii" class="page sec-page pt-nav" style="scroll-margin-top:72px;border-top:4px solid #dee9b5;">
 
-  <section style="display:grid;grid-template-columns:1fr 1fr;min-height:58vh;border-bottom:1px solid var(--border);">
-    <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 4rem;border-right:1px solid var(--border);background:var(--cream);">
-      <span style="font-size:0.56rem;letter-spacing:0.42em;text-transform:uppercase;font-weight:600;color:#4a6030;display:block;margin-bottom:1.5rem;">Beneficii</span>
-      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:0.92;color:var(--title);">Ce se<br>schimbă<br><em>în tine</em></h1>
-      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:380px;margin-top:1.75rem;font-weight:300;">Beneficiile breathwork-ului și terapiei prin sunet — documentate, reale și resimțite de cei care au trecut prin experiență.</p>
+  <section style="position:relative;background:var(--cream);min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:3px solid #dee9b5;">
+    <div style="position:absolute;top:-30px;right:-40px;width:55%;height:110%;pointer-events:none;z-index:1;">
+      <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="h1bn2" cx="65%" cy="25%" r="55%">
+            <stop offset="0%" stop-color="#dee9b5" stop-opacity="1"/><stop offset="100%" stop-color="#dee9b5" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h2bn2" cx="88%" cy="10%" r="42%">
+            <stop offset="0%" stop-color="#eef5d8" stop-opacity="0.9"/><stop offset="100%" stop-color="#eef5d8" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h3bn2" cx="45%" cy="65%" r="48%">
+            <stop offset="0%" stop-color="#cce0a0" stop-opacity="0.7"/><stop offset="100%" stop-color="#cce0a0" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="280" cy="120" rx="220" ry="185" fill="url(#h1bn2)"/>
+        <ellipse cx="420" cy="60"  rx="165" ry="135" fill="url(#h2bn2)"/>
+        <ellipse cx="360" cy="255" rx="155" ry="140" fill="url(#h3bn2)"/>
+        <path d="M 390 8   C 355 62, 300 50, 272 105 C 252 148, 278 178, 252 222 C 228 264, 188 252, 168 295" stroke="#4a6030" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.75"/>
+        <path d="M 430 25  C 392 80, 340 68, 314 123 C 295 166, 318 196, 294 240 C 270 284, 232 272, 212 315" stroke="#4a6030" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.50"/>
+        <path d="M 468 6   C 428 64, 378 50, 354 108 C 336 152, 356 180, 334 222" stroke="#4a6030" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.33"/>
+      </svg>
     </div>
-    <div style="background:var(--green);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;">
-      <div class="hero-bg-letter" style="color:rgba(45,45,45,0.06);">B</div>
-      <div class="canva-band" style="background:rgba(45,45,45,0.08);">
-        <img src="https://media.canva.com/v2/document-image/hash:209870851/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAANvaxuxp5IqcqavoEjSYGpibqTAAQrItjci3iU7DiUM8&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0012.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T182435Z%26X-Amz-Expires%3D73469%26X-Amz-Signature%3D2f0dcdc68d5af75cb38420e0815f3b61392ef10dd047387379c170983cc1ba1d%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAMNK42Rx-IdFxGZbifvuOhhPILA2-8gChpyJRK-QRBgd&page=15&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" style="opacity:0.65;">
-        <span class="canva-band-tag" style="color:var(--title);opacity:0.6;">BENEFICII</span>
-      </div>
+    <div style="position:relative;z-index:2;padding:5rem 4rem 4rem;max-width:640px;">
+      <div style="width:44px;height:2px;background:#4a6030;margin-bottom:1.5rem;opacity:0.8;"></div>
+      <span style="font-size:0.56rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:#4a6030;display:block;margin-bottom:1.25rem;">Beneficii</span>
+      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:0.92;color:var(--title);margin-bottom:2rem;">Ce se<br>schimbă<br><em>în tine</em></h1>
+      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:460px;font-weight:300;">Beneficiile breathwork-ului și terapiei prin sunet — documentate, reale și resimțite.</p>
     </div>
   </section>
-  <div class="sub-band" style="background:var(--green);">
-    <span class="sub-band-label" style="color:var(--title);opacity:0.65;">FIZIC · EMOȚIONAL · MENTAL</span>
-    <span class="sub-band-label" style="color:var(--title);opacity:0.4;">Rezultate reale</span>
-  </div>
 
-  <div class="sec-body">
+  
+    <!-- blob bottom-left -->
+    <div style="position:absolute;bottom:-10px;left:-10px;width:28%;height:140px;pointer-events:none;">
+      <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="bl-bn" cx="10%" cy="90%" r="60%">
+            <stop offset="0%" stop-color="#dee9b5" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#dee9b5" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="20" cy="160" rx="140" ry="110" fill="url(#bl-bn)"/>
+        <path d="M 0 180 C 18 148, 52 155, 64 122 C 76 89, 48 72, 60 44"
+              stroke="#dee9b5" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M 22 180 C 38 145, 68 152, 80 118"
+              stroke="#dee9b5" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.35"/>
+      </svg>
+    </div>
+    <!-- text content -->
+    <div style="position:relative;z-index:1;padding:2.5rem 4rem 2.5rem;">
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:0.45rem;">
+        <span style="font-size:0.58rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:var(--title);">BENEFICII</span>
+        <span style="width:90px;height:1px;background:var(--border);display:block;flex-shrink:0;"></span>
+      </div>
+      <span style="font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--body);font-weight:400;">CE SE SCHIMBĂ ÎN TINE.</span>
+    </div>
+    <!-- arrow → -->
+    <div style="position:absolute;bottom:1.25rem;right:2rem;z-index:1;">
+      <svg width="34" height="12" viewBox="0 0 34 12" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="6" x2="28" y2="6" stroke="#4a6030" stroke-width="1.8"/>
+        <polyline points="22,1 29,6 22,11" stroke="#4a6030" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+<div class="sec-body" style="position:relative;">
     <!-- INTRO -->
     <div class="beneficii-intro">
       <div>
@@ -1597,53 +1625,89 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
     </div>
   </div>
 
-  <footer class="site-footer">
-    <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" class="footer-logo" style="height:36px;width:auto;">
-    <span>breathsound.ro</span>
-    <div class="footer-links">
-      <a href="#" onclick="go('tarife')">← Tarife</a>
-      <a href="#" onclick="go('faq')">FAQ →</a>
-    </div>
-  </footer>
 </div>
 
 
 <!-- ═══════════════════════════════════════
      7 — FAQ
 ═══════════════════════════════════════ -->
-<div id="faq" class="page sec-page pt-nav">
+<div id="faq" class="page sec-page pt-nav" style="scroll-margin-top:72px;border-top:4px solid #4D4D4D;">
 
-  <section style="display:grid;grid-template-columns:1fr 1fr;min-height:58vh;border-bottom:1px solid var(--border);">
-    <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 4rem;border-right:1px solid var(--border);background:var(--cream);">
-      <span style="font-size:0.56rem;letter-spacing:0.42em;text-transform:uppercase;font-weight:600;color:var(--charcoal);display:block;margin-bottom:1.5rem;">Întrebări frecvente</span>
-      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:0.92;color:var(--title);">Ai întrebări?<br><em>Firesc.</em></h1>
-      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:380px;margin-top:1.75rem;font-weight:300;">Răspunsuri la tot ce vrei să știi înainte de prima sesiune — și nu ai știut cum să întrebi.</p>
+  <section style="position:relative;background:var(--cream);min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:3px solid #d8d8d8;">
+    <div style="position:absolute;top:-30px;right:-40px;width:55%;height:110%;pointer-events:none;z-index:1;">
+      <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="h1fq2" cx="65%" cy="25%" r="55%">
+            <stop offset="0%" stop-color="#d8d8d8" stop-opacity="1"/><stop offset="100%" stop-color="#d8d8d8" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h2fq2" cx="88%" cy="10%" r="42%">
+            <stop offset="0%" stop-color="#ebebeb" stop-opacity="0.9"/><stop offset="100%" stop-color="#ebebeb" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="h3fq2" cx="45%" cy="65%" r="48%">
+            <stop offset="0%" stop-color="#c5c5c5" stop-opacity="0.7"/><stop offset="100%" stop-color="#c5c5c5" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="280" cy="120" rx="220" ry="185" fill="url(#h1fq2)"/>
+        <ellipse cx="420" cy="60"  rx="165" ry="135" fill="url(#h2fq2)"/>
+        <ellipse cx="360" cy="255" rx="155" ry="140" fill="url(#h3fq2)"/>
+        <path d="M 390 8   C 355 62, 300 50, 272 105 C 252 148, 278 178, 252 222 C 228 264, 188 252, 168 295" stroke="#888888" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.75"/>
+        <path d="M 430 25  C 392 80, 340 68, 314 123 C 295 166, 318 196, 294 240 C 270 284, 232 272, 212 315" stroke="#888888" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.50"/>
+        <path d="M 468 6   C 428 64, 378 50, 354 108 C 336 152, 356 180, 334 222" stroke="#888888" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.33"/>
+      </svg>
     </div>
-    <div style="background:var(--title);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;">
-      <div class="hero-bg-letter" style="color:rgba(255,255,255,0.04);">?</div>
-      <div class="canva-band" style="background:rgba(255,255,255,0.05);">
-        <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan">
-        <span class="canva-band-tag" style="color:rgba(255,255,255,0.5);">FAQ</span>
-      </div>
+    <div style="position:relative;z-index:2;padding:5rem 4rem 4rem;max-width:640px;">
+      <div style="width:44px;height:2px;background:var(--charcoal);margin-bottom:1.5rem;opacity:0.8;"></div>
+      <span style="font-size:0.56rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:var(--charcoal);display:block;margin-bottom:1.25rem;">Întrebări frecvente</span>
+      <h1 style="font-family:var(--serif);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:0.92;color:var(--title);margin-bottom:2rem;">Ai întrebări?<br><em>Firesc.</em></h1>
+      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:460px;font-weight:300;">Răspunsuri la tot ce vrei să știi înainte de prima sesiune.</p>
     </div>
   </section>
-  <div class="sub-band" style="background:var(--charcoal);">
-    <span class="sub-band-label" style="color:rgba(255,255,255,0.6);">ÎNTREBĂRI FRECVENTE</span>
-    <span class="sub-band-label" style="color:rgba(255,255,255,0.35);">Răspunsuri reale</span>
-  </div>
 
-  <div class="sec-body">
+  
+    <!-- blob bottom-left -->
+    <div style="position:absolute;bottom:-10px;left:-10px;width:28%;height:140px;pointer-events:none;">
+      <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="bl-fq" cx="10%" cy="90%" r="60%">
+            <stop offset="0%" stop-color="#d8d8d8" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#d8d8d8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="20" cy="160" rx="140" ry="110" fill="url(#bl-fq)"/>
+        <path d="M 0 180 C 18 148, 52 155, 64 122 C 76 89, 48 72, 60 44"
+              stroke="#d8d8d8" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M 22 180 C 38 145, 68 152, 80 118"
+              stroke="#d8d8d8" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.35"/>
+      </svg>
+    </div>
+    <!-- text content -->
+    <div style="position:relative;z-index:1;padding:2.5rem 4rem 2.5rem;">
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:0.45rem;">
+        <span style="font-size:0.58rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:var(--title);">ÎNTREBĂRI FRECVENTE</span>
+        <span style="width:90px;height:1px;background:var(--border);display:block;flex-shrink:0;"></span>
+      </div>
+      <span style="font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--body);font-weight:400;">TOT CE VREI SĂ ȘTII.</span>
+    </div>
+    <!-- arrow → -->
+    <div style="position:absolute;bottom:1.25rem;right:2rem;z-index:1;">
+      <svg width="34" height="12" viewBox="0 0 34 12" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="6" x2="28" y2="6" stroke="#4D4D4D" stroke-width="1.8"/>
+        <polyline points="22,1 29,6 22,11" stroke="#4D4D4D" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+<div class="sec-body" style="position:relative;">
     <div class="faq-layout">
       <!-- sidebar -->
       <div class="faq-sidebar">
         <h3>Nu găsești ce cauți?</h3>
         <p>Scrie-mi direct pe WhatsApp sau email. Răspund personal, de obicei în câteva ore.</p>
-        <a href="#" class="btn-dark" onclick="go('programeaza')">Contactează-mă →</a>
+        <a href="programeaza.html" target="_blank" class="btn-dark">Contactează-mă →</a>
 
         <div style="margin-top:3rem; padding:2rem; background:var(--cream); border:1px solid var(--border);">
           <p style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;font-weight:600;color:var(--body);margin-bottom:1rem;">Rezervă o sesiune de descoperire</p>
           <p style="font-size:0.82rem;line-height:1.85;color:var(--body);font-weight:300;margin-bottom:1.5rem;">30 de minute gratuit în care ne cunoaștem și vedem dacă și cum te pot ajuta.</p>
-          <a href="#" class="btn-outline" style="font-size:0.62rem;" onclick="go('programeaza')">Rezervă gratuit →</a>
+          <a href="programeaza.html" target="_blank" class="btn-outline" style="font-size:0.62rem;">Rezervă gratuit →</a>
         </div>
       </div>
 
@@ -1716,14 +1780,6 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
     </div>
   </div>
 
-  <footer class="site-footer">
-    <img src="https://media.canva.com/v2/document-image/hash:-844264981/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAAMUze-rchql5g7OycaB_9kpjFh66wRS6IYThuDUBVGeu&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0011.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T195249Z%26X-Amz-Expires%3D68175%26X-Amz-Signature%3D7b71d5851b7a57f33aa957a9c86a8c76c138795138693c99ca9e5775bae7f418%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAByBh1Sr2i6NtkumoKhnSDQyn4JWBVTqEcXkQvqEc72W&page=14&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" class="footer-logo" style="height:36px;width:auto;">
-    <span>© 2026 · breathsound.ro · Cluj-Napoca</span>
-    <div class="footer-links">
-      <a href="#" onclick="go('beneficii')">← Beneficii</a>
-      <a href="#" onclick="go('programeaza')">Programează →</a>
-    </div>
-  </footer>
 </div>
 
 
@@ -1733,9 +1789,9 @@ hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
 <script>
 /* page routing */
 function go(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const el = document.getElementById(id);
-  if (el) { el.classList.add('active'); window.scrollTo(0,0); }
+  if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  return false;
 }
 
 /* FAQ toggle */
@@ -1789,5 +1845,6 @@ function selTime(el) {
   }
 })();
 </script>
+
 </body>
 </html>
