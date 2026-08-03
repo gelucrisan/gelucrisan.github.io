@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programează-te — Loredana Crișan · Breath &amp; Sound Healing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;1,6..96,300;1,6..96,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --white:    #ffffff;
+  --cream:    #faf9f6;
+  --title:    #2D2D2D;
+  --body:     #4D4D4D;
+  --border:   rgba(45,45,45,0.12);
+
+  /* section accents */
+  --purple:   #9f67bc;
+  --sky:      #c3dcf4;
+  --orange:   #fd9d43;
+  --yellow:   #fedd92;
+  --sage:     #b7c184;
+  --green:    #dee9b5;
+  --charcoal: #4D4D4D;
+
+  --serif: 'Bodoni Moda', Georgia, serif;
+  --sans:  'Montserrat', sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  background: var(--cream);
+  color: var(--body);
+  font-family: var(--sans);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────
+   PAGE SYSTEM
+───────────────────────────────────────── */
+.page { display:block; scroll-margin-top: 72px; }
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 1.25rem 5rem;
+  background: rgba(250,249,246,0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  text-decoration:none; line-height:1.1; display:flex; flex-direction:column; gap:4px;
+}
+.nav-logo small {
+  display:block; font-family:var(--sans); font-size:0.6rem;
+  letter-spacing:0.35em; text-transform:uppercase; color:var(--body);
+  font-weight:500; margin-top:2px;
+}
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a {
+  font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--body); text-decoration:none; font-weight:500;
+  transition: color 0.25s;
+}
+.nav-links a:hover { color:var(--title); }
+.nav-cta {
+  background:var(--title); color:white;
+  padding:0.7rem 1.8rem; font-family:var(--sans);
+  font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;
+  font-weight:500; text-decoration:none; transition:opacity 0.25s;
+}
+.nav-cta:hover { opacity:0.75; }
+
+/* ─────────────────────────────────────────
+   SHARED UTILS
+───────────────────────────────────────── */
+.pt-nav { padding-top:80px; }
+
+.section-eyebrow {
+  font-size:0.62rem; letter-spacing:0.4em; text-transform:uppercase;
+  font-weight:600; margin-bottom:1.5rem; display:block;
+}
+
+.section-title {
+  font-family:var(--serif); font-size:clamp(3.15rem,5.6vw,6.2rem);
+  font-weight:300; line-height:0.97; color:var(--title);
+}
+.section-title em { font-style:italic; }
+
+.btn-dark {
+  display:inline-block;
+  background:var(--title); color:white;
+  padding:0.9rem 2.2rem; font-family:var(--sans);
+  font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase;
+  font-weight:500; text-decoration:none; transition:opacity 0.25s;
+  border:none; cursor:pointer;
+}
+.btn-dark:hover { opacity:0.72; }
+
+.btn-outline {
+  display:inline-block;
+  border:1px solid var(--title); color:var(--title);
+  padding:0.9rem 2.2rem; font-family:var(--sans);
+  font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase;
+  font-weight:500; text-decoration:none; transition:all 0.25s;
+  background:transparent; cursor:pointer;
+}
+.btn-outline:hover { background:var(--title); color:white; }
+
+/* accent bar */
+.accent-bar {
+  height:4px; width:60px;
+  margin-bottom:2.5rem; border-radius:2px;
+}
+
+/* divider line */
+hr.thin { border:none; border-top:1px solid var(--border); margin:0 5rem; }
+
+/* ─────────────────────────────────────────
+   ══ HOME PAGE ══
+───────────────────────────────────────── */
+#home { background:var(--cream); }
+
+/* HERO */
+.home-hero {
+  min-height:100vh;
+  display:grid; grid-template-columns:1fr 1fr;
+  padding-top:80px;
+  position:relative; overflow:hidden;
+}
+.home-hero-left {
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 6rem 4rem 6rem 5rem;
+}
+.home-hero-tag {
+  display:inline-flex; align-items:center; gap:0.75rem;
+  font-size:0.62rem; letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--body); font-weight:500; margin-bottom:2.5rem;
+}
+.home-hero-tag::before {
+  content:''; display:block; width:32px; height:1px; background:var(--body);
+}
+.home-hero-title {
+  font-family:var(--serif); font-size:clamp(4.5rem,7.8vw,9rem);
+  font-weight:300; line-height:0.92; color:var(--title);
+  margin-bottom:2.5rem;
+}
+.home-hero-title em { font-style:italic; color:var(--purple); }
+.home-hero-sub {
+  font-size:0.88rem; line-height:2; color:var(--body);
+  max-width:400px; margin-bottom:3rem; font-weight:300;
+}
+.home-hero-actions { display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; }
+
+.home-hero-right {
+  background:var(--purple);
+  position:relative; overflow:hidden;
+  display:flex; align-items:flex-end;
+}
+.hero-right-inner {
+  padding:4rem; width:100%;
+}
+.hero-quote-text {
+  font-family:var(--serif); font-size:1.6rem; font-style:italic;
+  font-weight:300; color:white; line-height:1.5; margin-bottom:1.5rem;
+}
+.hero-quote-cite {
+  font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase;
+  color:rgba(255,255,255,0.6); font-weight:500;
+}
+.hero-bg-word {
+  position:absolute; top:3rem; left:3rem; right:3rem;
+  font-family:var(--serif); font-size:clamp(5rem,12vw,14rem);
+  font-weight:300; line-height:1;
+  color:rgba(255,255,255,0.06); pointer-events:none;
+  user-select:none; letter-spacing:-0.02em;
+}
+
+/* STATS STRIP */
+.home-strip {
+  background:var(--title); color:white;
+  display:flex; gap:0; overflow:hidden;
+}
+.strip-item {
+  flex:1; padding:2.5rem 3rem;
+  border-right:1px solid rgba(255,255,255,0.08);
+  display:flex; flex-direction:column; gap:0.4rem;
+}
+.strip-item:last-child { border-right:none; }
+.strip-num {
+  font-family:var(--serif); font-size:2.8rem; font-weight:300;
+  color:white; line-height:1;
+}
+.strip-label {
+  font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(255,255,255,0.5); font-weight:500;
+}
+
+/* HOME PAGES GRID */
+.home-pages-grid {
+  padding:7rem 5rem;
+  display:grid; grid-template-columns:repeat(7,1fr);
+  gap:0;
+}
+.home-page-card {
+  padding:3rem 2rem;
+  display:flex; flex-direction:column; gap:1.5rem;
+  border-right:1px solid var(--border);
+  cursor:pointer; transition:transform 0.3s;
+  text-decoration:none; color:inherit;
+}
+.home-page-card:last-child { border-right:none; }
+.home-page-card:hover { transform:translateY(-4px); }
+.home-card-dot {
+  width:36px; height:36px; border-radius:50%;
+  flex-shrink:0;
+}
+.home-card-title {
+  font-family:var(--serif); font-size:1.1rem; font-weight:400;
+  color:var(--title); line-height:1.2;
+}
+.home-card-arrow {
+  font-size:1rem; color:var(--body); margin-top:auto;
+  transition:transform 0.2s;
+}
+.home-page-card:hover .home-card-arrow { transform:translateX(4px); }
+
+/* HOME INTRO */
+.home-intro {
+  padding:7rem 5rem; display:grid;
+  grid-template-columns:1fr 1fr; gap:8rem; align-items:center;
+}
+.home-intro-text p {
+  font-size:0.88rem; line-height:2; color:var(--body);
+  margin-bottom:1.25rem; font-weight:300;
+}
+.home-intro-visual {
+  aspect-ratio:4/5;
+  background:var(--sage);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.home-intro-visual-inner {
+  font-family:var(--serif); font-size:2.5rem; font-style:italic;
+  color:white; opacity:0.5; text-align:center; line-height:1.4;
+}
+.intro-circle {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+/* HOME CTA */
+.home-cta {
+  background:var(--title); color:white;
+  padding:8rem 5rem; text-align:center;
+}
+.home-cta h2 {
+  font-family:var(--serif); font-size:clamp(3.4rem,6.7vw,7.8rem);
+  font-weight:300; line-height:0.95; margin-bottom:2rem;
+}
+.home-cta h2 em { font-style:italic; color:var(--sage); }
+.home-cta p {
+  font-size:0.88rem; color:rgba(255,255,255,0.6);
+  margin-bottom:3rem; font-weight:300;
+}
+
+/* ─────────────────────────────────────────
+   ══ PAGE SHELL (all 7 section pages) ══
+───────────────────────────────────────── */
+.sec-page { background:var(--white); }
+
+.sec-hero {
+  min-height:55vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:8rem 5rem 5rem;
+  position:relative; overflow:hidden;
+}
+.sec-hero-bg {
+  position:absolute; inset:0;
+  opacity:0.18;
+}
+.sec-hero-content { position:relative; z-index:2; max-width:800px; }
+.sec-hero-sub {
+  font-size:0.9rem; line-height:1.9; color:var(--body);
+  max-width:560px; margin-top:2rem; font-weight:300;
+}
+
+.sec-body { padding:6rem 5rem; }
+.sec-body-narrow { max-width:800px; }
+.sec-body-wide { }
+
+/* ─────────────────────────────────────────
+   1 — DESPRE MINE  (purple)
+───────────────────────────────────────── */
+#despre-mine .sec-hero { background:var(--cream); }
+#despre-mine .accent-bar { background:var(--purple); }
+#despre-mine .section-eyebrow { color:var(--purple); }
+
+.despre-grid {
+  display:grid; grid-template-columns:1.2fr 1fr;
+  gap:6rem; align-items:start;
+}
+.despre-text p {
+  font-size:0.9rem; line-height:2; color:var(--body);
+  margin-bottom:1.5rem; font-weight:300;
+}
+.despre-text h3 {
+  font-family:var(--serif); font-size:1.8rem; font-weight:300;
+  color:var(--title); margin:2.5rem 0 1rem;
+}
+.despre-sidebar {}
+.despre-photo {
+  aspect-ratio:3/4; background:var(--purple);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; margin-bottom:2rem;
+}
+.despre-photo-placeholder {
+  font-family:var(--serif); font-size:2rem; font-style:italic;
+  color:rgba(255,255,255,0.5); text-align:center;
+}
+.despre-cert {
+  border:1px solid var(--border); padding:2rem;
+}
+.despre-cert h4 {
+  font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--purple); font-weight:600; margin-bottom:1.25rem;
+}
+.despre-cert ul { list-style:none; }
+.despre-cert li {
+  font-size:0.82rem; padding:0.6rem 0;
+  border-bottom:1px solid var(--border); font-weight:300;
+  display:flex; gap:0.75rem; align-items:flex-start;
+  color:var(--body);
+}
+.despre-cert li::before { content:'—'; color:var(--purple); flex-shrink:0; }
+
+/* ─────────────────────────────────────────
+   2 — MISIUNEA & VIZIUNEA  (sky)
+───────────────────────────────────────── */
+#misiunea .sec-hero { background:var(--cream); }
+#misiunea .accent-bar { background:var(--sky); }
+#misiunea .section-eyebrow { color:var(--sky); filter:saturate(1.5) brightness(0.75); }
+
+.misiunea-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:2px;
+  margin-bottom:5rem;
+}
+.misiunea-half {
+  padding:4rem; background:var(--cream);
+  border:1px solid var(--border);
+}
+.misiunea-half:first-child { background:var(--sky); }
+.misiunea-half h2 {
+  font-family:var(--serif); font-size:2.2rem; font-weight:300;
+  color:var(--title); margin-bottom:1.5rem;
+}
+.misiunea-half:first-child h2 { color:var(--title); }
+.misiunea-half p {
+  font-size:0.88rem; line-height:2; color:var(--body); font-weight:300;
+  margin-bottom:1rem;
+}
+.misiunea-values {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+}
+.value-card {
+  padding:3rem 2.5rem; background:var(--cream);
+  border:1px solid var(--border);
+}
+.value-card-num {
+  font-family:var(--serif); font-size:3.5rem; font-weight:300;
+  color:var(--sky); line-height:1; margin-bottom:1rem;
+  opacity:0.5;
+}
+.value-card h3 {
+  font-family:var(--serif); font-size:1.4rem; font-weight:300;
+  color:var(--title); margin-bottom:0.75rem;
+}
+.value-card p { font-size:0.82rem; line-height:1.85; color:var(--body); font-weight:300; }
+
+/* ─────────────────────────────────────────
+   3 — SERVICII & ACTIVITĂȚI  (orange)
+───────────────────────────────────────── */
+#servicii .sec-hero { background:var(--cream); }
+#servicii .accent-bar { background:var(--orange); }
+#servicii .section-eyebrow { color:var(--orange); }
+
+.servicii-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+  margin-bottom:5rem;
+}
+.serviciu-card {
+  padding:3.5rem 3rem; background:var(--cream);
+  border:1px solid var(--border);
+  display:flex; flex-direction:column;
+  transition:background 0.3s; cursor:pointer;
+}
+.serviciu-card:hover { background:var(--orange); }
+.serviciu-card:hover .serviciu-price { color:white; }
+.serviciu-card:hover .serviciu-name { color:white; }
+.serviciu-card:hover .serviciu-desc { color:rgba(255,255,255,0.75); }
+.serviciu-card:hover .serviciu-arrow { color:white; }
+.serviciu-tag {
+  font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase;
+  font-weight:600; color:var(--orange); margin-bottom:2rem;
+  transition:color 0.3s;
+}
+.serviciu-card:hover .serviciu-tag { color:rgba(255,255,255,0.7); }
+.serviciu-name {
+  font-family:var(--serif); font-size:1.6rem; font-weight:300;
+  color:var(--title); line-height:1.15; margin-bottom:1.25rem;
+  transition:color 0.3s;
+}
+.serviciu-desc {
+  font-size:0.82rem; line-height:1.85; color:var(--body);
+  font-weight:300; flex:1; margin-bottom:2rem;
+  transition:color 0.3s;
+}
+.serviciu-price {
+  font-family:var(--serif); font-size:1.8rem; font-weight:300;
+  color:var(--title); transition:color 0.3s;
+}
+.serviciu-duration {
+  font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--body); font-weight:500; margin-bottom:0.25rem;
+  transition:color 0.3s;
+}
+.serviciu-card:hover .serviciu-duration { color:rgba(255,255,255,0.6); }
+.serviciu-arrow {
+  margin-top:2rem; font-size:1.2rem; color:var(--orange);
+  transition:all 0.3s; align-self:flex-end;
+}
+
+/* activitati */
+.activitati-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:2px;
+}
+.activitate-item {
+  padding:3rem; border:1px solid var(--border);
+  display:grid; grid-template-columns:auto 1fr; gap:2rem; align-items:start;
+}
+.activitate-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:var(--orange); margin-top:0.4rem; flex-shrink:0;
+}
+.activitate-item h3 {
+  font-family:var(--serif); font-size:1.3rem; font-weight:300;
+  color:var(--title); margin-bottom:0.75rem;
+}
+.activitate-item p { font-size:0.82rem; line-height:1.85; color:var(--body); font-weight:300; }
+
+/* ─────────────────────────────────────────
+   4 — TARIFE  (yellow)
+───────────────────────────────────────── */
+#tarife .sec-hero { background:var(--cream); }
+#tarife .accent-bar { background:var(--yellow); }
+#tarife .section-eyebrow { color:#9a7a00; }
+
+.tarife-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+  margin-bottom:4rem;
+}
+.tarif-card {
+  border:1px solid var(--border); padding:3.5rem 3rem;
+  position:relative; background:var(--cream);
+}
+.tarif-card.featured {
+  background:var(--yellow); border-color:var(--yellow);
+}
+.tarif-badge {
+  position:absolute; top:2rem; right:2rem;
+  font-size:0.58rem; letter-spacing:0.25em; text-transform:uppercase;
+  font-weight:600; color:var(--title);
+  background:white; padding:0.3rem 0.75rem;
+}
+.tarif-name {
+  font-family:var(--serif); font-size:1.5rem; font-weight:300;
+  color:var(--title); margin-bottom:0.5rem;
+}
+.tarif-duration {
+  font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--body); font-weight:500; margin-bottom:2rem;
+}
+.tarif-price {
+  font-family:var(--serif); font-size:3.5rem; font-weight:300;
+  color:var(--title); line-height:1; margin-bottom:0.4rem;
+}
+.tarif-currency {
+  font-size:0.75rem; letter-spacing:0.15em; color:var(--body);
+  font-weight:400; margin-bottom:2rem;
+}
+.tarif-includes { list-style:none; margin-bottom:2.5rem; }
+.tarif-includes li {
+  font-size:0.82rem; padding:0.55rem 0;
+  border-bottom:1px solid var(--border);
+  display:flex; gap:0.75rem; color:var(--body); font-weight:300;
+}
+.tarif-includes li::before { content:'✓'; color:var(--title); font-weight:500; flex-shrink:0; }
+
+.tarife-note {
+  padding:3rem; border:1px solid var(--border);
+  background:var(--cream);
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
+}
+.tarife-note h3 {
+  font-family:var(--serif); font-size:1.5rem; font-weight:300;
+  color:var(--title); margin-bottom:1rem;
+}
+.tarife-note p { font-size:0.85rem; line-height:1.9; color:var(--body); font-weight:300; }
+
+/* ─────────────────────────────────────────
+   5 — PROGRAMEAZĂ & CONTACT  (sage)
+───────────────────────────────────────── */
+#programeaza .sec-hero { background:var(--cream); }
+#programeaza .accent-bar { background:var(--sage); }
+#programeaza .section-eyebrow { color:#5a6840; }
+
+.contact-split {
+  display:grid; grid-template-columns:1fr 1fr; gap:2px;
+}
+.contact-form-side {
+  padding:4rem; border:1px solid var(--border); background:var(--cream);
+}
+.contact-info-side {
+  padding:4rem; background:var(--sage);
+}
+.contact-info-side h3 {
+  font-family:var(--serif); font-size:1.8rem; font-weight:300;
+  color:var(--title); margin-bottom:2rem;
+}
+.contact-detail {
+  margin-bottom:2rem;
+}
+.contact-detail-label {
+  font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--title); font-weight:600; margin-bottom:0.4rem;
+}
+.contact-detail-value {
+  font-size:0.9rem; color:var(--title); font-weight:300;
+}
+
+/* form */
+.form-group { margin-bottom:1.5rem; }
+.form-label {
+  display:block; font-size:0.6rem; letter-spacing:0.25em;
+  text-transform:uppercase; font-weight:600; color:var(--body);
+  margin-bottom:0.5rem;
+}
+.form-input, .form-select, .form-textarea {
+  width:100%; padding:0.85rem 1rem;
+  border:1px solid var(--border); background:white;
+  font-family:var(--sans); font-size:0.85rem; font-weight:300;
+  color:var(--title); outline:none;
+  transition:border-color 0.25s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color:var(--sage);
+}
+.form-textarea { height:110px; resize:none; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+
+/* calendar mini */
+.cal-wrap { margin-bottom:1.5rem; }
+.cal-title-row {
+  font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+  font-weight:600; color:var(--body); margin-bottom:0.75rem;
+}
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+.cal-hd {
+  font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--body); font-weight:500; text-align:center; padding:0.25rem 0;
+}
+.cal-d {
+  aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+  font-size:0.72rem; cursor:pointer; border:1px solid transparent;
+  transition:all 0.18s; font-weight:300; color:var(--title);
+}
+.cal-d:hover { border-color:var(--sage); }
+.cal-d.sel { background:var(--sage); color:white; }
+.cal-d.off { color:rgba(77,77,77,0.25); pointer-events:none; }
+
+.time-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; margin-bottom:1.5rem; }
+.time-btn {
+  padding:0.55rem; text-align:center; border:1px solid var(--border);
+  font-size:0.72rem; cursor:pointer; background:white; font-family:var(--sans);
+  transition:all 0.18s; font-weight:300;
+}
+.time-btn:hover { border-color:var(--sage); }
+.time-btn.sel { background:var(--sage); color:white; border-color:var(--sage); }
+.time-btn.taken { opacity:0.3; pointer-events:none; text-decoration:line-through; }
+
+/* ─────────────────────────────────────────
+   6 — BENEFICII  (light green)
+───────────────────────────────────────── */
+#beneficii .sec-hero { background:var(--cream); }
+#beneficii .accent-bar { background:var(--green); }
+#beneficii .section-eyebrow { color:#5a7040; }
+
+.beneficii-intro {
+  display:grid; grid-template-columns:1fr 1fr; gap:6rem;
+  margin-bottom:5rem; align-items:center;
+}
+.beneficii-intro p {
+  font-size:0.9rem; line-height:2; color:var(--body); font-weight:300;
+  margin-bottom:1.25rem;
+}
+.beneficii-intro-visual {
+  background:var(--green); aspect-ratio:1;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-size:5rem; font-weight:300;
+  color:rgba(45,45,45,0.2); font-style:italic;
+}
+
+.beneficii-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+  margin-bottom:5rem;
+}
+.beneficiu-card {
+  padding:3rem 2.5rem; border:1px solid var(--border); background:var(--cream);
+}
+.beneficiu-cat {
+  font-size:0.58rem; letter-spacing:0.35em; text-transform:uppercase;
+  font-weight:600; margin-bottom:1.25rem;
+}
+.beneficiu-card:nth-child(1) .beneficiu-cat { color:#5a6840; }
+.beneficiu-card:nth-child(2) .beneficiu-cat { color:var(--orange); }
+.beneficiu-card:nth-child(3) .beneficiu-cat { color:var(--purple); }
+.beneficiu-card h3 {
+  font-family:var(--serif); font-size:1.35rem; font-weight:300;
+  color:var(--title); margin-bottom:1rem;
+}
+.beneficiu-list { list-style:none; }
+.beneficiu-list li {
+  font-size:0.82rem; padding:0.6rem 0;
+  border-bottom:1px solid var(--border);
+  color:var(--body); font-weight:300;
+  display:flex; gap:0.75rem;
+}
+.beneficiu-list li::before { content:'○'; font-size:0.5rem; flex-shrink:0; margin-top:0.35rem; }
+.beneficiu-card:nth-child(1) .beneficiu-list li::before { color:#5a6840; }
+.beneficiu-card:nth-child(2) .beneficiu-list li::before { color:var(--orange); }
+.beneficiu-card:nth-child(3) .beneficiu-list li::before { color:var(--purple); }
+
+.testimoniale-row {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+}
+.testimonial-card {
+  padding:3rem 2.5rem; background:var(--green);
+  border:1px solid rgba(45,45,45,0.06);
+}
+.testimonial-card p {
+  font-family:var(--serif); font-size:1.05rem; font-style:italic;
+  font-weight:300; color:var(--title); line-height:1.65; margin-bottom:1.75rem;
+}
+.testimonial-card cite {
+  font-style:normal; font-size:0.62rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--body); font-weight:500;
+}
+
+/* ─────────────────────────────────────────
+   7 — FAQ  (charcoal / neutral)
+───────────────────────────────────────── */
+#faq .sec-hero { background:var(--cream); }
+#faq .accent-bar { background:var(--charcoal); }
+#faq .section-eyebrow { color:var(--charcoal); }
+
+.faq-layout {
+  display:grid; grid-template-columns:1fr 1.6fr; gap:6rem; align-items:start;
+}
+.faq-sidebar h3 {
+  font-family:var(--serif); font-size:1.6rem; font-weight:300;
+  color:var(--title); margin-bottom:1.25rem;
+}
+.faq-sidebar p { font-size:0.85rem; line-height:1.9; color:var(--body); font-weight:300; margin-bottom:1.5rem; }
+
+.faq-list {}
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-q {
+  width:100%; background:none; border:none; cursor:pointer;
+  padding:1.5rem 0; display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--serif); font-size:1.1rem; font-weight:300;
+  color:var(--title); text-align:left; font-family:var(--serif);
+}
+.faq-q-icon {
+  width:28px; height:28px; border:1px solid var(--border);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:0.9rem; color:var(--body); flex-shrink:0; transition:all 0.25s;
+  font-family:var(--sans);
+}
+.faq-q.open .faq-q-icon {
+  background:var(--charcoal); color:white; border-color:var(--charcoal);
+  transform:rotate(45deg);
+}
+.faq-a {
+  font-size:0.85rem; line-height:1.9; color:var(--body);
+  font-weight:300; padding-bottom:1.5rem; display:none;
+  max-width:90%;
+}
+.faq-a.open { display:block; }
+
+/* ─────────────────────────────────────────
+   FOOTER (shared)
+───────────────────────────────────────── */
+.site-footer {
+  background:var(--title); color:rgba(255,255,255,0.45);
+  padding:3rem 5rem;
+  display:flex; justify-content:space-between; align-items:center;
+  border-top:1px solid rgba(255,255,255,0.07);
+  font-size:0.65rem; letter-spacing:0.1em;
+}
+.footer-logo {
+  font-family:var(--serif); font-size:1.2rem;
+  color:white; font-weight:300;
+}
+.footer-links { display:flex; gap:2rem; }
+.footer-links a {
+  color:rgba(255,255,255,0.45); text-decoration:none;
+  transition:color 0.2s; font-size:0.65rem;
+}
+.footer-links a:hover { color:white; }
+
+/* ─── CANVA DESIGN PATTERN ADDITIONS ─── */
+
+/* Hero: two-column split same as Canva card layout */
+.sec-hero {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  min-height: 60vh;
+}
+.sec-hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5rem 4rem;
+  border-right: 1px solid var(--border);
+}
+.sec-hero-visual {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Accent bottom band (replicated from every Canva card) */
+.canva-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+.canva-band img { height: 28px; width: auto; }
+.canva-band-tag {
+  font-size: 0.56rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Sub-hero accent strip */
+.sub-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+}
+.sub-band-label {
+  font-size: 0.56rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Large faded letter bg (Canva decorative element) */
+.hero-bg-letter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: clamp(8rem, 18vw, 18rem);
+  font-weight: 300;
+  font-style: italic;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Card number — large Bodoni faded */
+.bodoni-num {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1;
+  opacity: 0.12;
+  color: var(--title);
+  margin-bottom: 0.75rem;
+}
+
+/* Left-border line card (Canva vertical separator) */
+.lc {
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  background: var(--white);
+  border-left-width: 3px;
+}
+
+/* Dot list */
+.dl { list-style: none; }
+.dl li {
+  font-size: 0.85rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  color: var(--body);
+  font-weight: 300;
+}
+.dl li::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+  background: currentColor;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width:900px) {
+  nav { padding:1rem 1.5rem; }
+  .home-hero { grid-template-columns:1fr; }
+  .home-hero-right { display:none; }
+  .home-hero-left { padding:5rem 1.5rem 3rem; }
+  .home-pages-grid { grid-template-columns:repeat(2,1fr); padding:3rem 1.5rem; }
+  .home-strip { flex-direction:column; }
+  .strip-item { border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .home-intro { grid-template-columns:1fr; gap:2rem; padding:3rem 1.5rem; }
+  .home-cta { padding:4rem 1.5rem; }
+  .sec-hero { padding:6rem 1.5rem 3rem; }
+  .sec-body { padding:3rem 1.5rem; }
+  .despre-grid, .misiunea-grid, .misiunea-values,
+  .servicii-grid, .tarife-grid, .contact-split,
+  .beneficii-intro, .beneficii-grid, .testimoniale-row,
+  .faq-layout, .activitati-row, .tarife-note {
+    grid-template-columns:1fr; gap:1px;
+  }
+  hr.thin { margin:0 1.5rem; }
+  .site-footer { flex-direction:column; gap:1rem; padding:2rem 1.5rem; text-align:center; }
+}
+/* Ensure sec-body content is always above blobs */
+.sec-body > *:not([style*="position:absolute"]) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ══ CATALOG SERVICII ══ */
+.svc-catalog { margin-bottom:4rem; }
+
+.svc-block { margin-bottom:3.5rem; }
+.svc-block-alt {
+  background:rgba(183,193,132,0.09);
+  border:1px solid var(--border);
+  padding:2.5rem 2.5rem 3rem;
+  margin-left:-2.5rem; margin-right:-2.5rem;
+}
+.svc-head {
+  display:flex; align-items:baseline; gap:1rem;
+  flex-wrap:wrap; margin-bottom:0.75rem;
+}
+.svc-head-title {
+  font-family:var(--serif); font-size:clamp(1.9rem,3.4vw,2.8rem);
+  font-weight:300; line-height:1.05; color:var(--title);
+}
+.svc-head-title em { font-style:italic; }
+.svc-head-badge {
+  font-size:0.54rem; letter-spacing:0.28em; text-transform:uppercase;
+  font-weight:600; color:#5a6840;
+  border:1px solid #b7c184; border-radius:100px;
+  padding:0.35rem 0.85rem; white-space:nowrap;
+}
+.svc-lead {
+  font-size:0.85rem; line-height:1.9; color:var(--body);
+  font-weight:300; max-width:620px; margin-bottom:2rem;
+}
+.svc-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+  gap:2px; background:var(--border); border:1px solid var(--border);
+}
+.svc-card {
+  background:var(--cream); padding:2.5rem 2rem;
+  display:flex; flex-direction:column;
+}
+.svc-card.is-free { background:#f2f6e9; }
+.svc-tag {
+  font-size:0.54rem; letter-spacing:0.34em; text-transform:uppercase;
+  font-weight:600; color:#5a6840; display:block; margin-bottom:1rem;
+}
+.svc-name {
+  font-family:var(--serif); font-size:1.5rem; font-weight:300;
+  color:var(--title); line-height:1.15; margin-bottom:0.5rem;
+}
+.svc-meta {
+  font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--body); font-weight:500; margin-bottom:1.5rem;
+}
+.svc-price {
+  font-family:var(--serif); font-size:2rem; font-weight:300;
+  color:var(--title); line-height:1; margin-bottom:1.25rem;
+}
+.svc-price small {
+  display:block; font-family:var(--sans); font-size:0.6rem;
+  letter-spacing:0.1em; color:var(--body); font-weight:400;
+  margin-top:0.45rem; line-height:1.5;
+}
+.svc-notes { list-style:none; margin:0 0 1.75rem; flex:1; }
+.svc-notes li {
+  font-size:0.78rem; line-height:1.75; color:var(--body); font-weight:300;
+  padding:0.5rem 0; border-top:1px solid var(--border);
+}
+.svc-notes li strong { font-weight:600; color:var(--title); }
+.svc-actions { display:flex; flex-direction:column; gap:0.5rem; }
+.svc-pick {
+  appearance:none; cursor:pointer; width:100%;
+  font-family:var(--sans); font-size:0.6rem; letter-spacing:0.2em;
+  text-transform:uppercase; font-weight:600;
+  padding:0.8rem 1rem; border:1px solid var(--title);
+  background:var(--title); color:#fff; transition:opacity .2s, background .2s;
+}
+.svc-pick:hover { opacity:0.75; }
+.svc-pick.alt { background:transparent; color:var(--title); }
+.svc-pick.alt:hover { background:var(--title); color:#fff; opacity:1; }
+
+/* selected service echo in the form */
+.sel-svc {
+  border:1px solid #b7c184; background:rgba(183,193,132,0.12);
+  padding:1.1rem 1.25rem; margin-bottom:1.5rem;
+  display:flex; justify-content:space-between; align-items:center; gap:1rem;
+}
+.sel-svc-name { font-size:0.82rem; font-weight:500; color:var(--title); }
+.sel-svc-meta {
+  font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--body); font-weight:500; margin-top:0.2rem;
+}
+.sel-svc-price {
+  font-family:var(--serif); font-size:1.3rem; font-weight:300;
+  color:var(--title); white-space:nowrap;
+}
+.sel-svc.empty { border-color:var(--border); background:transparent; }
+.sel-svc.empty .sel-svc-name { color:var(--body); font-weight:300; }
+
+@media (max-width:900px) {
+  .svc-grid { grid-template-columns:1fr; }
+  .svc-block-alt { margin-left:0; margin-right:0; padding:1.5rem 1.25rem 2rem; }
+}
+
+
+/* ── nav: current-page CTA ── */
+.nav-cta.is-current { opacity:0.5; cursor:default; pointer-events:none; }
+
+/* ── mobile nav toggle ── */
+.nav-toggle {
+  display:none; flex-direction:column; justify-content:center; gap:5px;
+  width:42px; height:42px; padding:0 9px; margin-left:auto; margin-right:0.75rem;
+  background:none; border:none; cursor:pointer;
+}
+.nav-toggle span {
+  display:block; height:1.5px; width:100%; background:var(--title);
+  transition:transform .28s ease, opacity .2s ease;
+}
+.nav-toggle.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity:0; }
+.nav-toggle.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+@media (max-width:900px) {
+  .nav-toggle { display:flex; }
+  #site-nav { flex-wrap:wrap; }
+  .nav-links {
+    display:flex; flex-direction:column; gap:0;
+    flex-basis:100%; order:3;
+    max-height:0; overflow:hidden;
+    transition:max-height .32s ease, opacity .25s ease, margin .32s ease;
+    opacity:0; margin-top:0;
+    border-top:1px solid transparent;
+  }
+  .nav-links.open {
+    max-height:70vh; opacity:1;
+    margin-top:1rem; border-top-color:var(--border);
+    overflow-y:auto;
+  }
+  .nav-links li { width:100%; }
+  .nav-links a {
+    display:block; padding:0.95rem 0.25rem;
+    border-bottom:1px solid var(--border);
+    font-size:0.66rem; letter-spacing:0.22em;
+  }
+  .nav-links li:last-child a { border-bottom:none; }
+  .nav-cta { padding:0.6rem 1.1rem; font-size:0.58rem; }
+  .nav-logo img { height:34px; }
+}
+
+</style>
+<style>
+/* override for standalone */
+.page { display: block !important; }
+</style>
+</head>
+<body>
+
+<nav id="site-nav">
+  <a href="breathhouse-v4.html" class="nav-logo">
+    <img src="https://media.canva.com/v2/document-image/hash:209870851/height:447/id:DAHNNY8rHkk/type:B/width:447?brand=BAE59Ouri_M&csig=AAAAAAAAAAAAAAAAAAAAANvaxuxp5IqcqavoEjSYGpibqTAAQrItjci3iU7DiUM8&disableexport=T&exp=1785595744&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F8rHkk%2FDAHNNY8rHkk%2F12%2Fthumbnail%2F0012.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260731%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260731T182435Z%26X-Amz-Expires%3D73469%26X-Amz-Signature%3D2f0dcdc68d5af75cb38420e0815f3b61392ef10dd047387379c170983cc1ba1d%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSat%252C%252001%2520Aug%25202026%252014%253A49%253A04%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAMNK42Rx-IdFxGZbifvuOhhPILA2-8gChpyJRK-QRBgd&page=15&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=20" alt="Loredana Crișan" style="height:44px;width:auto;display:block;">
+    <small>Breath & Sound Healing</small>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="breathhouse-v4.html#despre-mine">Despre mine</a></li>
+    <li><a href="breathhouse-v4.html#misiunea">Misiune</a></li>
+    <li><a href="breathhouse-v4.html#servicii">Servicii</a></li>
+    <li><a href="breathhouse-v4.html#tarife">Tarife</a></li>
+    <li><a href="breathhouse-v4.html#beneficii">Beneficii</a></li>
+    <li><a href="breathhouse-v4.html#faq">FAQ</a></li>
+  </ul>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Meniu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  <a href="programeaza.html" class="nav-cta is-current" aria-current="page">Programează-te</a>
+</nav>
+
+<div class="pt-nav">
+
+  <section style="position:relative;background:var(--cream);min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:3px solid #c8d898;">
+    <div style="position:absolute;top:-30px;right:-40px;width:55%;height:110%;pointer-events:none;z-index:1;">
+  <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+    <defs>
+      <radialGradient id="h1pg" cx="65%" cy="25%" r="55%">
+        <stop offset="0%" stop-color="#c8d898" stop-opacity="1"/><stop offset="100%" stop-color="#c8d898" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="h2pg" cx="88%" cy="10%" r="42%">
+        <stop offset="0%" stop-color="#edf3d8" stop-opacity="0.9"/><stop offset="100%" stop-color="#edf3d8" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="h3pg" cx="45%" cy="65%" r="48%">
+        <stop offset="0%" stop-color="#d8e5b0" stop-opacity="0.7"/><stop offset="100%" stop-color="#d8e5b0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="280" cy="120" rx="220" ry="185" fill="url(#h1pg)"/>
+    <ellipse cx="420" cy="60"  rx="165" ry="135" fill="url(#h2pg)"/>
+    <ellipse cx="360" cy="255" rx="155" ry="140" fill="url(#h3pg)"/>
+    <path d="M 390 8   C 355 62, 300 50, 272 105 C 252 148, 278 178, 252 222 C 228 264, 188 252, 168 295" stroke="#5a6840" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.75"/>
+    <path d="M 430 25  C 392 80, 340 68, 314 123 C 295 166, 318 196, 294 240 C 270 284, 232 272, 212 315" stroke="#5a6840" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.50"/>
+    <path d="M 468 6   C 428 64, 378 50, 354 108 C 336 152, 356 180, 334 222" stroke="#5a6840" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.33"/>
+  </svg>
+</div>
+    <div style="position:relative;z-index:2;padding:5rem 4rem 4rem;max-width:640px;">
+      <div style="width:44px;height:2px;background:#4a5a30;margin-bottom:1.5rem;opacity:0.8;"></div>
+      <span style="font-size:0.56rem;letter-spacing:0.46em;text-transform:uppercase;font-weight:600;color:#4a5a30;display:block;margin-bottom:1.25rem;">Programează &amp; Contact</span>
+      <h1 style="font-family:var(--serif);font-size:clamp(3.4rem,6.7vw,7.3rem);font-weight:300;line-height:0.92;color:var(--title);margin-bottom:2rem;">Rezervă<br><em>spațiul tău</em></h1>
+      <p style="font-size:0.88rem;line-height:2;color:var(--body);max-width:460px;font-weight:300;">Completează formularul și te contactez în maxim 2 ore pentru confirmare.</p>
+    </div>
+  </section>
+
+  <div class="sec-body" style="position:relative;">
+    <!-- ══ CATALOG SERVICII ══ -->
+    <div class="svc-catalog">
+
+      <section class="svc-block" id="cat-ind">
+        <div class="svc-head">
+          <h2 class="svc-head-title">Sesiuni <em>individuale</em></h2>
+          <span class="svc-head-badge">1 la 1</span>
+        </div>
+        <p class="svc-lead">Toate sesiunile individuale încep cu o evaluare gratuită de 20 de minute, în care stabilim împreună ce ți se potrivește.</p>
+        <div class="svc-grid">
+      <article class="svc-card is-free">
+        <span class="svc-tag">Primul pas</span>
+        <h3 class="svc-name">Sesiune de evaluare</h3>
+        <p class="svc-meta">20 minute · Fizic sau online</p>
+        <p class="svc-price">Gratuit<small></small></p>
+        <ul class="svc-notes"><li>Stabilim împreună ce tip de sesiune ți se potrivește și care e ritmul potrivit pentru tine.</li><li>Tot aici discutăm pachetele și durata sesiunilor tale.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Sesiune de evaluare" data-price="Gratuit" data-dur="20 min" data-loc="both">Alege</button></div>
+      </article>
+      <article class="svc-card">
+        <span class="svc-tag">Breathwork</span>
+        <h3 class="svc-name">Buteyko</h3>
+        <p class="svc-meta">50–90 minute · Fizic sau online 1:1</p>
+        <p class="svc-price">300–400 lei<small>/ sesiune · tarif stabilit la evaluare</small></p>
+        <ul class="svc-notes"><li><strong>Pachet 5 sesiuni — 1200 lei</strong>, plată anticipată. Include sesiunea de evaluare finală, gratuit.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Buteyko — o sesiune" data-price="300–400 lei" data-dur="50–90 min" data-loc="both">Alege o sesiune</button><button type="button" class="svc-pick alt" data-name="Buteyko — pachet 5 sesiuni" data-price="1200 lei" data-dur="5 × 50–90 min" data-loc="both">Alege pachetul</button></div>
+      </article>
+      <article class="svc-card">
+        <span class="svc-tag">Breathwork</span>
+        <h3 class="svc-name">Respirație circulară</h3>
+        <p class="svc-meta">90 minute · Fizic</p>
+        <p class="svc-price">400 lei<small>/ sesiune</small></p>
+        <ul class="svc-notes"><li><strong>Pachet lunar — 1000 lei</strong>, 3 sesiuni pe lună.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Respirație circulară — o sesiune" data-price="400 lei" data-dur="90 min" data-loc="fizic">Alege o sesiune</button><button type="button" class="svc-pick alt" data-name="Respirație circulară — pachet 3 sesiuni/lună" data-price="1000 lei" data-dur="3 × 90 min" data-loc="fizic">Alege pachetul</button></div>
+      </article>
+      <article class="svc-card">
+        <span class="svc-tag">Resumi</span>
+        <h3 class="svc-name">Resumi</h3>
+        <p class="svc-meta">60 minute · Fizic</p>
+        <p class="svc-price">400 lei<small>/ sesiune</small></p>
+        <ul class="svc-notes"><li><strong>Pachet 4 sesiuni — 1200 lei</strong>, o sesiune pe săptămână. Plătești 3, a patra e din partea casei.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Resumi — o sesiune" data-price="400 lei" data-dur="60 min" data-loc="fizic">Alege o sesiune</button><button type="button" class="svc-pick alt" data-name="Resumi — pachet 4 sesiuni" data-price="1200 lei" data-dur="4 × 60 min" data-loc="fizic">Alege pachetul</button></div>
+      </article>
+      <article class="svc-card">
+        <span class="svc-tag">Sound healing</span>
+        <h3 class="svc-name">Terapie prin sunet</h3>
+        <p class="svc-meta">60 minute · Fizic</p>
+        <p class="svc-price">350 lei<small>/ sesiune</small></p>
+        <ul class="svc-notes"><li><strong>Pachet 4 sesiuni — 1100 lei</strong>, o sesiune pe săptămână. Plată anticipată.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Terapie prin sunet — o sesiune" data-price="350 lei" data-dur="60 min" data-loc="fizic">Alege o sesiune</button><button type="button" class="svc-pick alt" data-name="Terapie prin sunet — pachet 4 sesiuni" data-price="1100 lei" data-dur="4 × 60 min" data-loc="fizic">Alege pachetul</button></div>
+      </article>
+        </div>
+      </section>
+
+      <section class="svc-block svc-block-alt" id="cat-grp">
+        <div class="svc-head">
+          <h2 class="svc-head-title">Sesiuni <em>în grup</em></h2>
+          <span class="svc-head-badge">max 5 persoane</span>
+        </div>
+        <p class="svc-lead">Grupuri de maximum 5 persoane, exclusiv fizic, la BreathHouse. Tarifele sunt de persoană.</p>
+        <div class="svc-grid">
+      <article class="svc-card">
+        <span class="svc-tag">Breathwork</span>
+        <h3 class="svc-name">Buteyko</h3>
+        <p class="svc-meta">50–90 minute · Fizic</p>
+        <p class="svc-price">200–300 lei<small>/ persoană / sesiune · tarif stabilit la evaluare</small></p>
+        <ul class="svc-notes"><li><strong>Pachet 5 sesiuni — 1000 lei</strong> de persoană.</li><li>Evaluarea se face individual, înainte de a intra în grup.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Grup · Buteyko — o sesiune" data-price="200–300 lei" data-dur="50–90 min" data-loc="fizic">Alege o sesiune</button><button type="button" class="svc-pick alt" data-name="Grup · Buteyko — pachet 5 sesiuni" data-price="1000 lei" data-dur="5 × 50–90 min" data-loc="fizic">Alege pachetul</button></div>
+      </article>
+      <article class="svc-card">
+        <span class="svc-tag">Breathwork</span>
+        <h3 class="svc-name">Respirație circulară</h3>
+        <p class="svc-meta">50–90 minute · Fizic</p>
+        <p class="svc-price">300 lei<small>/ persoană / sesiune</small></p>
+        <ul class="svc-notes"><li><strong>Pachet lunar — 750 lei</strong> de persoană, 3 sesiuni pe lună.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Grup · Respirație circulară — o sesiune" data-price="300 lei" data-dur="50–90 min" data-loc="fizic">Alege o sesiune</button><button type="button" class="svc-pick alt" data-name="Grup · Respirație circulară — pachet 3 sesiuni/lună" data-price="750 lei" data-dur="3 × 50–90 min" data-loc="fizic">Alege pachetul</button></div>
+      </article>
+      <article class="svc-card">
+        <span class="svc-tag">Resumi</span>
+        <h3 class="svc-name">Resumi</h3>
+        <p class="svc-meta">Fizic</p>
+        <p class="svc-price">300 lei<small>/ persoană / sesiune</small></p>
+        <ul class="svc-notes"><li><strong>Pachet 4 sesiuni — 1000 lei</strong> de persoană, o sesiune pe săptămână. Plată anticipată.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Grup · Resumi — o sesiune" data-price="300 lei" data-dur="—" data-loc="fizic">Alege o sesiune</button><button type="button" class="svc-pick alt" data-name="Grup · Resumi — pachet 4 sesiuni" data-price="1000 lei" data-dur="4 sesiuni" data-loc="fizic">Alege pachetul</button></div>
+      </article>
+      <article class="svc-card">
+        <span class="svc-tag">Sound healing</span>
+        <h3 class="svc-name">Terapie prin sunet</h3>
+        <p class="svc-meta">60 minute · Fizic</p>
+        <p class="svc-price">200 lei<small>/ persoană / sesiune</small></p>
+        <ul class="svc-notes"><li><strong>Pachet 4 sesiuni — 700 lei</strong> de persoană, o sesiune pe săptămână.</li></ul>
+        <div class="svc-actions"><button type="button" class="svc-pick" data-name="Grup · Terapie prin sunet — o sesiune" data-price="200 lei" data-dur="60 min" data-loc="fizic">Alege o sesiune</button><button type="button" class="svc-pick alt" data-name="Grup · Terapie prin sunet — pachet 4 sesiuni" data-price="700 lei" data-dur="4 × 60 min" data-loc="fizic">Alege pachetul</button></div>
+      </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="contact-split">
+      <!-- FORM -->
+      <div class="contact-form-side">
+        <span class="section-eyebrow" style="color:#4a5a30; margin-bottom:2rem; display:block;">Formular de programare</span>
+
+        <div class="sel-svc empty" id="sel-svc">
+          <div>
+            <div class="sel-svc-name" id="sel-svc-name">Nicio sesiune selectată</div>
+            <div class="sel-svc-meta" id="sel-svc-meta">Alege una din lista de mai sus</div>
+          </div>
+          <div class="sel-svc-price" id="sel-svc-price">—</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Prenume</label>
+            <input class="form-input" type="text" placeholder="Ana">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nume</label>
+            <input class="form-input" type="text" placeholder="Ionescu">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="ana@email.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Telefon</label>
+          <input class="form-input" type="tel" placeholder="+40 700 000 000">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Locație</label>
+          <select class="form-select" id="loc-select">
+            <option>Cluj-Napoca (fizic)</option>
+            <option>Online (Zoom)</option>
+          </select>
+        </div>
+
+        <!-- calendar -->
+        <div class="cal-wrap">
+          <p class="cal-title-row">Alege o dată — August 2026</p>
+          <div class="cal-grid" id="cal">
+            <div class="cal-hd">Lu</div><div class="cal-hd">Ma</div><div class="cal-hd">Mi</div>
+            <div class="cal-hd">Jo</div><div class="cal-hd">Vi</div><div class="cal-hd">Sâ</div><div class="cal-hd">Du</div>
+          </div>
+        </div>
+
+        <!-- time -->
+        <p class="form-label" style="margin-bottom:0.5rem;">Interval orar preferat</p>
+        <div class="time-grid">
+          <div class="time-btn" onclick="selTime(this)">09:00</div>
+          <div class="time-btn" onclick="selTime(this)">10:30</div>
+          <div class="time-btn taken">12:00</div>
+          <div class="time-btn" onclick="selTime(this)">14:00</div>
+          <div class="time-btn" onclick="selTime(this)">15:30</div>
+          <div class="time-btn taken">17:00</div>
+          <div class="time-btn" onclick="selTime(this)">18:30</div>
+          <div class="time-btn" onclick="selTime(this)">10:00</div>
+          <div class="time-btn" onclick="selTime(this)">11:30</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mesaj (opțional)</label>
+          <textarea class="form-textarea" placeholder="Spune-mi pe scurt cu ce ai vrea să lucrăm..."></textarea>
+        </div>
+
+        <button class="btn-dark" style="width:100%;text-align:center;" onclick="document.getElementById('prog-success').style.display='block';this.style.display='none'">
+          Trimite cererea de programare →
+        </button>
+        <div id="prog-success" style="display:none;margin-top:1.5rem;background:rgba(183,193,132,0.15);border:1px solid var(--sage);padding:2rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">✓</div>
+          <p style="font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--title);margin-bottom:0.5rem;">Cerere trimisă!</p>
+          <p style="font-size:0.82rem;font-weight:300;color:var(--body);">Te contactez în maxim 2 ore pentru confirmare. 🌿</p>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="contact-info-side">
+        <h3>Informații de contact</h3>
+
+        <div class="contact-detail">
+          <p class="contact-detail-label">Locație</p>
+          <p class="contact-detail-value">Cluj-Napoca, România<br>(adresa exactă la confirmare)</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-detail-label">Email</p>
+          <p class="contact-detail-value">loredana@breathsound.ro</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-detail-label">WhatsApp</p>
+          <p class="contact-detail-value">+40 700 000 000</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-detail-label">Program</p>
+          <p class="contact-detail-value">Luni–Vineri: 09:00–20:00<br>Sâmbătă: 10:00–16:00</p>
+        </div>
+        <div class="contact-detail">
+          <p class="contact-detail-label">Instagram</p>
+          <p class="contact-detail-value">@loredana.breathsound</p>
+        </div>
+
+        <div style="margin-top:3rem; padding:2rem; border:1px solid rgba(45,45,45,0.15); background:rgba(255,255,255,0.4);">
+          <p style="font-size:0.82rem;line-height:1.9;color:var(--title);font-weight:300;">
+            <strong style="font-weight:600;">Ce se întâmplă după trimitere?</strong><br>
+            Vei primi un răspuns în maxim 2 ore în care confirmăm data, ora și locația (sau linkul Zoom). Nu se percepe niciun cost la rezervare.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+<script>
+function selTime(el) {
+  document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+(function() {
+  const cal = document.getElementById('cal');
+  if (!cal) return;
+  ['Lu','Ma','Mi','Jo','Vi','Sâ','Du'].forEach(d => {
+    const h = document.createElement('div');
+    h.className = 'cal-hd'; h.textContent = d; cal.appendChild(h);
+  });
+  for (let i = 0; i < 5; i++) { const e = document.createElement('div'); cal.appendChild(e); }
+  for (let d = 1; d <= 31; d++) {
+    const dow = (5 + d - 1) % 7;
+    const el = document.createElement('div');
+    el.className = 'cal-d'; el.textContent = d;
+    if ([1,2].includes(d) || dow === 5 || dow === 6) {
+      el.classList.add('off');
+    } else {
+      el.onclick = () => {
+        document.querySelectorAll('.cal-d').forEach(c => c.classList.remove('sel'));
+        el.classList.add('sel');
+      };
+    }
+    cal.appendChild(el);
+  }
+})();
+</script>
+
+<script>
+/* ══ Catalog: tabs + service selection ══ */
+(function () {
+  var box   = document.getElementById('sel-svc');
+  var nameEl= document.getElementById('sel-svc-name');
+  var metaEl= document.getElementById('sel-svc-meta');
+  var priceEl=document.getElementById('sel-svc-price');
+  var locSel = document.getElementById('loc-select');
+
+  function setLocation(loc) {
+    if (!locSel) return;
+    var fizic  = 'Cluj-Napoca (fizic)';
+    var online = 'Online (Zoom)';
+    locSel.innerHTML = '';
+    var opts = loc === 'fizic'  ? [fizic]
+             : loc === 'online' ? [online]
+             : [fizic, online];
+    opts.forEach(function (o) {
+      var op = document.createElement('option');
+      op.textContent = o;
+      locSel.appendChild(op);
+    });
+    locSel.disabled = opts.length === 1;
+    locSel.style.opacity = opts.length === 1 ? '0.65' : '';
+  }
+
+  document.querySelectorAll('.svc-pick').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var d = btn.dataset;
+      box.classList.remove('empty');
+      nameEl.textContent  = d.name;
+      metaEl.textContent  = d.dur + (d.loc === 'fizic' ? ' · Fizic'
+                                   : d.loc === 'online' ? ' · Online'
+                                   : ' · Fizic sau online');
+      priceEl.textContent = d.price;
+      setLocation(d.loc);
+
+      document.querySelectorAll('.svc-card').forEach(function (c) {
+        c.style.outline = '';
+      });
+      var card = btn.closest('.svc-card');
+      if (card) card.style.outline = '2px solid #b7c184';
+
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+})();
+</script>
+
+<script>
+/* ── Mobile nav toggle ── */
+(function () {
+  var btn  = document.getElementById('nav-toggle');
+  var list = document.getElementById('nav-links');
+  if (!btn || !list) return;
+  function close() {
+    list.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', function () {
+    var open = list.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  list.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') close();
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+</body>
+</html>
