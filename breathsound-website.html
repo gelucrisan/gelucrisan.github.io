@@ -3,517 +3,701 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loredana Crișan — Breath & Sound</title>
+<title>Loredana Crișan — Breath & Sound Healing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Titluri: The Seasons (necesită licență comercială web — Adobe Fonts / MyFonts).
+     Cormorant Garamond este stand-in până la licențiere. Body: Montserrat. -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* ═══════════════════════════════════════════════════════════
+     LOREDANA CRIȘAN — BREATH & SOUND HEALING
+     Design tokens conform Brand Manual (Oaza Advertising, 07.07.2026)
+     ─────────────────────────────────────────────────────────
+     REGULA DE AUR: culorile-secțiune se folosesc EXCLUSIV pentru
+     elemente decorative (nori, unde, simboluri, fundaluri, borduri).
+     Textul rămâne mereu #2D2D2D (titluri) / #4D4D4D (body).
+     ═══════════════════════════════════════════════════════════ */
   :root {
-    --cream: #faf9f6;
-    --sage: #8a9a5b;
-    --earth: #8b6d53;
-    --charcoal: #4d4d4d;
-    --dark: #2a2e1e;
-    --light-sage: #d4dbc0;
-    --light-earth: #e8d9cd;
-    --border: rgba(138,154,91,0.25);
-    --serif: 'Cormorant Garamond', serif;
-    --sans: 'Montserrat', sans-serif;
+    /* Fundal & text — temă light */
+    --bg:            #FFFFFF;
+    --title:         #2D2D2D;
+    --body:          #4D4D4D;
+
+    /* Culori pe secțiuni de conținut — DECORATIV ONLY */
+    --acc-about:     #9f67bc;  /* Despre mine */
+    --acc-mission:   #c3dcf4;  /* Misiune & Viziune */
+    --acc-services:  #fd9d43;  /* Servicii & Activități */
+    --acc-pricing:   #fedd92;  /* Tarife */
+    --acc-benefits:  #dee9b5;  /* Beneficii */
+    --acc-contact:   #b7c184;  /* Programează & Contact */
+    --acc-faq:       #4D4D4D;  /* FAQ — neutru, fără nor */
+
+    /* Accent activ al secțiunii curente (suprascris de .sec--*) */
+    --accent:        var(--acc-contact);
+
+    /* Neutre derivate */
+    --line:          rgba(45,45,45,0.12);
+    --line-strong:   rgba(45,45,45,0.22);
+    --muted:         rgba(77,77,77,0.62);
+    --tint:          color-mix(in srgb, var(--accent) 14%, #FFFFFF);
+    --tint-soft:     color-mix(in srgb, var(--accent) 7%,  #FFFFFF);
+
+    /* Tipografie — The Seasons (titluri) + Montserrat (rest).
+       ATENȚIE LICENȚĂ: The Seasons necesită licență comercială web.
+       Cormorant Garamond este folosit ca stand-in până la achiziție. */
+    --serif:         'Cormorant Garamond', 'The Seasons', serif;
+    --sans:          'Montserrat', sans-serif;
   }
+
+  /* Aliasuri de compatibilitate pentru stilurile inline rămase.
+     Toate sunt remapate pe paleta oficială. */
+  :root {
+    --cream: #FFFFFF;
+    --dark: #2D2D2D;
+    --charcoal: #4D4D4D;
+    --sage: var(--acc-contact);
+    --earth: var(--acc-about);
+    --light-sage: color-mix(in srgb, var(--acc-contact) 16%, #FFFFFF);
+    --light-earth: color-mix(in srgb, var(--acc-about) 10%, #FFFFFF);
+    --border: var(--line);
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: var(--charcoal); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 17px;          /* brand: 16–18px */
+    line-height: 1.65;        /* brand: 1.6–1.7 */
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 
-  /* NAV */
+  /* Secțiuni tematice — setează doar --accent, niciodată culoarea textului */
+  .sec--about    { --accent: var(--acc-about); }
+  .sec--mission  { --accent: var(--acc-mission); }
+  .sec--services { --accent: var(--acc-services); }
+  .sec--pricing  { --accent: var(--acc-pricing); }
+  .sec--benefits { --accent: var(--acc-benefits); }
+  .sec--contact  { --accent: var(--acc-contact); }
+  .sec--faq      { --accent: var(--acc-faq); }
+
+  /* ── TIPOGRAFIE ─────────────────────────────────────────── */
+  /* H1 / display: The Seasons, lowercase */
+  .hero-title, .section-title, .who-heading,
+  .booking-hero h1, .content-hero h1, .cta-section h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    color: var(--title);
+    text-transform: lowercase;
+    letter-spacing: 0.005em;
+  }
+  /* H2 / eyebrow: Montserrat CAPS, letter-spacing mărit */
+  .hero-eyebrow, .who-label, .section-label,
+  .method-origin, .recap-label, .booking-info .label,
+  .payment-summary .label, .stat-label, .testimonial-author,
+  .technique-card .meta, .form-group label, .what-includes h4,
+  .sidebar-box h4, .service-price, .badge, .nav-links a,
+  .nav-cta, .btn-primary, .btn-secondary, .tab-btn,
+  .pay-method, .total-pay, .strip-item span:last-child {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+  }
+
+  /* ── NAV ────────────────────────────────────────────────── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.5rem 4rem;
-    background: rgba(250,249,246,0.92);
+    padding: 1.4rem 4rem;
+    background: rgba(255,255,255,0.94);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
   }
   .nav-logo {
-    font-family: var(--serif); font-size: 1.5rem; font-weight: 400;
-    color: var(--dark); letter-spacing: 0.02em; line-height: 1.1;
-    text-decoration: none;
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
+    color: var(--title); letter-spacing: 0.02em; line-height: 1.1;
+    text-decoration: none; text-transform: lowercase;
   }
-  .nav-logo span { display: block; font-size: 0.7rem; font-family: var(--sans); letter-spacing: 0.3em; text-transform: uppercase; color: var(--sage); font-weight: 500; }
+  .nav-logo span {
+    display: block; font-size: 0.62rem; font-family: var(--sans);
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--body); font-weight: 500;
+  }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; transition: color 0.3s; font-weight: 500; }
-  .nav-links a:hover { color: var(--sage); }
-  .nav-cta {
-    background: var(--sage); color: white; border: none;
-    padding: 0.75rem 2rem; font-family: var(--sans); font-size: 0.7rem;
-    letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;
-    transition: background 0.3s; text-decoration: none; font-weight: 500;
+  .nav-links a {
+    font-size: 0.68rem; color: var(--body); text-decoration: none;
+    padding-bottom: 3px; border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
   }
-  .nav-cta:hover { background: var(--dark); }
+  .nav-links a:hover { border-bottom-color: var(--acc-contact); color: var(--title); }
+  .nav-cta {
+    background: var(--title); color: #fff; border: none;
+    padding: 0.8rem 2rem; font-family: var(--sans); font-size: 0.63rem;
+    cursor: pointer; transition: background 0.3s; text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--body); }
 
   /* PAGE SYSTEM */
   .page { display: none; min-height: 100vh; }
   .page.active { display: block; }
+  #home, #booking, #payment, #content-page { padding-top: 84px; }
 
-  /* ── HOME PAGE ── */
-  #home { padding-top: 80px; }
-
-  /* HERO */
+  /* ── HERO ───────────────────────────────────────────────── */
   .hero {
-    min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 92vh;
+    display: grid; grid-template-columns: 1.05fr 1fr;
     position: relative; overflow: hidden;
+    --accent: var(--acc-mission);
   }
   .hero-left {
     display: flex; flex-direction: column; justify-content: center;
-    padding: 8rem 4rem 4rem 6rem;
-    position: relative; z-index: 2;
+    padding: 7rem 4rem 5rem 6rem; position: relative; z-index: 2;
   }
   .hero-eyebrow {
-    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
-    color: var(--earth); font-weight: 500; margin-bottom: 2rem;
+    font-size: 0.62rem; letter-spacing: 0.34em;
+    color: var(--body); margin-bottom: 2rem;
     display: flex; align-items: center; gap: 1rem;
   }
-  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--earth); }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 2px;
+    background: var(--acc-contact);   /* decor */
+  }
   .hero-title {
-    font-family: var(--serif); font-size: clamp(3.5rem, 6vw, 7rem);
-    font-weight: 300; line-height: 0.95; color: var(--dark);
-    margin-bottom: 2rem;
+    font-size: clamp(3rem, 5.6vw, 5.6rem);
+    line-height: 1.0; margin-bottom: 1.8rem;
   }
-  .hero-title em { font-style: italic; color: var(--sage); }
+  .hero-title em { font-style: italic; color: var(--title); }
   .hero-subtitle {
-    font-size: 0.9rem; line-height: 1.9; color: var(--charcoal);
-    max-width: 420px; margin-bottom: 3rem; font-weight: 300;
+    font-size: 1.05rem; line-height: 1.7; color: var(--body);
+    max-width: 460px; margin-bottom: 3rem; font-weight: 400;
   }
-  .hero-actions { display: flex; gap: 1.5rem; align-items: center; }
+  .hero-actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
   .btn-primary {
-    background: var(--sage); color: white; padding: 1.1rem 2.5rem;
-    font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.2em;
-    text-transform: uppercase; border: none; cursor: pointer;
-    transition: all 0.3s; font-weight: 500; text-decoration: none; display: inline-block;
+    background: var(--title); color: #fff; padding: 1.1rem 2.5rem;
+    font-family: var(--sans); font-size: 0.66rem;
+    border: none; cursor: pointer; transition: all 0.3s;
+    text-decoration: none; display: inline-block;
   }
-  .btn-primary:hover { background: var(--dark); transform: translateY(-2px); }
+  .btn-primary:hover { background: var(--body); transform: translateY(-2px); }
   .btn-secondary {
-    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--charcoal);
-    padding-bottom: 2px; transition: color 0.3s; font-weight: 500;
+    font-size: 0.66rem; color: var(--title); text-decoration: none;
+    border-bottom: 2px solid var(--accent); padding-bottom: 3px;
+    transition: border-color 0.3s;
   }
-  .btn-secondary:hover { color: var(--sage); border-color: var(--sage); }
-  .hero-right {
-    position: relative; background: var(--light-sage);
-    overflow: hidden;
+  .btn-secondary:hover { border-bottom-color: var(--title); }
+
+  .hero-right { position: relative; background: var(--bg); overflow: hidden; }
+  /* „Nor" decorativ — Misiune & Viziune (bleu) + Despre mine (mov) */
+  .hero-right::before {
+    content: ''; position: absolute; width: 90%; aspect-ratio: 1;
+    top: 6%; left: 12%; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%,
+      color-mix(in srgb, var(--acc-mission) 85%, transparent) 0%,
+      color-mix(in srgb, var(--acc-about) 30%, transparent) 55%,
+      transparent 72%);
+    filter: blur(28px); opacity: 0.85; pointer-events: none;
   }
   .hero-bg-text {
     position: absolute; bottom: 2rem; right: -1rem;
-    font-family: var(--serif); font-size: clamp(6rem, 12vw, 14rem);
-    font-weight: 300; color: rgba(138,154,91,0.08); line-height: 1;
-    pointer-events: none; white-space: nowrap;
+    font-family: var(--serif); font-size: clamp(6rem, 12vw, 13rem);
+    font-weight: 300; color: rgba(45,45,45,0.05); line-height: 1;
+    pointer-events: none; white-space: nowrap; text-transform: lowercase;
   }
   .hero-wave-svg {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 90%; opacity: 0.4;
+    width: 88%; opacity: 0.55;
   }
   .hero-quote {
-    position: absolute; bottom: 4rem; left: 4rem; right: 4rem;
-    font-family: var(--serif); font-size: 1.4rem; font-weight: 300;
-    font-style: italic; color: var(--dark); line-height: 1.5;
+    position: absolute; bottom: 3.5rem; left: 3.5rem; right: 3.5rem;
+    font-family: var(--serif); font-size: 1.45rem; font-weight: 400;
+    font-style: italic; color: var(--title); line-height: 1.45;
   }
   .hero-quote cite {
     display: block; font-style: normal; font-family: var(--sans);
-    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--sage); margin-top: 0.75rem; font-weight: 500;
+    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--body); margin-top: 0.9rem; font-weight: 500;
   }
 
-  /* ABOUT STRIP */
+  /* ── STRIP (cifre) ──────────────────────────────────────── */
   .strip {
-    background: var(--dark); color: white;
-    padding: 2rem 6rem;
-    display: flex; gap: 4rem; align-items: center;
-    overflow: hidden;
+    background: var(--bg); color: var(--body);
+    padding: 2.5rem 6rem;
+    display: flex; gap: 4rem; align-items: center; overflow: hidden;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
-  .strip-item { display: flex; align-items: center; gap: 1.5rem; white-space: nowrap; }
+  .strip-item { display: flex; align-items: center; gap: 1.25rem; white-space: nowrap; }
   .strip-item span:first-child {
-    font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: var(--sage);
+    font-family: var(--serif); font-size: 2.6rem; font-weight: 300;
+    color: var(--title); line-height: 1;
   }
-  .strip-item span:last-child {
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
-  }
-  .strip-sep { width: 1px; height: 40px; background: rgba(255,255,255,0.2); flex-shrink: 0; }
+  .strip-item span:last-child { font-size: 0.6rem; }
+  .strip-sep { width: 28px; height: 3px; background: var(--acc-benefits); flex-shrink: 0; border-radius: 2px; }
 
-  /* WHO */
-  .who { padding: 8rem 6rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 8rem; align-items: center; }
-  .who-label {
-    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
-    color: var(--earth); font-weight: 500; margin-bottom: 2rem;
+  /* ── DESPRE MINE (mov #9f67bc) ──────────────────────────── */
+  .who {
+    padding: 8rem 6rem; display: grid; grid-template-columns: 1fr 1.1fr;
+    gap: 7rem; align-items: center; position: relative;
+    --accent: var(--acc-about);
   }
-  .who-heading {
-    font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 4rem);
-    font-weight: 300; line-height: 1.1; color: var(--dark); margin-bottom: 2rem;
-  }
-  .who-text { font-size: 0.9rem; line-height: 1.9; margin-bottom: 1.5rem; font-weight: 300; }
+  .who-label { font-size: 0.62rem; letter-spacing: 0.34em; color: var(--body); margin-bottom: 1.75rem; }
+  .who-heading { font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-bottom: 2rem; }
+  .who-heading em { font-style: italic; color: var(--title); }
+  .who-text { font-size: 1.02rem; line-height: 1.7; color: var(--body); margin-bottom: 1.4rem; }
   .who-img {
-    position: relative; background: var(--light-earth);
-    aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-  .who-img-inner {
-    width: 100%; height: 100%;
+    position: relative; aspect-ratio: 4/5; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
+    background: color-mix(in srgb, var(--acc-about) 10%, #FFFFFF);
   }
+  .who-img::before {   /* nor decorativ mov + bleu */
+    content: ''; position: absolute; inset: -12%;
+    background: radial-gradient(circle at 70% 25%,
+      color-mix(in srgb, var(--acc-about) 55%, transparent) 0%,
+      color-mix(in srgb, var(--acc-mission) 55%, transparent) 45%,
+      transparent 70%);
+    filter: blur(34px); opacity: 0.75;
+  }
+  .who-img-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
   .who-signature {
     font-family: var(--serif); font-size: 3rem; font-style: italic;
-    color: var(--earth); opacity: 0.3; text-align: center;
+    color: var(--title); opacity: 0.35; text-align: center; text-transform: lowercase;
   }
   .who-circle-deco {
     position: absolute; top: -30px; right: -30px;
     width: 120px; height: 120px; border-radius: 50%;
-    border: 1px solid var(--sage); opacity: 0.4;
+    border: 1.5px solid var(--acc-about); opacity: 0.45; z-index: 2;
   }
 
-  /* SERVICES */
-  .services { padding: 8rem 6rem; background: var(--dark); color: white; }
-  .section-header { text-align: center; margin-bottom: 5rem; }
-  .section-label {
-    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
-    color: var(--sage); font-weight: 500; margin-bottom: 1.5rem;
+  /* ── SERVICII & ACTIVITĂȚI (orange #fd9d43) ─────────────── */
+  .services {
+    padding: 8rem 6rem; background: var(--bg); color: var(--body);
+    position: relative; overflow: hidden;
+    --accent: var(--acc-services);
   }
-  .section-title {
-    font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 5rem);
-    font-weight: 300; line-height: 1.05;
+  .services::before {   /* nor orange/roșu */
+    content: ''; position: absolute; width: 620px; height: 620px;
+    top: -220px; right: -180px; border-radius: 50%;
+    background: radial-gradient(circle,
+      color-mix(in srgb, var(--acc-services) 45%, transparent) 0%,
+      color-mix(in srgb, var(--acc-pricing) 40%, transparent) 45%,
+      transparent 70%);
+    filter: blur(50px); opacity: 0.55; pointer-events: none;
   }
-  .section-title em { font-style: italic; color: var(--light-sage); }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .section-header { text-align: center; margin-bottom: 4.5rem; position: relative; z-index: 1; }
+  .section-label { font-size: 0.62rem; letter-spacing: 0.34em; color: var(--body); margin-bottom: 1.25rem; }
+  .section-title { font-size: clamp(2.4rem, 4.6vw, 4.4rem); line-height: 1.05; }
+  .section-title em { font-style: italic; color: var(--title); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; position: relative; z-index: 1; }
   .service-card {
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-    padding: 3rem 2.5rem; transition: background 0.3s; cursor: pointer;
+    background: #fff; border: 1px solid var(--line);
+    border-top: 3px solid var(--acc-services);
+    padding: 3rem 2.5rem; transition: box-shadow 0.3s, transform 0.3s; cursor: pointer;
   }
-  .service-card:hover { background: rgba(138,154,91,0.12); border-color: var(--sage); }
+  .service-card:hover { box-shadow: 0 18px 45px rgba(45,45,45,0.08); transform: translateY(-3px); }
   .service-number {
     font-family: var(--serif); font-size: 3rem; font-weight: 300;
-    color: rgba(138,154,91,0.3); line-height: 1; margin-bottom: 1.5rem;
+    color: rgba(45,45,45,0.18); line-height: 1; margin-bottom: 1.25rem;
   }
   .service-name {
-    font-family: var(--serif); font-size: 1.6rem; font-weight: 300;
-    margin-bottom: 1rem; line-height: 1.2;
+    font-family: var(--serif); font-size: 1.7rem; font-weight: 400;
+    color: var(--title); margin-bottom: 1rem; line-height: 1.2; text-transform: lowercase;
   }
-  .service-desc { font-size: 0.8rem; line-height: 1.8; color: rgba(255,255,255,0.65); font-weight: 300; margin-bottom: 2rem; }
+  .service-desc { font-size: 0.95rem; line-height: 1.7; color: var(--body); margin-bottom: 2rem; }
   .service-price {
-    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--sage); font-weight: 500;
+    font-size: 0.63rem; color: var(--title);
+    display: inline-block; padding: 0.5rem 0.9rem;
+    background: color-mix(in srgb, var(--acc-pricing) 45%, #FFFFFF);
   }
-  .service-arrow { margin-left: auto; margin-top: 2rem; text-align: right; color: var(--sage); font-size: 1.2rem; }
+  .service-arrow { margin-top: 1.5rem; text-align: right; color: var(--title); font-size: 1.1rem; }
 
-  /* METHODS */
-  .methods { padding: 8rem 6rem; }
-  .methods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 5rem; }
-  .method-block { padding: 3rem; border: 1px solid var(--border); position: relative; }
+  /* ── BENEFICII / METODE (verde pal #dee9b5) ─────────────── */
+  .methods { padding: 8rem 6rem; position: relative; --accent: var(--acc-benefits); }
+  .methods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem; }
+  .method-block {
+    padding: 3rem; border: 1px solid var(--line); position: relative;
+    background: color-mix(in srgb, var(--acc-benefits) 12%, #FFFFFF);
+  }
   .method-block::before {
     content: ''; position: absolute; top: 0; left: 0;
-    width: 3px; height: 60px; background: var(--sage);
+    width: 4px; height: 72px; background: var(--acc-contact);
   }
   .method-name {
-    font-family: var(--serif); font-size: 2rem; font-weight: 300;
-    color: var(--dark); margin-bottom: 0.5rem;
+    font-family: var(--serif); font-size: 2.1rem; font-weight: 400;
+    color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase;
   }
-  .method-origin {
-    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--earth); font-weight: 500; margin-bottom: 1.5rem;
-  }
-  .method-text { font-size: 0.85rem; line-height: 1.9; color: var(--charcoal); font-weight: 300; margin-bottom: 1.5rem; }
+  .method-origin { font-size: 0.6rem; letter-spacing: 0.28em; color: var(--body); margin-bottom: 1.5rem; }
+  .method-text { font-size: 0.98rem; line-height: 1.7; color: var(--body); margin-bottom: 1.5rem; }
   .method-benefits { list-style: none; }
   .method-benefits li {
-    font-size: 0.8rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 0.75rem; font-weight: 300;
+    font-size: 0.92rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 0.75rem; color: var(--body);
   }
-  .method-benefits li::before { content: '○'; color: var(--sage); font-size: 0.6rem; }
+  .method-benefits li::before {
+    content: ''; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--acc-contact); flex-shrink: 0;
+  }
 
-  /* TESTIMONIALS */
-  .testimonials { padding: 8rem 6rem; background: var(--light-sage); }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+  /* ── TESTIMONIALE ───────────────────────────────────────── */
+  /* Notă brand manual: secțiunea „Recenzii" este momentan exclusă
+     din structura oficială. Păstrată aici, stilizată neutru. */
+  .testimonials { padding: 8rem 6rem; background: var(--bg); border-top: 1px solid var(--line); --accent: var(--acc-mission); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
   .testimonial {
-    background: white; padding: 2.5rem; border-bottom: 3px solid var(--sage);
+    background: color-mix(in srgb, var(--acc-mission) 14%, #FFFFFF);
+    padding: 2.5rem; border-bottom: 3px solid var(--acc-mission);
   }
   .testimonial-text {
-    font-family: var(--serif); font-size: 1.1rem; font-style: italic;
-    line-height: 1.7; color: var(--dark); margin-bottom: 2rem;
+    font-family: var(--serif); font-size: 1.15rem; font-style: italic;
+    line-height: 1.6; color: var(--title); margin-bottom: 1.75rem;
   }
-  .testimonial-author { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--earth); font-weight: 500; }
+  .testimonial-author { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--body); }
 
-  /* CTA SECTION */
+  /* ── CTA / PROGRAMEAZĂ (verde #b7c184) ──────────────────── */
   .cta-section {
-    padding: 10rem 6rem; text-align: center;
-    background: var(--dark); color: white; position: relative; overflow: hidden;
+    padding: 9rem 6rem; text-align: center; background: var(--bg);
+    color: var(--body); position: relative; overflow: hidden;
+    --accent: var(--acc-contact);
+  }
+  .cta-section::before {   /* nor verde închis + verde deschis */
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%); width: 780px; height: 620px;
+    background: radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--acc-contact) 42%, transparent) 0%,
+      color-mix(in srgb, var(--acc-benefits) 45%, transparent) 45%,
+      transparent 70%);
+    filter: blur(48px); opacity: 0.7; pointer-events: none;
   }
   .cta-bg-circle {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
     width: 600px; height: 600px; border-radius: 50%;
-    border: 1px solid rgba(138,154,91,0.15); pointer-events: none;
+    border: 1px solid color-mix(in srgb, var(--acc-contact) 55%, transparent);
+    pointer-events: none;
   }
   .cta-bg-circle::before {
     content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
     width: 400px; height: 400px; border-radius: 50%;
-    border: 1px solid rgba(138,154,91,0.2);
+    border: 1px solid color-mix(in srgb, var(--acc-contact) 70%, transparent);
   }
   .cta-section h2 {
-    font-family: var(--serif); font-size: clamp(3rem, 6vw, 7rem);
-    font-weight: 300; line-height: 1; position: relative; z-index: 1; margin-bottom: 2rem;
+    font-size: clamp(2.8rem, 5.4vw, 5.4rem); line-height: 1.02;
+    position: relative; z-index: 1; margin-bottom: 1.5rem;
   }
-  .cta-section h2 em { font-style: italic; color: var(--sage); }
-  .cta-section p { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 3rem; position: relative; z-index: 1; }
+  .cta-section h2 em { font-style: italic; color: var(--title); }
+  .cta-section p { font-size: 1.02rem; color: var(--body); margin-bottom: 2.5rem; position: relative; z-index: 1; }
   .cta-section .btn-primary { position: relative; z-index: 1; }
 
-  /* FOOTER */
+  /* ── FOOTER (charcoal neutru) ───────────────────────────── */
   footer {
-    background: var(--dark); color: rgba(255,255,255,0.5);
+    background: var(--title); color: rgba(255,255,255,0.6);
     padding: 3rem 6rem;
     display: flex; justify-content: space-between; align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    font-size: 0.7rem; letter-spacing: 0.1em;
+    font-size: 0.68rem; letter-spacing: 0.08em;
   }
-  footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-  footer a:hover { color: var(--sage); }
-  .footer-logo { font-family: var(--serif); font-size: 1.2rem; color: white; font-weight: 300; }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: #fff; }
+  .footer-logo { font-family: var(--serif); font-size: 1.35rem; color: #fff; font-weight: 400; text-transform: lowercase; }
 
-  /* ── BOOKING PAGE ── */
-  #booking { padding-top: 80px; }
+  /* ── PROGRAMARE (verde #b7c184) ─────────────────────────── */
   .booking-hero {
-    background: var(--dark); color: white;
-    padding: 6rem 6rem 4rem;
-    text-align: center; position: relative; overflow: hidden;
+    background: var(--bg); color: var(--body);
+    padding: 5.5rem 6rem 3.5rem; text-align: center;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    --accent: var(--acc-contact);
   }
-  .booking-hero h1 {
-    font-family: var(--serif); font-size: clamp(3rem, 6vw, 6rem);
-    font-weight: 300; line-height: 1; margin-bottom: 1.5rem;
+  .booking-hero::before {
+    content: ''; position: absolute; top: -180px; left: 50%;
+    transform: translateX(-50%); width: 760px; height: 480px;
+    background: radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--acc-contact) 40%, transparent) 0%,
+      color-mix(in srgb, var(--acc-benefits) 42%, transparent) 50%,
+      transparent 72%);
+    filter: blur(46px); opacity: 0.75; pointer-events: none;
   }
-  .booking-hero h1 em { font-style: italic; color: var(--sage); }
-  .booking-hero p { font-size: 0.9rem; color: rgba(255,255,255,0.65); max-width: 500px; margin: 0 auto; }
+  .booking-hero h1 { font-size: clamp(2.6rem, 5.2vw, 4.8rem); line-height: 1.02; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+  .booking-hero h1 em { font-style: italic; color: var(--title); }
+  .booking-hero p { font-size: 1rem; color: var(--body); max-width: 540px; margin: 0 auto; position: relative; z-index: 1; }
 
-  .booking-content { padding: 5rem 6rem; display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; }
+  .booking-content { padding: 5rem 6rem; display: grid; grid-template-columns: 1fr 1.25fr; gap: 5rem; --accent: var(--acc-contact); }
+  .booking-info h2 { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase; }
+  .booking-info .label { font-size: 0.62rem; letter-spacing: 0.3em; color: var(--body); margin-bottom: 1.5rem; }
 
-  .booking-info h2 { font-family: var(--serif); font-size: 2rem; font-weight: 300; margin-bottom: 0.5rem; }
-  .booking-info .label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--earth); font-weight: 500; margin-bottom: 2rem; }
-
-  .session-types { margin-bottom: 3rem; }
+  .session-types { margin-bottom: 2.5rem; }
   .session-type {
-    border: 1px solid var(--border); padding: 2rem; margin-bottom: 1rem;
-    cursor: pointer; transition: all 0.3s; position: relative;
+    border: 1px solid var(--line); padding: 2rem; margin-bottom: 1rem;
+    cursor: pointer; transition: all 0.3s; position: relative; background: #fff;
   }
-  .session-type.selected { border-color: var(--sage); background: rgba(138,154,91,0.05); }
-  .session-type h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; margin-bottom: 0.25rem; }
-  .session-type .meta { display: flex; gap: 2rem; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); font-weight: 500; margin-bottom: 0.75rem; }
-  .session-type p { font-size: 0.8rem; color: var(--charcoal); line-height: 1.7; font-weight: 300; }
-  .session-type .check { position: absolute; top: 1rem; right: 1rem; width: 24px; height: 24px; border: 1px solid var(--sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--sage); opacity: 0; }
-  .session-type.selected .check { opacity: 1; background: var(--sage); color: white; }
+  .session-type:hover { border-color: var(--line-strong); }
+  .session-type.selected {
+    border-color: var(--acc-contact);
+    background: color-mix(in srgb, var(--acc-contact) 10%, #FFFFFF);
+  }
+  .session-type h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: var(--title); margin-bottom: 0.35rem; text-transform: lowercase; }
+  .session-type .meta {
+    display: flex; gap: 1.5rem; font-size: 0.62rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--body); font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .session-type p { font-size: 0.92rem; color: var(--body); line-height: 1.7; }
+  .session-type .check {
+    position: absolute; top: 1rem; right: 1rem; width: 24px; height: 24px;
+    border: 1px solid var(--line-strong); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; color: var(--title); opacity: 0;
+  }
+  .session-type.selected .check { opacity: 1; background: var(--acc-contact); border-color: var(--acc-contact); color: var(--title); }
 
-  .what-includes { background: var(--light-sage); padding: 2rem; margin-bottom: 2rem; }
-  .what-includes h4 { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dark); font-weight: 500; margin-bottom: 1rem; }
+  .what-includes { background: color-mix(in srgb, var(--acc-benefits) 30%, #FFFFFF); padding: 2rem; margin-bottom: 2rem; }
+  .what-includes h4 { font-size: 0.63rem; letter-spacing: 0.28em; color: var(--title); margin-bottom: 1rem; }
   .what-includes ul { list-style: none; }
-  .what-includes li { font-size: 0.8rem; padding: 0.4rem 0; display: flex; gap: 0.75rem; font-weight: 300; }
-  .what-includes li::before { content: '✓'; color: var(--sage); font-size: 0.7rem; }
+  .what-includes li { font-size: 0.92rem; padding: 0.4rem 0; display: flex; gap: 0.75rem; color: var(--body); }
+  .what-includes li::before { content: '✓'; color: var(--title); font-size: 0.8rem; }
 
   .booking-form-side { }
-  .form-card { border: 1px solid var(--border); padding: 3rem; }
-  .form-card h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; margin-bottom: 0.5rem; }
-  .form-card .sub { font-size: 0.75rem; color: var(--charcoal); margin-bottom: 2.5rem; font-weight: 300; }
+  .form-card { border: 1px solid var(--line); padding: 3rem; background: #fff; }
+  .form-card h3 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase; }
+  .form-card .sub { font-size: 0.92rem; color: var(--body); margin-bottom: 2.5rem; }
 
   .form-group { margin-bottom: 1.5rem; }
-  .form-group label { display: block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal); font-weight: 500; margin-bottom: 0.5rem; }
+  .form-group label { display: block; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--body); margin-bottom: 0.5rem; }
   .form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--border);
-    background: white; font-family: var(--sans); font-size: 0.85rem; font-weight: 300;
-    color: var(--charcoal); outline: none; transition: border 0.3s;
-    appearance: none;
+    width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--line);
+    background: #fff; font-family: var(--sans); font-size: 0.95rem; font-weight: 400;
+    color: var(--body); outline: none; transition: border 0.3s; appearance: none;
   }
-  .form-group input:focus, .form-group select:focus { border-color: var(--sage); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--acc-contact); }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-group textarea { height: 100px; resize: none; }
+  .form-group textarea { height: 100px; resize: none; line-height: 1.6; }
 
   .calendar-mini { margin-bottom: 1.5rem; }
-  .calendar-mini h4 { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal); font-weight: 500; margin-bottom: 1rem; }
+  .calendar-mini h4 { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--body); font-weight: 500; margin-bottom: 1rem; }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-  .cal-header { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--earth); font-weight: 500; text-align: center; padding: 0.3rem 0; }
+  .cal-header { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--body); font-weight: 500; text-align: center; padding: 0.3rem 0; }
   .cal-day {
     aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; cursor: pointer; border: 1px solid transparent;
-    transition: all 0.2s; font-weight: 300;
+    font-size: 0.85rem; cursor: pointer; border: 1px solid transparent;
+    transition: all 0.2s; color: var(--body);
   }
-  .cal-day:hover { border-color: var(--sage); }
-  .cal-day.available { color: var(--dark); }
-  .cal-day.selected { background: var(--sage); color: white; border-color: var(--sage); }
-  .cal-day.unavailable { color: rgba(77,77,77,0.2); pointer-events: none; }
-  .cal-day.today { font-weight: 600; }
+  .cal-day:hover { border-color: var(--acc-contact); }
+  .cal-day.available { color: var(--title); }
+  .cal-day.selected { background: var(--acc-contact); color: var(--title); border-color: var(--acc-contact); font-weight: 600; }
+  .cal-day.unavailable { color: rgba(77,77,77,0.25); pointer-events: none; }
 
   .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1.5rem; }
   .time-slot {
-    padding: 0.6rem; text-align: center; border: 1px solid var(--border);
-    font-size: 0.75rem; cursor: pointer; transition: all 0.2s; font-weight: 300;
+    padding: 0.65rem; text-align: center; border: 1px solid var(--line);
+    font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: var(--body);
   }
-  .time-slot:hover { border-color: var(--sage); }
-  .time-slot.selected { background: var(--sage); color: white; border-color: var(--sage); }
-  .time-slot.taken { opacity: 0.3; pointer-events: none; text-decoration: line-through; }
+  .time-slot:hover { border-color: var(--acc-contact); }
+  .time-slot.selected { background: var(--acc-contact); color: var(--title); border-color: var(--acc-contact); font-weight: 500; }
+  .time-slot.taken { opacity: 0.35; pointer-events: none; text-decoration: line-through; }
 
-  .price-summary { background: var(--dark); color: white; padding: 1.5rem; margin-bottom: 1.5rem; }
-  .price-row { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.5rem; font-weight: 300; }
-  .price-row.total { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.75rem; margin-top: 0.75rem; font-weight: 500; }
-  .price-row.total span:last-child { color: var(--sage); font-family: var(--serif); font-size: 1.2rem; }
-
-  /* ── PAYMENT PAGE ── */
-  #payment { padding-top: 80px; }
-  .payment-content { padding: 5rem 6rem; display: grid; grid-template-columns: 1.3fr 1fr; gap: 6rem; }
-  .payment-summary { }
-  .payment-summary h2 { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; margin-bottom: 0.5rem; }
-  .payment-summary .label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--earth); font-weight: 500; margin-bottom: 3rem; }
-
-  .booking-recap {
-    border: 1px solid var(--border); padding: 2.5rem; margin-bottom: 2rem;
+  /* Tarife → galben #fedd92 (decorativ) */
+  .price-summary {
+    background: color-mix(in srgb, var(--acc-pricing) 38%, #FFFFFF);
+    color: var(--body); padding: 1.5rem; margin-bottom: 1.5rem;
   }
+  .price-row { display: flex; justify-content: space-between; font-size: 0.92rem; margin-bottom: 0.5rem; }
+  .price-row.total { border-top: 1px solid rgba(45,45,45,0.18); padding-top: 0.75rem; margin-top: 0.75rem; font-weight: 500; color: var(--title); }
+  .price-row.total span:last-child { color: var(--title); font-family: var(--serif); font-size: 1.4rem; }
+
+  /* ── PLATĂ ──────────────────────────────────────────────── */
+  .payment-content { padding: 5rem 6rem; display: grid; grid-template-columns: 1.25fr 1fr; gap: 5rem; --accent: var(--acc-pricing); }
+  .payment-summary h2 { font-family: var(--serif); font-size: 2.6rem; font-weight: 400; color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase; }
+  .payment-summary .label { font-size: 0.62rem; letter-spacing: 0.3em; color: var(--body); margin-bottom: 2.5rem; }
+
+  .booking-recap { border: 1px solid var(--line); padding: 2.5rem; margin-bottom: 2rem; background: #fff; }
   .recap-row {
     display: flex; justify-content: space-between; align-items: flex-start;
-    padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem;
+    padding: 1rem 0; border-bottom: 1px solid var(--line); font-size: 0.95rem;
   }
   .recap-row:last-child { border-bottom: none; }
-  .recap-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal); font-weight: 500; }
-  .recap-value { font-family: var(--serif); font-size: 1.1rem; font-weight: 300; text-align: right; }
+  .recap-label { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--body); }
+  .recap-value { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--title); text-align: right; }
 
-  .secure-badges { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
-  .badge {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--charcoal); font-weight: 500;
-  }
+  .secure-badges { display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .badge { display: flex; align-items: center; gap: 0.5rem; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--body); }
   .badge-icon { font-size: 1rem; }
 
-  .policy-note { background: var(--light-sage); padding: 1.5rem; font-size: 0.75rem; line-height: 1.7; font-weight: 300; }
-  .policy-note strong { font-weight: 500; }
+  .policy-note { background: color-mix(in srgb, var(--acc-benefits) 30%, #FFFFFF); padding: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--body); }
+  .policy-note strong { font-weight: 600; color: var(--title); }
 
-  .payment-form-side { }
-  .payment-card { border: 1px solid var(--border); padding: 3rem; }
-  .payment-card h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; margin-bottom: 0.5rem; }
-  .payment-card .sub { font-size: 0.75rem; color: var(--charcoal); margin-bottom: 2.5rem; font-weight: 300; }
+  .payment-card { border: 1px solid var(--line); padding: 3rem; background: #fff; }
+  .payment-card h3 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; color: var(--title); margin-bottom: 0.5rem; text-transform: lowercase; }
+  .payment-card .sub { font-size: 0.92rem; color: var(--body); margin-bottom: 2.5rem; }
 
   .payment-methods { display: flex; gap: 0.75rem; margin-bottom: 2rem; }
   .pay-method {
-    flex: 1; padding: 1rem; border: 1px solid var(--border);
+    flex: 1; padding: 1rem; border: 1px solid var(--line);
     text-align: center; cursor: pointer; transition: all 0.2s;
-    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+    font-size: 0.63rem; color: var(--body);
   }
-  .pay-method.active { border-color: var(--sage); background: rgba(138,154,91,0.05); color: var(--sage); }
-  .pay-method:hover { border-color: var(--sage); }
+  .pay-method:hover { border-color: var(--line-strong); }
+  .pay-method.active {
+    border-color: var(--acc-contact); color: var(--title);
+    background: color-mix(in srgb, var(--acc-contact) 14%, #FFFFFF);
+  }
 
   .card-input-wrapper { position: relative; }
-  .card-icons { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); display: flex; gap: 0.25rem; font-size: 0.7rem; }
+  .card-icons { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); display: flex; gap: 0.25rem; font-size: 0.8rem; }
 
-  .total-pay { background: var(--sage); color: white; padding: 1.25rem; text-align: center; width: 100%; border: none; font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; font-weight: 500; margin-top: 1rem; transition: background 0.3s; }
-  .total-pay:hover { background: var(--dark); }
+  .total-pay {
+    background: var(--title); color: #fff; padding: 1.25rem; text-align: center;
+    width: 100%; border: none; font-family: var(--sans); font-size: 0.68rem;
+    cursor: pointer; font-weight: 500; margin-top: 1rem; transition: background 0.3s;
+  }
+  .total-pay:hover { background: var(--body); }
 
-  /* ── CONTENT PAGE ── */
-  #content-page { padding-top: 80px; }
+  /* ── CONȚINUT / EDUCAȚIE ────────────────────────────────── */
   .content-hero {
-    background: linear-gradient(135deg, var(--dark) 0%, #3a4020 100%);
-    color: white; padding: 7rem 6rem 5rem; position: relative; overflow: hidden;
+    background: var(--bg); color: var(--body);
+    padding: 6rem 6rem 4rem; position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    --accent: var(--acc-benefits);
+  }
+  .content-hero::before {
+    content: ''; position: absolute; right: -140px; top: -180px;
+    width: 640px; height: 560px;
+    background: radial-gradient(ellipse at center,
+      color-mix(in srgb, var(--acc-benefits) 55%, transparent) 0%,
+      color-mix(in srgb, var(--acc-contact) 35%, transparent) 48%,
+      transparent 72%);
+    filter: blur(48px); opacity: 0.8; pointer-events: none;
   }
   .content-hero::after {
-    content: 'RESPIR'; position: absolute; right: -2rem; bottom: -2rem;
-    font-family: var(--serif); font-size: 20rem; font-weight: 300;
-    color: rgba(138,154,91,0.06); pointer-events: none; line-height: 1;
+    content: 'respir'; position: absolute; right: -1rem; bottom: -3rem;
+    font-family: var(--serif); font-size: clamp(8rem, 18vw, 18rem); font-weight: 300;
+    color: rgba(45,45,45,0.045); pointer-events: none; line-height: 1; text-transform: lowercase;
   }
-  .content-hero h1 { font-family: var(--serif); font-size: clamp(3rem, 6vw, 6rem); font-weight: 300; line-height: 1; margin-bottom: 1.5rem; position: relative; z-index: 1; }
-  .content-hero h1 em { font-style: italic; color: var(--light-sage); }
-  .content-hero p { font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 550px; line-height: 1.8; position: relative; z-index: 1; }
+  .content-hero h1 { font-size: clamp(2.6rem, 5.2vw, 4.8rem); line-height: 1.02; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+  .content-hero h1 em { font-style: italic; color: var(--title); }
+  .content-hero p { font-size: 1.05rem; color: var(--body); max-width: 560px; line-height: 1.7; position: relative; z-index: 1; }
 
-  .content-tabs { background: white; border-bottom: 1px solid var(--border); padding: 0 6rem; display: flex; gap: 0; sticky: top; position: sticky; top: 80px; z-index: 50; }
-  .tab-btn {
-    padding: 1.5rem 2rem; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-    font-weight: 500; cursor: pointer; border: none; background: none;
-    border-bottom: 2px solid transparent; color: var(--charcoal); transition: all 0.2s;
-    font-family: var(--sans);
+  .content-tabs {
+    background: #fff; border-bottom: 1px solid var(--line);
+    padding: 0 6rem; display: flex; gap: 0;
+    position: sticky; top: 84px; z-index: 50;
   }
-  .tab-btn.active { border-bottom-color: var(--sage); color: var(--sage); }
-  .tab-btn:hover { color: var(--sage); }
+  .tab-btn {
+    padding: 1.35rem 1.75rem; font-size: 0.63rem;
+    cursor: pointer; border: none; background: none;
+    border-bottom: 3px solid transparent; color: var(--body);
+    transition: all 0.2s; font-family: var(--sans); white-space: nowrap;
+  }
+  .tab-btn.active { border-bottom-color: var(--acc-benefits); color: var(--title); }
+  .tab-btn:hover { color: var(--title); }
 
   .content-body { padding: 5rem 6rem; }
   .content-section { display: none; }
   .content-section.active { display: block; }
 
-  .article-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 6rem; align-items: start; }
-  .article h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; color: var(--dark); margin-bottom: 2rem; }
-  .article h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--dark); margin-top: 3rem; margin-bottom: 1rem; }
-  .article p { font-size: 0.9rem; line-height: 1.9; color: var(--charcoal); margin-bottom: 1.5rem; font-weight: 300; }
+  .article-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 5rem; align-items: start; }
+  .article h2 {
+    font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 3.2rem); font-weight: 300;
+    line-height: 1.1; color: var(--title); margin-bottom: 2rem; text-transform: lowercase;
+  }
+  .article h3 {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 400; color: var(--title);
+    margin-top: 3rem; margin-bottom: 1rem; text-transform: lowercase;
+  }
+  .article p { font-size: 1.02rem; line-height: 1.75; color: var(--body); margin-bottom: 1.5rem; }
   .article blockquote {
-    border-left: 3px solid var(--sage); padding: 1.5rem 2rem; margin: 2.5rem 0;
-    background: var(--light-sage);
-    font-family: var(--serif); font-size: 1.3rem; font-style: italic; color: var(--dark);
+    border-left: 4px solid var(--acc-contact); padding: 1.5rem 2rem; margin: 2.5rem 0;
+    background: color-mix(in srgb, var(--acc-benefits) 26%, #FFFFFF);
+    font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--title);
     line-height: 1.5;
   }
 
-  .sidebar-box { background: var(--dark); color: white; padding: 2.5rem; margin-bottom: 2rem; }
-  .sidebar-box h4 { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sage); font-weight: 500; margin-bottom: 1.5rem; }
+  .sidebar-box {
+    background: color-mix(in srgb, var(--acc-mission) 22%, #FFFFFF);
+    color: var(--body); padding: 2.5rem; margin-bottom: 2rem;
+  }
+  .sidebar-box h4 { font-size: 0.62rem; letter-spacing: 0.28em; color: var(--title); margin-bottom: 1.25rem; }
   .sidebar-box ul { list-style: none; }
-  .sidebar-box li { font-size: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 300; display: flex; gap: 0.75rem; }
-  .sidebar-box li::before { content: '→'; color: var(--sage); }
+  .sidebar-box li {
+    font-size: 0.92rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(45,45,45,0.1);
+    display: flex; gap: 0.75rem; color: var(--body);
+  }
+  .sidebar-box li:last-child { border-bottom: none; }
+  .sidebar-box li::before { content: '→'; color: var(--title); }
 
-  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); margin-top: 1.5rem; }
-  .stat-box { background: var(--light-sage); padding: 1.5rem; }
-  .stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: var(--dark); line-height: 1; }
-  .stat-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--earth); font-weight: 500; margin-top: 0.25rem; }
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); margin-top: 1.5rem; }
+  .stat-box { background: color-mix(in srgb, var(--acc-benefits) 26%, #FFFFFF); padding: 1.5rem; }
+  .stat-num { font-family: var(--serif); font-size: 2.6rem; font-weight: 300; color: var(--title); line-height: 1; }
+  .stat-label { font-size: 0.58rem; letter-spacing: 0.18em; color: var(--body); margin-top: 0.35rem; }
 
   .technique-card {
-    border: 1px solid var(--border); padding: 2.5rem; margin-bottom: 1.5rem;
-    position: relative; overflow: hidden; transition: border-color 0.3s;
+    border: 1px solid var(--line); padding: 2.5rem; margin-bottom: 1.5rem;
+    position: relative; overflow: hidden; transition: border-color 0.3s; background: #fff;
   }
-  .technique-card:hover { border-color: var(--sage); }
+  .technique-card:hover { border-color: var(--acc-contact); }
   .technique-card::before {
-    content: attr(data-num);
-    position: absolute; right: 2rem; top: 50%; transform: translateY(-50%);
-    font-family: var(--serif); font-size: 8rem; font-weight: 300;
-    color: rgba(138,154,91,0.06); pointer-events: none;
+    content: attr(data-num); position: absolute; right: 2rem; top: 50%;
+    transform: translateY(-50%); font-family: var(--serif); font-size: 8rem;
+    font-weight: 400; color: rgba(45,45,45,0.05); pointer-events: none;
   }
-  .technique-card h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; margin-bottom: 0.5rem; }
-  .technique-card .meta { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--earth); font-weight: 500; margin-bottom: 1rem; }
-  .technique-card p { font-size: 0.85rem; line-height: 1.8; font-weight: 300; max-width: 80%; }
+  .technique-card h3 { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; color: var(--title); margin-bottom: 0.4rem; margin-top: 0; text-transform: lowercase; }
+  .technique-card .meta { font-size: 0.6rem; letter-spacing: 0.24em; color: var(--body); margin-bottom: 1rem; }
+  .technique-card p { font-size: 0.95rem; line-height: 1.7; color: var(--body); max-width: 80%; }
 
-  .faq-item { border-bottom: 1px solid var(--border); }
+  /* ── FAQ (neutru charcoal, fără nor) ────────────────────── */
+  #tab-faq { --accent: var(--acc-faq); }
+  .faq-item { border-bottom: 1px solid var(--line); }
   .faq-q {
-    padding: 1.5rem 0; font-family: var(--serif); font-size: 1.2rem; font-weight: 300;
+    padding: 1.5rem 0; font-family: var(--serif); font-size: 1.35rem; font-weight: 400;
     cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-    color: var(--dark);
+    gap: 2rem; color: var(--title); text-transform: lowercase;
   }
-  .faq-q::after { content: '+'; font-size: 1.5rem; color: var(--sage); transition: transform 0.3s; font-weight: 300; }
+  .faq-q::after { content: '+'; font-size: 1.5rem; color: var(--body); transition: transform 0.3s; font-weight: 400; }
   .faq-q.open::after { transform: rotate(45deg); }
-  .faq-a { font-size: 0.85rem; line-height: 1.9; font-weight: 300; color: var(--charcoal); padding-bottom: 1.5rem; display: none; }
+  .faq-a { font-size: 0.98rem; line-height: 1.75; color: var(--body); padding-bottom: 1.5rem; display: none; }
   .faq-a.open { display: block; }
 
-  /* DIVIDER */
-  .divider { height: 1px; background: var(--border); margin: 0 6rem; }
+  /* ── UTILITARE ──────────────────────────────────────────── */
+  .divider { height: 1px; background: var(--line); margin: 0 6rem; }
 
-  /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.05); opacity: 0.6; } }
+  @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.06); opacity: 0.8; } }
   .animate-up { animation: fadeUp 0.7s ease forwards; }
   .delay-1 { animation-delay: 0.1s; }
   .delay-2 { animation-delay: 0.2s; }
   .delay-3 { animation-delay: 0.3s; }
 
   .breathe-circle {
-    width: 120px; height: 120px; border-radius: 50%;
-    border: 1px solid var(--sage);
+    width: 130px; height: 130px; border-radius: 50%;
+    border: 2px solid var(--acc-contact);
+    background: color-mix(in srgb, var(--acc-benefits) 22%, #FFFFFF);
     animation: breathe 4s ease-in-out infinite;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--sage); font-weight: 500; margin: 3rem auto;
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--title); font-weight: 500; margin: 3rem auto;
   }
 
-  /* RESPONSIVE basics */
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
   @media (max-width: 900px) {
-    nav { padding: 1rem 2rem; }
+    body { font-size: 16px; }
+    nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-right { display: none; }
-    .hero-left { padding: 6rem 2rem 4rem; }
-    .who, .booking-content, .payment-content, .methods-grid, .services-grid, .testimonials-grid, .article-grid { grid-template-columns: 1fr; gap: 2rem; }
-    section, .services, .methods, .testimonials, .cta-section, .booking-hero, .booking-content, .payment-content, .content-hero, .content-body { padding-left: 2rem; padding-right: 2rem; }
-    .who, .strip { padding: 4rem 2rem; }
-    .content-tabs { padding: 0 2rem; overflow-x: auto; }
-    footer { flex-direction: column; gap: 1rem; padding: 2rem; text-align: center; }
-    .divider { margin: 0 2rem; }
+    .hero-left { padding: 5rem 1.5rem 4rem; }
+    .hero-title { font-size: clamp(2.4rem, 11vw, 3.4rem); }
+    .who, .booking-content, .payment-content, .methods-grid,
+    .services-grid, .testimonials-grid, .article-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services, .methods, .testimonials, .cta-section, .booking-hero,
+    .booking-content, .payment-content, .content-hero, .content-body {
+      padding-left: 1.5rem; padding-right: 1.5rem;
+    }
+    .services, .methods, .testimonials, .cta-section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .who, .strip { padding: 4rem 1.5rem; }
+    .strip { flex-wrap: wrap; gap: 1.5rem 2rem; }
+    .content-tabs { padding: 0 1.5rem; overflow-x: auto; }
+    .form-card, .payment-card, .method-block, .booking-recap { padding: 1.75rem; }
+    footer { flex-direction: column; gap: 1rem; padding: 2.5rem 1.5rem; text-align: center; }
+    .divider { margin: 0 1.5rem; }
+    .technique-card p { max-width: 100%; }
   }
 </style>
 </head>
@@ -556,12 +740,12 @@
     <div class="hero-right">
       <div class="hero-bg-text">Respir</div>
       <svg class="hero-wave-svg" viewBox="0 0 400 400" fill="none">
-        <circle cx="200" cy="200" r="180" stroke="rgba(139,109,83,0.2)" stroke-width="1"/>
-        <circle cx="200" cy="200" r="140" stroke="rgba(138,154,91,0.25)" stroke-width="1"/>
-        <circle cx="200" cy="200" r="100" stroke="rgba(138,154,91,0.3)" stroke-width="1"/>
-        <path d="M 50 200 Q 125 160 200 200 Q 275 240 350 200" stroke="rgba(139,109,83,0.4)" stroke-width="1.5" fill="none"/>
-        <path d="M 50 220 Q 125 180 200 220 Q 275 260 350 220" stroke="rgba(138,154,91,0.3)" stroke-width="1" fill="none"/>
-        <path d="M 50 180 Q 125 140 200 180 Q 275 220 350 180" stroke="rgba(138,154,91,0.3)" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="180" stroke="rgba(159,103,188,0.35)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="140" stroke="rgba(183,193,132,0.55)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="100" stroke="rgba(195,220,244,0.85)" stroke-width="1"/>
+        <path d="M 50 200 Q 125 160 200 200 Q 275 240 350 200" stroke="rgba(159,103,188,0.55)" stroke-width="1.5" fill="none"/>
+        <path d="M 50 220 Q 125 180 200 220 Q 275 260 350 220" stroke="rgba(195,220,244,0.85)" stroke-width="1" fill="none"/>
+        <path d="M 50 180 Q 125 140 200 180 Q 275 220 350 180" stroke="rgba(195,220,244,0.85)" stroke-width="1" fill="none"/>
       </svg>
       <div class="hero-quote">
         „Respirația este puntea dintre minte și corp — cel mai simplu instrument de vindecare pe care îl ai mereu cu tine."
@@ -580,10 +764,10 @@
     <div class="strip-item"><span>Cluj</span><span>& online</span></div>
   </div>
 
-  <section class="who">
+  <section class="who sec--about">
     <div>
       <p class="who-label">Despre mine</p>
-      <h2 class="who-heading">Un ghid pentru<br>călătoria ta<br><em style="font-style:italic;color:var(--sage)">interioară</em></h2>
+      <h2 class="who-heading">Un ghid pentru<br>călătoria ta<br><em style="font-style:italic">interioară</em></h2>
       <p class="who-text">Mă numesc Loredana Crișan și lucrez cu oameni care simt că ceva nu este în regulă — chiar dacă nu știu exact ce. Oameni în agitație constantă, epuizați, deconectați, care vor să se regăsească.</p>
       <p class="who-text">Prin breathwork și terapie prin sunet, creez un spațiu sigur în care poți elibera ceea ce ții înăuntru, fără să fii nevoită să explici sau să analizezi. Corpul știe. Noi îl ajutăm să se exprime.</p>
       <p class="who-text">Sunt certificată în tehnicile Buteyko și respirație circulară, și am o formare aprofundată în terapia cu boluri tibetane și cristal.</p>
@@ -599,7 +783,7 @@
 
   <div class="divider"></div>
 
-  <section class="services" id="services-section">
+  <section class="services sec--services" id="services-section">
     <div class="section-header">
       <p class="section-label">Sesiunile mele</p>
       <h2 class="section-title">Ce <em>oferim</em><br>împreună</h2>
@@ -629,10 +813,10 @@
     </div>
   </section>
 
-  <section class="methods" id="methods-section">
+  <section class="methods sec--benefits" id="methods-section">
     <div class="section-header" style="text-align:left;">
       <p class="section-label">Tehnicile utilizate</p>
-      <h2 class="section-title" style="color:var(--dark);font-size:clamp(2.5rem,5vw,4.5rem);">Știință &amp; <em style="font-style:italic;color:var(--sage)">practică</em></h2>
+      <h2 class="section-title" style="color:var(--title);font-size:clamp(2.5rem,5vw,4.5rem);">Știință &amp; <em style="font-style:italic">practică</em></h2>
     </div>
     <div class="methods-grid">
       <div class="method-block">
@@ -662,10 +846,10 @@
     </div>
   </section>
 
-  <section class="testimonials">
+  <section class="testimonials sec--mission">
     <div class="section-header">
       <p class="section-label">Ce spun cei care au lucrat cu mine</p>
-      <h2 class="section-title" style="color:var(--dark);">Transformări <em>reale</em></h2>
+      <h2 class="section-title" style="color:var(--title);">Transformări <em>reale</em></h2>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial">
@@ -683,7 +867,7 @@
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="cta-section sec--contact">
     <div class="cta-bg-circle"></div>
     <h2>Ești gata să<br><em>respiri</em> diferit?</h2>
     <p>Prima sesiune este o explorare. Nu trebuie să știi nimic. Trebuie doar să vii.</p>
@@ -711,7 +895,7 @@
     <p>Alege sesiunea care ți se potrivește și selectează un slot disponibil. Confirmarea vine în maxim 2 ore.</p>
   </div>
 
-  <div class="booking-content">
+  <div class="booking-content sec--contact">
     <div class="booking-info">
       <p class="label">Pasul 1 — Alege sesiunea</p>
       <h2>Ce tip de<br>sesiune dorești?</h2>
@@ -748,7 +932,7 @@
         </ul>
       </div>
 
-      <div style="padding:1.5rem;border:1px solid var(--border);font-size:0.8rem;line-height:1.7;font-weight:300;">
+      <div style="padding:1.5rem;border:1px solid var(--border);font-size:0.8rem;line-height:1.7;font-weight:400;">
         <strong style="font-weight:500;">📍 Locație:</strong> Cluj-Napoca (adresa exactă se trimite la confirmare) sau online via Zoom.<br>
         <strong style="font-weight:500;">⚡ Anulare:</strong> Poți anula sau reprograma cu minimum 24h înainte.
       </div>
@@ -761,7 +945,7 @@
 
         <div class="form-group">
           <label>Tipul sesiunii selectate</label>
-          <input type="text" id="selected-session-display" value="Sesiune individuală Breathwork — 90 min — 350 RON" readonly style="background:var(--light-sage);color:var(--dark);">
+          <input type="text" id="selected-session-display" value="Sesiune individuală Breathwork — 90 min — 350 RON" readonly style="background:color-mix(in srgb,var(--acc-benefits) 30%,#fff);color:var(--title);">
         </div>
 
         <div class="form-row">
@@ -829,14 +1013,14 @@
         <button class="btn-primary" style="width:100%;text-align:center;font-size:0.75rem;" onclick="showPage('payment')">
           Continuă spre plată →
         </button>
-        <p style="font-size:0.7rem;color:var(--charcoal);text-align:center;margin-top:1rem;font-weight:300;">
+        <p style="font-size:0.7rem;color:var(--charcoal);text-align:center;margin-top:1rem;font-weight:400;">
           Nu se percepe niciun cost acum. Plata se face după confirmare.
         </p>
       </div>
     </div>
   </div>
 
-  <footer style="background:var(--dark);color:rgba(255,255,255,0.5);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
+  <footer style="background:var(--title);color:rgba(255,255,255,0.6);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
     <span class="footer-logo" style="font-family:var(--serif);font-size:1.2rem;color:white;font-weight:300;">Loredana Crișan</span>
     <span>breathsound.ro · Cluj-Napoca</span>
     <a href="#" onclick="showPage('home')" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.7rem;">← Înapoi la site</a>
@@ -853,7 +1037,7 @@
     <p>Completează datele de plată pentru a-ți asigura locul. Sesiunea se confirmă în maxim 2 ore.</p>
   </div>
 
-  <div class="payment-content">
+  <div class="payment-content sec--pricing">
     <div class="payment-summary">
       <p class="label">Sumar rezervare</p>
       <h2>Înainte de a plăti</h2>
@@ -875,9 +1059,9 @@
           <span class="recap-label">Locație</span>
           <span class="recap-value">Cluj-Napoca / Online</span>
         </div>
-        <div class="recap-row" style="background:var(--light-sage);margin:-0px;padding:1rem;margin-top:0.5rem;">
+        <div class="recap-row" style="background:color-mix(in srgb,var(--acc-benefits) 30%,#fff);margin:-0px;padding:1rem;margin-top:0.5rem;">
           <span class="recap-label">Total</span>
-          <span class="recap-value" id="pay-total" style="font-family:var(--serif);font-size:2rem;color:var(--dark);">350 RON</span>
+          <span class="recap-value" id="pay-total" style="font-family:var(--serif);font-size:2rem;color:var(--title);">350 RON</span>
         </div>
       </div>
 
@@ -892,7 +1076,7 @@
       </div>
 
       <div style="margin-top:2rem;padding:1.5rem;border:1px solid var(--border);">
-        <p style="font-size:0.8rem;line-height:1.8;font-weight:300;">
+        <p style="font-size:0.8rem;line-height:1.8;font-weight:400;">
           🌿 <strong style="font-weight:500;">Ce se întâmplă după plată?</strong><br>
           Vei primi un email de confirmare, iar Loredana te va contacta în maxim 2 ore pentru a confirma data și a îți trimite adresa exactă (sau linkul Zoom).
         </p>
@@ -952,41 +1136,41 @@
         </div>
 
         <div id="transfer-form" style="display:none;">
-          <div style="background:var(--light-sage);padding:2rem;margin-bottom:1.5rem;">
-            <p style="font-size:0.8rem;line-height:1.9;font-weight:300;">
+          <div style="background:color-mix(in srgb,var(--acc-benefits) 30%,#fff);padding:2rem;margin-bottom:1.5rem;">
+            <p style="font-size:0.8rem;line-height:1.9;font-weight:400;">
               <strong style="font-weight:500;">Date transfer bancar:</strong><br>
               Titular: Loredana Crișan<br>
               IBAN: RO00 RNCB 0000 0000 0000 0000<br>
               Bancă: BCR<br>
               Referință: <strong style="font-weight:500;">BREATH + Prenumele tău</strong><br><br>
-              <span style="color:var(--earth);">Trimite dovada plății pe email / WhatsApp pentru confirmare rapidă.</span>
+              <span style="color:var(--body);">Trimite dovada plății pe email / WhatsApp pentru confirmare rapidă.</span>
             </p>
           </div>
         </div>
 
-        <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1.5rem;font-size:0.75rem;color:var(--charcoal);font-weight:300;">
-          <input type="checkbox" id="agree" style="margin-top:2px;accent-color:var(--sage);">
-          <label for="agree">Am citit și sunt de acord cu <a href="#" style="color:var(--sage);">politica de anulare</a> și <a href="#" style="color:var(--sage);">termenii de utilizare</a>.</label>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1.5rem;font-size:0.75rem;color:var(--charcoal);font-weight:400;">
+          <input type="checkbox" id="agree" style="margin-top:2px;accent-color:var(--title);">
+          <label for="agree">Am citit și sunt de acord cu <a href="#" style="color:var(--title);border-bottom:2px solid var(--acc-contact);text-decoration:none;">politica de anulare</a> și <a href="#" style="color:var(--title);border-bottom:2px solid var(--acc-contact);text-decoration:none;">termenii de utilizare</a>.</label>
         </div>
 
         <button class="total-pay" onclick="showSuccess()">
           Plătește 350 RON în siguranță 🔒
         </button>
 
-        <div id="success-msg" style="display:none;margin-top:1.5rem;background:rgba(138,154,91,0.1);border:1px solid var(--sage);padding:2rem;text-align:center;">
+        <div id="success-msg" style="display:none;margin-top:1.5rem;background:color-mix(in srgb,var(--acc-benefits) 30%,#fff);border:1px solid var(--acc-contact);padding:2rem;text-align:center;">
           <div style="font-size:2rem;margin-bottom:1rem;">✅</div>
-          <h4 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;margin-bottom:0.5rem;">Rezervare confirmată!</h4>
-          <p style="font-size:0.8rem;font-weight:300;line-height:1.7;">Vei primi un email de confirmare în câteva minute. Loredana te contactează în maxim 2 ore. 🌿</p>
+          <h4 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:0.5rem;">Rezervare confirmată!</h4>
+          <p style="font-size:0.8rem;font-weight:400;line-height:1.7;">Vei primi un email de confirmare în câteva minute. Loredana te contactează în maxim 2 ore. 🌿</p>
         </div>
 
-        <p style="font-size:0.65rem;color:rgba(77,77,77,0.6);text-align:center;margin-top:1.5rem;font-weight:300;line-height:1.7;">
+        <p style="font-size:0.65rem;color:var(--muted);text-align:center;margin-top:1.5rem;font-weight:400;line-height:1.7;">
           Datele tale sunt protejate. Nu stocăm datele cardului.<br>Procesare securizată prin Stripe / NetOpia.
         </p>
       </div>
     </div>
   </div>
 
-  <footer style="background:var(--dark);color:rgba(255,255,255,0.5);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
+  <footer style="background:var(--title);color:rgba(255,255,255,0.6);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
     <span class="footer-logo" style="font-family:var(--serif);font-size:1.2rem;color:white;font-weight:300;">Loredana Crișan</span>
     <span>breathsound.ro · Plată securizată</span>
     <a href="#" onclick="showPage('booking')" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.7rem;">← Înapoi la programare</a>
@@ -1122,8 +1306,8 @@
               <li>Tulburări psihotice active</li>
             </ul>
           </div>
-          <div style="background:var(--light-earth);padding:2rem;margin-top:1.5rem;border-left:3px solid var(--earth);">
-            <p style="font-size:0.8rem;line-height:1.9;font-weight:300;"><strong style="font-weight:500;">Important:</strong> Respirația circulară se practică MEREU cu un facilitator certificat și pregătit. Prima ta sesiune include o discuție de pregătire detaliată.</p>
+          <div style="background:color-mix(in srgb,var(--acc-about) 12%,#fff);padding:2rem;margin-top:1.5rem;border-left:4px solid var(--acc-about);">
+            <p style="font-size:0.8rem;line-height:1.9;font-weight:400;"><strong style="font-weight:500;">Important:</strong> Respirația circulară se practică MEREU cu un facilitator certificat și pregătit. Prima ta sesiune include o discuție de pregătire detaliată.</p>
           </div>
         </div>
       </div>
@@ -1206,9 +1390,9 @@
     </div>
 
     <!-- FAQ -->
-    <div class="content-section" id="tab-faq">
+    <div class="content-section sec--faq" id="tab-faq">
       <div style="max-width:800px;">
-        <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--dark);margin-bottom:3rem;">Întrebări frecvente</h2>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--title);margin-bottom:3rem;">Întrebări frecvente</h2>
 
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Trebuie să am experiență anterioară cu meditația sau yoga?</div>
@@ -1243,9 +1427,9 @@
           <div class="faq-a">Integrarea este o parte esențială a procesului. Vei primi recomandări personalizate și un ghid de exerciții pentru acasă. Ai suport WhatsApp 48h după sesiune pentru orice întrebări sau observații.</div>
         </div>
 
-        <div style="margin-top:4rem;padding:3rem;background:var(--dark);color:white;text-align:center;">
-          <p style="font-family:var(--serif);font-size:1.8rem;font-weight:300;margin-bottom:1rem;">Mai ai întrebări?</p>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-bottom:2rem;font-weight:300;">Scrie-mi direct pe WhatsApp sau email — răspund personal în câteva ore.</p>
+        <div style="margin-top:4rem;padding:3rem;background:color-mix(in srgb,var(--acc-benefits) 26%,#fff);color:var(--body);text-align:center;">
+          <p style="font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--title);margin-bottom:1rem;text-transform:lowercase;">Mai ai întrebări?</p>
+          <p style="font-size:1rem;color:var(--body);margin-bottom:2rem;">Scrie-mi direct pe WhatsApp sau email — răspund personal în câteva ore.</p>
           <a href="#" class="btn-primary" onclick="showPage('booking')">Rezervă o sesiune de descoperire →</a>
         </div>
       </div>
@@ -1253,7 +1437,7 @@
 
   </div><!-- end content-body -->
 
-  <footer style="background:var(--dark);color:rgba(255,255,255,0.5);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
+  <footer style="background:var(--title);color:rgba(255,255,255,0.6);padding:2rem 6rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.08);font-size:0.7rem;">
     <span class="footer-logo" style="font-family:var(--serif);font-size:1.2rem;color:white;font-weight:300;">Loredana Crișan</span>
     <span>breathsound.ro · Educație</span>
     <a href="#" onclick="showPage('home')" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.7rem;">← Înapoi la site</a>
