@@ -49,18 +49,18 @@
   .heroB .darken{position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.35) 35%, rgba(10,10,10,.75) 100%);}
   .heroB .grain{position:absolute;inset:0;mix-blend-mode:overlay;opacity:.4;}
   .heroB .grain img{width:100%;height:100%;object-fit:cover;}
-  .heroB .giant{position:absolute;top:-10px;left:0;width:100%;text-align:center;font-family:'Bodoni Moda';font-style:italic;font-size:calc(220px * var(--fs));color:rgba(255,255,255,.05);line-height:1;user-select:none;}
+  .heroB .giant{position:absolute;top:-10px;left:0;width:100%;text-align:center;font-family:'Bodoni Moda';font-style:italic;font-size:220px;color:rgba(255,255,255,.05);line-height:1;user-select:none;}
   .heroB .content{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 30px 0;}
   .heroB .lc{width:56px;margin-bottom:22px;opacity:.92;}
-  .heroB .eyebrow{color:#e4dfd6;font-size:calc(13px * var(--fs));letter-spacing:.28em;text-transform:uppercase;margin-bottom:32px;display:flex;align-items:center;gap:14px;}
+  .heroB .eyebrow{color:#e4dfd6;font-size:13px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:32px;display:flex;align-items:center;gap:14px;}
   .heroB .eyebrow .dash{width:30px;height:1px;background:rgba(255,255,255,.5);}
-  .heroB h1{font-family:'Bodoni Moda';font-weight:500;font-style:normal;font-size:calc(72px * var(--fs));color:#fdfbf7;line-height:1.16;}
+  .heroB h1{font-family:'Bodoni Moda';font-weight:500;font-style:normal;font-size:72px;color:#fdfbf7;line-height:1.16;}
   .heroB h1 .accent{font-family:'Bodoni Moda';font-weight:500;font-style:italic;color:#b98ee0;display:inline-block;position:relative;letter-spacing:.01em;margin:0 4px;}
-  .heroB p.desc{color:#e9e5dd;font-size:calc(17.5px * var(--fs));max-width:760px;line-height:1.85;margin-top:32px;}
+  .heroB p.desc{color:#e9e5dd;font-size:17.5px;max-width:760px;line-height:1.85;margin-top:32px;}
   .heroB .ctas{display:flex;gap:20px;margin-top:46px;}
-  .heroB .ctas a.btn1{background:#fdfbf7;color:#161616;padding:18px 36px;border-radius:2px;font-size:calc(12px * var(--fs));letter-spacing:.14em;text-transform:uppercase;}
-  .heroB .ctas a.btn2{border:1px solid rgba(255,255,255,.5);color:#fff;padding:18px 36px;border-radius:2px;font-size:calc(12px * var(--fs));letter-spacing:.14em;text-transform:uppercase;}
-  .heroB .quote{position:relative;z-index:3;max-width:calc(760px * var(--fs));margin:68px auto 0;padding:0 30px 72px;color:#fff;font-family:'Bodoni Moda';font-style:italic;font-size:calc(22px * var(--fs));line-height:1.7;text-align:center;}
+  .heroB .ctas a.btn1{background:#fdfbf7;color:#161616;padding:18px 36px;border-radius:2px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;}
+  .heroB .ctas a.btn2{border:1px solid rgba(255,255,255,.5);color:#fff;padding:18px 36px;border-radius:2px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;}
+  .heroB .quote{position:relative;z-index:3;max-width:660px;margin:68px auto 0;padding:0 30px 72px;color:#fff;font-family:'Bodoni Moda';font-style:italic;font-size:22px;line-height:1.7;text-align:center;}
   .statband{background:var(--ink);}
   .statband .inner{max-width:1040px;margin:0 auto;padding:0 32px;}
   .statband .statbar{display:flex;justify-content:center;flex-wrap:wrap;}
@@ -218,17 +218,17 @@
     nav.topnav .links{display:none;}
     nav.topnav .brand .logo-wrap{height:32px !important;width:162px !important;}
     nav.topnav .brand .logo-wrap img{height:32px !important;}
-    .heroB h1{font-size:calc(46px * var(--fs));}
-    .heroB .eyebrow{font-size:calc(11px * var(--fs));letter-spacing:.2em;margin-bottom:24px;}
-    .heroB p.desc{font-size:calc(15px * var(--fs));margin-top:24px;}
+    .heroB h1{font-size:46px;}
+    .heroB .eyebrow{font-size:11px;letter-spacing:.2em;margin-bottom:24px;}
+    .heroB p.desc{font-size:15px;margin-top:24px;}
     .heroB .ctas{margin-top:34px;}
     .heroB .ctas a.btn1,.heroB .ctas a.btn2{padding:15px 26px;}
-    .heroB .quote{font-size:calc(17px * var(--fs));margin-top:48px;padding-bottom:48px;}
+    .heroB .quote{font-size:17px;margin-top:48px;padding-bottom:48px;}
     .statband .statbar .s{padding:24px 12px;min-width:46%;}
     .statband .statbar .s:not(:last-child)::after{display:none;}
     .statband .statbar .s b{font-size:calc(24px * var(--fs));}
     .statband .statbar .s span.lbl{font-size:calc(9px * var(--fs));}
-    .heroB .giant{font-size:calc(120px * var(--fs));}
+    .heroB .giant{font-size:120px;}
     .cols, .cols3, .values, .cards, .contact-grid, .extra-services, .benefit-grid, .testimonials, .about-grid, .booking-grid{grid-template-columns:1fr !important;}
     .booking-grid{gap:18px;}
     .about-grid{gap:28px;}
@@ -276,11 +276,10 @@
         <a href="#faq"><span class="dot" style="background:#2D2D2D;"></span>FAQ</a>
       </div>
       <div class="social">
-        <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M16.5 7.5v.01"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Google Business Profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0"/></svg></a>
+        <a href="https://www.instagram.com/loredana_crisan_breath_sound/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M16.5 7.5v.01"/></svg></a>
+        <a href="https://wa.me/40772038620" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg></a>
+        <a href="https://t.me/+TZ4ixOqYr6JkYzdk" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100064808869002" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"/></svg></a>
       </div>
     </div>
   </div>
@@ -295,7 +294,7 @@
     <h1>Respiri. <span class="accent">Te transformi.</span><br>Devii.</h1>
     <p class="desc">Breathwork și terapie prin sunet pentru reglare emoțională,<br>eliberare de anxietate și reconectare cu sinele tău autentic.</p>
     <div class="ctas">
-      <a class="btn1" href="#contact">Rezervă o sesiune</a>
+      <a class="btn1" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă o sesiune</a>
       <a class="btn2" href="#despre-mine">Află mai multe →</a>
     </div>
   </div>
@@ -531,7 +530,7 @@
       <div class="booking-card">
         <h3>Sesiune individuală</h3>
         <p>Breathwork, Breath + Sound sau Sound Bath — un spațiu doar pentru tine, adaptat exact la ce ai nevoie în acel moment.</p>
-        <a class="btn-dark" href="#contact">Rezervă o sesiune →</a>
+        <a class="btn-dark" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă o sesiune →</a>
       </div>
       <div class="booking-card">
         <h3>Sesiune de grup</h3>
@@ -544,7 +543,6 @@
         <a class="btn-dark" href="#contact">Cere o ofertă de pachet →</a>
       </div>
     </div>
-    <div class="placeholder-note" style="margin-top:28px;">Butoanele de mai sus duc momentan către secțiunea de contact — urmează să fie conectate la un calendar de rezervare real (Calendly/Google Calendar).</div>
   </div>
 </section>
 
@@ -557,19 +555,17 @@
       <div>
         <p>Cel mai simplu prim pas: o discuție scurtă, fără obligații, în care ne cunoaștem și vedem dacă și cum te pot ajuta.</p>
         <div class="contact-links">
-          <a href="#">WhatsApp — [de completat]</a>
-          <a href="#">Instagram — [@de completat]</a>
-          <a href="#">Email — contact@breathsound.ro</a>
-          <a href="#">Telegram — Canal de ateliere [@de completat]</a>
+          <a href="https://wa.me/40772038620" target="_blank" rel="noopener">WhatsApp — 0772 038 620</a>
+          <a href="https://www.instagram.com/loredana_crisan_breath_sound/" target="_blank" rel="noopener">Instagram — @loredana_crisan_breath_sound</a>
+          <a href="mailto:contact@loredanacrisan.ro">Email — contact@loredanacrisan.ro</a>
+          <a href="https://t.me/+TZ4ixOqYr6JkYzdk" target="_blank" rel="noopener">Telegram — Grup de ateliere</a>
           <span style="font-size:calc(13px * var(--fs));color:var(--body);">Cluj-Napoca · sesiuni individuale &amp; grup (și online)</span>
         </div>
-        <div class="placeholder-note">Datele de contact (WhatsApp, Instagram) sunt placeholder — trebuie completate cu cele reale înainte de lansare.</div>
       </div>
       <div class="offer">
         <div class="big">Sesiune gratuită de cunoaștere</div>
         <p style="max-width:none;">30 de minute gratuit în care ne cunoaștem și vedem dacă și cum te pot ajuta.</p>
-        <a class="btn-dark" href="#">Rezervă gratuit →</a>
-        <div class="placeholder-note">Link-ul de rezervare/calendar e placeholder — se conectează la un calendar real (Calendly/Google Calendar) în etapa următoare.</div>
+        <a class="btn-dark" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă gratuit →</a>
       </div>
     </div>
   </div>
@@ -628,7 +624,7 @@
 <footer class="site">
   <div class="wrap">
     <img src="data:image/png;base64,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">
-    <div class="cop">© 2026 · breathsound.ro · Cluj-Napoca</div>
+    <div class="cop">© 2026 · loredanacrisan.ro · Cluj-Napoca</div>
   </div>
 </footer>
 
