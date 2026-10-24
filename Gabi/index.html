@@ -114,7 +114,16 @@
   .cert-list{margin-top:24px;max-width:520px;}
   .cert-list li{font-size:calc(13px * var(--fs));color:var(--body);line-height:1.9;}
   .cert-section{margin-top:56px;padding-top:44px;border-top:1px solid rgba(0,0,0,.08);}
-  .sec-divider{border-top:1px solid rgba(0,0,0,.08);margin:-68px 0 112px;}
+  .video-band{position:relative;width:100%;height:240px;overflow:hidden;background:#141414;}
+  .video-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .video-band .vb-sound{position:absolute;right:24px;bottom:18px;width:42px;height:42px;border-radius:50%;background:rgba(20,20,20,.55);border:1px solid rgba(255,255,255,.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(4px);transition:background .25s ease,border-color .25s ease;z-index:2;}
+  .video-band .vb-sound:hover{background:rgba(20,20,20,.8);}
+  .video-band .vb-sound svg{width:19px;height:19px;}
+  .video-band .vb-sound .icon-off{display:block;}
+  .video-band .vb-sound .icon-on{display:none;}
+  .video-band .vb-sound.is-on .icon-off{display:none;}
+  .video-band .vb-sound.is-on .icon-on{display:block;}
+  @media(max-width:860px){.video-band{height:180px;} .video-band .vb-sound{width:36px;height:36px;right:16px;bottom:14px;} .video-band .vb-sound svg{width:16px;height:16px;}}
   .cert-head{display:flex;align-items:baseline;gap:18px;}
   .cert-head .cert-line{width:40px;height:1px;background:#9f67bc;display:inline-block;}
   .cert-head h3{font-family:'Bodoni Moda';font-weight:500;font-style:italic;font-size:calc(28px * var(--fs));color:var(--ink);margin:0;}
@@ -502,9 +511,18 @@
   </div>
 </section>
 
+<div class="video-band">
+  <video class="vb-video" autoplay muted loop playsinline preload="auto">
+    <source src="bowls-loop.mp4" type="video/mp4">
+  </video>
+  <button type="button" class="vb-sound" aria-label="Activează sunetul">
+    <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+    <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+  </button>
+</div>
+
 <section id="breath-house" class="sec">  <div class="grain" style="opacity:.3;"></div>
   <div class="inner">
-    <div class="sec-divider"></div>
     <div class="eyebrow" style="color:#7d8f4a;">Breath House</div>
     <h2 class="h">Spațiul în care se întâmplă transformarea</h2>
     <div class="line" style="background:#b7c184;"></div>
@@ -739,6 +757,19 @@
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+})();
+(function(){
+  var band = document.querySelector('.video-band');
+  if(band){
+    var vid = band.querySelector('.vb-video');
+    var btn = band.querySelector('.vb-sound');
+    btn.addEventListener('click', function(){
+      vid.muted = !vid.muted;
+      btn.classList.toggle('is-on', !vid.muted);
+      btn.setAttribute('aria-label', vid.muted ? 'Activează sunetul' : 'Oprește sunetul');
+      vid.play();
+    });
+  }
 })();
 (function(){
   var tabs = document.querySelectorAll('.gallery-tabs .gtab');
