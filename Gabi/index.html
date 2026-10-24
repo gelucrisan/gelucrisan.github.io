@@ -160,6 +160,9 @@
   .cards .card{display:flex;flex-direction:column;}
   .card .card-cta{margin-top:auto;text-align:center;background:transparent;border:2.5px solid var(--accent,#c97a2e);color:var(--accent,#c97a2e);border-radius:15px;font-weight:600;letter-spacing:.09em;font-size:calc(12px * var(--fs));padding:15px 28px;transition:background .25s ease,color .25s ease;}
   .card .card-cta:hover,.card .card-cta:focus-visible{background:var(--accent,#c97a2e);color:#fff;}
+  .card.light-accent .card-cta{color:var(--ink);box-shadow:0 0 0 1.5px rgba(45,45,45,.35);}
+  .card.light-accent .kicker{color:var(--ink);opacity:.85;}
+  .card.light-accent .card-cta:hover,.card.light-accent .card-cta:focus-visible{background:var(--accent);color:var(--ink);}
   .offer .btn-dark{margin-top:auto;align-self:flex-start;background:transparent;border:2.5px solid #7d8f4a;color:#7d8f4a;border-radius:15px;font-weight:600;padding:15px 28px;transition:background .25s ease,color .25s ease;}
   .offer .btn-dark:hover,.offer .btn-dark:focus-visible{background:#7d8f4a;color:#fff;}
   .card ul.incl li{font-size:calc(11.5px * var(--fs));color:var(--body);line-height:1.7;}
@@ -574,7 +577,7 @@
     <div class="line" style="background:#fd9d43;"></div>
     <p style="margin-top:14px;max-width:640px;">Fiecare sesiune este o investiție în tine, în starea ta, în energia cu care treci prin zi și în felul în care te raportezi la propriul corp.</p>
     <div class="cards">
-      <div class="card" style="--accent:#5f8ab8;">
+      <div class="card light-accent" style="--accent:#c3dcf4;">
         <div class="kicker">Breathwork</div>
         <h3>Sesiune individuală</h3>
         <p>O călătorie personalizată prin respirație conștientă. Identificăm blocajele emoționale și le eliberăm printr-un protocol adaptat nevoilor tale.</p>
@@ -598,7 +601,7 @@
         </ul>
         <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sesiune-breath-and-sound" target="_blank" rel="noopener">Rezervă sesiunea →</a>
       </div>
-      <div class="card" style="--accent:#7d8f4a;">
+      <div class="card" style="--accent:#fd9d43;">
         <div class="kicker">Sound Healing</div>
         <h3>Sound Bath</h3>
         <p>Vibrațiile bolurilor tibetane și cristal acționează direct asupra sistemului nervos, inducând o stare profundă de relaxare.</p>
@@ -612,17 +615,17 @@
       </div>
     </div>
     <div class="cards" style="margin-top:28px;">
-      <div class="card" style="--accent:#5f8ab8;">
+      <div class="card light-accent" style="--accent:#dee9b5;">
         <h3>Sesiune individuală</h3>
         <p>Breathwork, Breath + Sound sau Sound Bath, un spațiu doar pentru tine, adaptat exact la ce ai nevoie în acel moment.</p>
         <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă o sesiune →</a>
       </div>
-      <div class="card" style="--accent:#9f67bc;">
+      <div class="card" style="--accent:#fd9d43;">
         <h3>Sesiune de grup</h3>
         <p>Energia unui cerc de 6–10 persoane, o dată pe lună, la Breath House. Ideal dacă vrei să experimentezi breathwork-ul alături de alții.</p>
         <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/terapie-in-grup" target="_blank" rel="noopener">Vezi următoarea sesiune →</a>
       </div>
-      <div class="card" style="--accent:#c97a2e;">
+      <div class="card light-accent" style="--accent:#fedd92;">
         <h3>Pachet personalizat</h3>
         <p>4–6 sesiuni individuale, cu reducere, pentru un parcurs susținut de evoluție pe termen mai lung.</p>
         <a class="btn-dark card-cta" data-wa data-wa-text="Am nevoie de o ofertă de pachet personalizat" href="#" target="_blank" rel="noopener">Cere o ofertă de pachet →</a>
