@@ -184,14 +184,14 @@
   .contact-grid .offer .big{font-family:'Bodoni Moda';font-size:calc(22px * var(--fs));margin-bottom:8px;}
   .contact-links{margin-top:20px;display:flex;flex-direction:column;gap:12px;}
   .contact-links a{font-size:calc(13px * var(--fs));color:var(--ink);border-bottom:1px dotted rgba(0,0,0,.2);width:fit-content;padding-bottom:2px;}
-  .btn-dark{display:inline-block;background:var(--ink);color:#fff;padding:14px 28px;border-radius:2px;font-size:calc(11px * var(--fs));letter-spacing:.1em;text-transform:uppercase;margin-top:20px;}
+  .btn-dark{display:inline-block;background:var(--ink);color:#fff;padding:14px 28px;border-radius:999px;font-size:calc(11px * var(--fs));letter-spacing:.1em;text-transform:uppercase;margin-top:20px;}
   .placeholder-note{font-size:calc(11px * var(--fs));color:#b08a3a;background:#fff8e8;border:1px dashed #e3c682;padding:8px 12px;border-radius:4px;margin-top:14px;max-width:420px;}
 
   /* Breath House gallery */
-  .gallery-tabs{display:flex;gap:30px;margin-top:34px;border-bottom:1px solid rgba(0,0,0,.08);}
-  .gallery-tabs button{appearance:none;background:none;border:none;padding:0 0 14px;font-family:'Montserrat';font-size:calc(12px * var(--fs));font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;position:relative;opacity:.9;transition:opacity .25s ease;}
-  .gallery-tabs button.active{opacity:1;}
-  .gallery-tabs button.active::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:currentColor;}
+  .gallery-tabs{display:flex;gap:30px;margin-top:34px;}
+  .gallery-tabs button{appearance:none;background:none;border:none;padding:0 0 14px;font-family:'Montserrat';font-size:calc(12px * var(--fs));font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;position:relative;color:#b9b2a6;transition:color .25s ease;}
+  .gallery-tabs button.active{color:var(--ink);}
+  .gallery-tabs button.active::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent,#7d8f4a);}
   .gallery-grid{display:none;margin-top:28px;}
   .gallery-grid.active{display:block;}
   .gallery-wrap{position:relative;}
@@ -510,8 +510,8 @@
     <div class="line" style="background:#b7c184;"></div>
     <p style="margin-top:14px;max-width:640px;">Breath House este locul gândit exclusiv pentru sesiuni de breathwork și terapie prin sunet, liniște, lumină naturală, boluri tibetane și un spațiu care te invită să te predai complet procesului. Fie că vii pentru o sesiune individuală sau pentru un cerc de grup, aici e casa în care respiri, eliberezi și te regăsești.</p>
     <div class="gallery-tabs">
-      <button type="button" class="gtab active" data-target="gallery-breath-house" style="color:#7d8f4a;">Breath House</button>
-      <button type="button" class="gtab" data-target="gallery-sesiuni" style="color:#c97a2e;">Sesiuni</button>
+      <button type="button" class="gtab active" data-target="gallery-breath-house" style="--accent:#7d8f4a;">Breath House</button>
+      <button type="button" class="gtab" data-target="gallery-sesiuni" style="--accent:#c97a2e;">Sesiuni</button>
     </div>
     <div class="gallery-grid" id="gallery-sesiuni">
       <div class="gallery-wrap">
