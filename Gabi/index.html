@@ -679,7 +679,7 @@
 
 <div class="lightbox" id="lightbox"><span class="lb-close">&times;</span><img id="lightbox-img" src="" alt=""></div>
 
-<section id="faq" class="sec" style="background:#f6f6f5;">
+<section id="faq" class="sec" style="background:#ececea;">
   <div class="grain" style="opacity:.35;"></div>
   <div class="inner">
     <div class="eyebrow" style="color:#8a8a8a;">Întrebări frecvente</div>
@@ -762,8 +762,25 @@
   if(band){
     var vid = band.querySelector('.vb-video');
     var btn = band.querySelector('.vb-sound');
-    var lastTime = 0, loopsWithSound = 0, trackLoops = false;
+    var lastTime = 0, loopsWithSound = 0, trackLoops = false, fadeTimer = null;
+    function fadeOutSound(){
+      if(fadeTimer){ clearInterval(fadeTimer); }
+      var steps = 24, stepTime = 1400/steps, step = 0;
+      fadeTimer = setInterval(function(){
+        step++;
+        vid.volume = Math.max(0, 1 - step/steps);
+        if(step >= steps){
+          clearInterval(fadeTimer);
+          fadeTimer = null;
+          vid.muted = true;
+          vid.volume = 1;
+          btn.classList.remove('is-on');
+          btn.setAttribute('aria-label', 'Activează sunetul');
+        }
+      }, stepTime);
+    }
     btn.addEventListener('click', function(){
+      if(fadeTimer){ clearInterval(fadeTimer); fadeTimer = null; vid.volume = 1; }
       vid.muted = !vid.muted;
       btn.classList.toggle('is-on', !vid.muted);
       btn.setAttribute('aria-label', vid.muted ? 'Activează sunetul' : 'Oprește sunetul');
@@ -775,10 +792,8 @@
       if(trackLoops && vid.currentTime < lastTime - 1){
         loopsWithSound++;
         if(loopsWithSound >= 2){
-          vid.muted = true;
-          btn.classList.remove('is-on');
-          btn.setAttribute('aria-label', 'Activează sunetul');
           trackLoops = false;
+          fadeOutSound();
         }
       }
       lastTime = vid.currentTime;
