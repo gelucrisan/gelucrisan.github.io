@@ -202,6 +202,13 @@
   .offer .btn-dark:hover,.offer .btn-dark:focus-visible{background:#fedd92;color:var(--ink);}
   .card ul.incl li{font-size:calc(11.5px * var(--fs));color:var(--body);line-height:1.7;}
 
+  .tab-hint{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.07em;margin:0 0 7px;display:flex;align-items:center;gap:5px;}
+  .tab-hint svg{width:11px;height:11px;flex:none;opacity:.7;}
+  .tab-group{display:inline-flex;background:#f4f1ea;border-radius:999px;padding:4px;gap:2px;margin-bottom:14px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);}
+  .tab-seg{border:none;background:transparent;font-family:'Montserrat';font-size:11.5px;font-weight:700;letter-spacing:.03em;color:var(--accent,#c97a2e);padding:9px 18px;border-radius:999px;cursor:pointer;transition:background .2s ease,color .2s ease,box-shadow .2s ease,transform .15s ease;opacity:.55;}
+  .tab-seg.is-active{background:var(--accent,#c97a2e);color:#fff;opacity:1;box-shadow:0 3px 8px rgba(0,0,0,.14);}
+  .tab-seg:not(.is-active):hover{opacity:.9;background:rgba(0,0,0,.045);transform:translateY(-1px);}
+
   .extra-services{margin-top:50px;display:grid;grid-template-columns:1fr 1fr;gap:24px 50px;}
   .extra-services .es h4{font-family:'Bodoni Moda';font-size:calc(16px * var(--fs));margin-bottom:6px;}
   .extra-services .es p{font-size:calc(12.5px * var(--fs));max-width:none;}
@@ -699,69 +706,84 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
     <div class="line" style="background:#fd9d43;"></div>
     <p style="margin-top:14px;max-width:640px;">Fiecare sesiune este o investiție în tine, în starea ta, în energia cu care treci prin zi și în felul în care te raportezi la propriul corp.</p>
     <div class="cards reveal">
-      <div class="card" style="--accent:#b7c184;">
-        <div class="kicker">Breathwork</div>
-        <h3>Sesiune de respirație <span class="ratio-badge">1:1</span></h3>
-        <p>O călătorie personalizată prin respirație conștientă. Identificăm blocajele emoționale și le eliberăm printr-un protocol adaptat nevoilor tale.</p>
-        <div class="price"><b>350 RON</b><span>90 minute</span></div>
-        <div style="font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.06em;margin-top:-8px;margin-bottom:14px;">preț / persoană</div>
-        <ul class="incl">
-          <li>Conversație de intake personalizată</li>
-          <li>Protocol terapeutic adaptat</li>
-          <li>Integrare și reflecție post-sesiune</li>
-        </ul>
-        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sesiune-individuala-respiratii" target="_blank" rel="noopener">Rezervă sesiunea</a>
-      </div>
-      <div class="card popular" style="--accent:#9f67bc;">
-        <div class="kicker">Protocol complet <span class="badge">Popular</span></div>
-        <h3>ReSuMi <span class="ratio-badge">1:1</span></h3>
-        <div class="card-tagline">Respirație + Sunet + Mișcare</div>
-        <p>Respirația deschide ușa, sunetul adâncește echilibrul, iar mișcarea eliberează energia stagnantă.</p>
-        <div class="price"><b>440 RON</b><span>90 minute</span></div>
-        <div style="font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.06em;margin-top:-8px;margin-bottom:14px;">preț / persoană</div>
-        <ul class="incl">
-          <li>Protocol integrat complet cu tehnici de respirație, sonoterapie cu boluri tibetane și exerciții de mișcare</li>
-          <li>Integrare și recomandări personalizate</li>
-        </ul>
-        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sesiune-breath-and-sound" target="_blank" rel="noopener">Rezervă sesiunea</a>
-      </div>
       <div class="card" style="--accent:#fd9d43;">
-        <div class="kicker">Sound Healing</div>
-        <h3>Sound Bath <span class="ratio-badge">1:1</span></h3>
+        <div class="kicker">Sunet &amp; Vibrație</div>
+        <h3>Terapie cu Boluri Tibetane Antice</h3>
         <p>Vibrațiile bolurilor tibetane și din cristal liniștesc profund sistemul nervos și induc o stare pură de relaxare și o transă meditativă.</p>
-        <div class="price"><b>260 RON</b><span>60 minute</span></div>
-        <div style="font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.06em;margin-top:-8px;margin-bottom:14px;">preț / persoană</div>
-        <ul class="incl">
-          <li>Scurtă discuție de pregătire</li>
-          <li>Imersiune în vibrații tibetane &amp; cristal</li>
-          <li>Integrare finală</li>
-        </ul>
+        <div class="tab-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.2"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg>Apasă pentru preț</div>
+        <div class="tab-group">
+          <button class="tab-seg is-active" type="button" data-card="boluri" data-tab="indiv">Individual</button><button class="tab-seg" type="button" data-card="boluri" data-tab="grup">Grup</button>
+        </div>
+        <div class="price" data-price="boluri"><b>260 lei</b><span>Individual · 60 min</span></div>
         <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sound-therapy" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
-    </div>
-    <div class="cards reveal" style="margin-top:28px;">
-      <div class="card light-accent" style="--accent:#c3dcf4;">
-        <h3>Sesiune individuală</h3>
-        <p>Breathwork, Breath + Sound sau Sound Bath, un spațiu doar pentru tine, adaptat exact la ce ai nevoie în acel moment.</p>
-        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă o sesiune</a>
+      <div class="card" style="--accent:#b7c184;">
+        <div class="kicker">Breathwork</div>
+        <h3>Respirație circulară conectată</h3>
+        <p>O călătorie personalizată prin respirație conștientă. Identificăm blocajele emoționale și le eliberăm printr-un protocol adaptat nevoilor tale.</p>
+        <div class="tab-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.2"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg>Apasă pentru preț</div>
+        <div class="tab-group">
+          <button class="tab-seg is-active" type="button" data-card="circulara" data-tab="indiv">Individual</button><button class="tab-seg" type="button" data-card="circulara" data-tab="grup">Grup</button>
+        </div>
+        <div class="price" data-price="circulara"><b>350 lei</b><span>Individual · 120 min</span></div>
+        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sesiune-individuala-respiratii" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
-      <div class="card light-accent" style="--accent:#dee9b5;">
-        <h3>Sesiune de grup</h3>
-        <p>Energia unui cerc de 6–10 persoane, o dată pe lună, la Breath House. Ideal dacă vrei să experimentezi breathwork-ul alături de alții.</p>
-        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/terapie-in-grup" target="_blank" rel="noopener">Vezi următoarea sesiune</a>
+      <div class="card" style="--accent:#63733d;">
+        <div class="kicker">Respirație &amp; Echilibru</div>
+        <h3>Respirația Buteyko</h3>
+        <p>Un pachet complet pentru a-ți reechilibra respirația, pas cu pas, cu evaluare inclusă și ghidaj personalizat pe tot parcursul.</p>
+        <div class="price"><b>710 lei</b><span>Pachet 6+1 · 30–60 min</span></div>
+        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă pachetul</a>
+      </div>
+    </div>
+    <div class="cards reveal" style="margin-top:28px;grid-template-columns:repeat(2,1fr);">
+      <div class="card popular" style="--accent:#9f67bc;">
+        <div class="kicker">Protocol complet <span class="badge">Popular</span></div>
+        <h3>ReSuMi</h3>
+        <div class="card-tagline">Respirație + Sunet + Mișcare</div>
+        <p>Respirația deschide ușa, sunetul adâncește echilibrul, iar mișcarea eliberează energia stagnantă.</p>
+        <div class="tab-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.2"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg>Apasă pentru preț</div>
+        <div class="tab-group">
+          <button class="tab-seg is-active" type="button" data-card="resumi" data-tab="indiv">Individual</button><button class="tab-seg" type="button" data-card="resumi" data-tab="grup">Grup</button>
+        </div>
+        <div class="price" data-price="resumi"><b>350 lei</b><span>Individual · 90–100 min</span></div>
+        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sesiune-breath-and-sound" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
       <div class="card light-accent" style="--accent:#fedd92;">
+        <div class="kicker">Ofertă personalizată</div>
         <h3>Pachet personalizat</h3>
         <p>4–6 sesiuni individuale, cu reducere, pentru un parcurs susținut de evoluție pe termen mai lung.</p>
         <a class="btn-dark card-cta" data-wa data-wa-text="Am nevoie de o ofertă de pachet personalizat" href="#" target="_blank" rel="noopener">Cere o ofertă de pachet</a>
       </div>
     </div>
     <div class="fine">
-      <b>Sesiuni de grup &amp; pachete:</b> Sound Bath de grup 80–120 RON/persoană (în funcție de numărul de participanți). Pachete de 4–6 sesiuni individuale disponibile cu reducere. Contactează-mă direct pentru o ofertă personalizată.<br><br>
       <b>Plată:</b> transfer bancar, card (link de plată) sau cash la sediu. Niciun avans la rezervare. Plata se face la confirmarea sesiunii.<br><br>
       <b>Anulare:</b> gratuită cu minimum 24h înainte. Sub 24h, 50% din valoarea sesiunii.<br><br>
       Pentru o integrare așezată și durabilă, recomand parcurgerea unui parcurs de 4–6 sesiuni.
     </div>
+    <script>
+    (function(){
+      var tarifePrices = {
+        boluri:    { indiv:['260 lei','Individual · 60 min'],      grup:['125 lei','Grup · max 6 pers · 60 min'] },
+        circulara: { indiv:['350 lei','Individual · 120 min'],     grup:['260 lei','Grup · max 4 pers · 120 min'] },
+        resumi:    { indiv:['350 lei','Individual · 90–100 min'],  grup:['260 lei','Grup · 90–100 min'] }
+      };
+      document.querySelectorAll('.tab-seg[data-card]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var key = btn.getAttribute('data-card');
+          document.querySelectorAll('.tab-seg[data-card="' + key + '"]').forEach(function(b){ b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+          var tab = btn.getAttribute('data-tab');
+          var vals = tarifePrices[key][tab];
+          var priceEl = document.querySelector('.price[data-price="' + key + '"]');
+          if(priceEl){
+            priceEl.querySelector('b').textContent = vals[0];
+            priceEl.querySelector('span').textContent = vals[1];
+          }
+        });
+      });
+    })();
+    </script>
   </div>
 </section>
 
