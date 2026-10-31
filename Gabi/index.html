@@ -715,7 +715,7 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           <button class="tab-seg is-active" type="button" data-card="boluri" data-tab="indiv">Individual 1:1</button><button class="tab-seg" type="button" data-card="boluri" data-tab="grup">Grup</button>
         </div>
         <div class="price" data-price="boluri"><b>260 lei</b><span>Individual · 60 min</span></div>
-        <a class="btn-dark card-cta" data-book-card="boluri" href="https://cal.com/loredana-crisan-z04c1a/sound-therapy" target="_blank" rel="noopener">Rezervă sesiunea</a>
+        <a class="btn-dark card-cta" data-book-card="boluri" data-href-grup="https://cal.com/loredana-crisan-z04c1a/grup-terapie-boluri" href="https://cal.com/loredana-crisan-z04c1a/sound-therapy" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
       <div class="card" style="--accent:#b7c184;">
         <div class="kicker">Breathwork</div>
@@ -726,7 +726,7 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           <button class="tab-seg is-active" type="button" data-card="circulara" data-tab="indiv">Individual 1:1</button><button class="tab-seg" type="button" data-card="circulara" data-tab="grup">Grup</button>
         </div>
         <div class="price" data-price="circulara"><b>350 lei</b><span>Individual · 120 min</span></div>
-        <a class="btn-dark card-cta" data-book-card="circulara" href="https://cal.com/loredana-crisan-z04c1a/sesiune-individuala-respiratii" target="_blank" rel="noopener">Rezervă sesiunea</a>
+        <a class="btn-dark card-cta" data-book-card="circulara" data-href-grup="https://cal.com/loredana-crisan-z04c1a/grup-respiratie-circulara" href="https://cal.com/loredana-crisan-z04c1a/sesiune-individuala-respiratii" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
       <div class="card" style="--accent:#63733d;">
         <div class="kicker">Respirație &amp; Echilibru</div>
@@ -747,7 +747,7 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           <button class="tab-seg is-active" type="button" data-card="resumi" data-tab="indiv">Individual 1:1</button><button class="tab-seg" type="button" data-card="resumi" data-tab="grup">Grup</button>
         </div>
         <div class="price" data-price="resumi"><b>350 lei</b><span>Individual · 90–100 min</span></div>
-        <a class="btn-dark card-cta" data-book-card="resumi" href="https://cal.com/loredana-crisan-z04c1a/sesiune-breath-and-sound" target="_blank" rel="noopener">Rezervă sesiunea</a>
+        <a class="btn-dark card-cta" data-book-card="resumi" data-href-grup="https://cal.com/loredana-crisan-z04c1a/grup-resumi" href="https://cal.com/loredana-crisan-z04c1a/sesiune-breath-and-sound" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
       <div class="card light-accent" style="--accent:#fedd92;">
         <div class="kicker">Ofertă personalizată</div>
@@ -786,30 +786,31 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
     </script>
     <script>
     /* Linkuri de rezervare: se citesc din booking-links.json (langa index.html).
-       Daca fisierul nu poate fi incarcat (ex. deschis direct din disc), raman linkurile din HTML. */
+       Textul butoanelor nu se schimba, doar linkul. Daca JSON-ul nu se incarca (ex. deschis din disc),
+       raman linkurile din HTML (href = individual, data-href-grup = grup). */
     (function(){
       var cfg = null, tabs = {};
+      function pick(a, key, tab){
+        var c = cfg && cfg.links && cfg.links[key] && cfg.links[key][tab];
+        return c || a.getAttribute('data-href-' + tab) || '';
+      }
       function setCard(key){
         var a = document.querySelector('a[data-book-card="' + key + '"]');
-        if(!a || !cfg) return;
-        if(!a.hasAttribute('data-label')) a.setAttribute('data-label', a.textContent);
-        var tab = tabs[key] || 'indiv';
-        var url = cfg.links && cfg.links[key] && cfg.links[key][tab];
-        if(url){
-          a.href = url; a.target = '_blank'; a.rel = 'noopener';
-          a.textContent = a.getAttribute('data-label');
-        } else {
-          a.href = '#contact'; a.removeAttribute('target');
-          a.textContent = 'Cere detalii';
-        }
+        if(!a) return;
+        var url = pick(a, key, tabs[key] || 'indiv');
+        if(url){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+        else { a.href = '#contact'; a.removeAttribute('target'); }
       }
       function applyAll(){
         document.querySelectorAll('a[data-book]').forEach(function(a){
-          var url = cfg.links && cfg.links[a.getAttribute('data-book')];
+          var url = cfg && cfg.links && cfg.links[a.getAttribute('data-book')];
           if(typeof url === 'string' && url) a.href = url;
         });
         document.querySelectorAll('a[data-book-card]').forEach(function(a){ setCard(a.getAttribute('data-book-card')); });
       }
+      document.querySelectorAll('a[data-book-card]').forEach(function(a){
+        if(!a.hasAttribute('data-href-indiv')) a.setAttribute('data-href-indiv', a.getAttribute('href'));
+      });
       document.querySelectorAll('.tab-seg[data-card]').forEach(function(btn){
         btn.addEventListener('click', function(){
           var key = btn.getAttribute('data-card');

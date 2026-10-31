@@ -1,5 +1,5 @@
 {
-  "_citeste": "Aici schimbi toate linkurile de rezervare (Cal.com). Modifici doar valorile dintre ghilimele. Daca un link 'grup' ramane gol (\"\"), butonul din cardul respectiv trimite la sectiunea de contact cu textul 'Cere detalii'.",
+  "_citeste": "Aici schimbi linkurile de rezervare (Cal.com). Modifici doar valorile dintre ghilimele. Textul butoanelor nu se schimba, doar linkul. Daca un link 'grup' ramane gol (\"\"), se foloseste linkul implicit din index.html (atributul data-href-grup).",
   "links": {
     "hero": "https://cal.com/loredana-crisan-z04c1a",
     "cunoastere": "https://cal.com/loredana-crisan-z04c1a/sesiune-de-cunoastere",
