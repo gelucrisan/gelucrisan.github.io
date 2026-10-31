@@ -1,20 +1,19 @@
 {
-  "_citeste": "Aici schimbi toate linkurile de rezervare (Calendly / Cal.com). Modifici doar valorile dintre ghilimele. Daca un link 'grup' ramane gol (\"\"), butonul din cardul respectiv trimite la sectiunea de contact cu textul 'Cere detalii'.",
+  "_citeste": "Aici schimbi toate linkurile de rezervare (Cal.com). Modifici doar valorile dintre ghilimele. Daca un link 'grup' ramane gol (\"\"), butonul din cardul respectiv trimite la sectiunea de contact cu textul 'Cere detalii'.",
   "links": {
-    "hero": "https://calendly.com/loredana-crisan-83",
-    "cunoastere": "https://calendly.com/loredana-crisan-83/sesiune-de-cunoastere",
+    "hero": "https://cal.com/loredana-crisan-z04c1a",
+    "cunoastere": "https://cal.com/loredana-crisan-z04c1a/sesiune-de-cunoastere",
     "boluri": {
-      "indiv": "https://calendly.com/loredana-crisan-83/sound-therapy",
-      "grup": ""
+      "indiv": "https://cal.com/loredana-crisan-z04c1a/sound-therapy",
+      "grup": "https://cal.com/loredana-crisan-z04c1a/grup-terapie-boluri"
     },
     "circulara": {
-      "indiv": "https://calendly.com/loredana-crisan-83/sesiune-individuala-respiratii",
-      "grup": ""
+      "indiv": "https://cal.com/loredana-crisan-z04c1a/sesiune-individuala-respiratii",
+      "grup": "https://cal.com/loredana-crisan-z04c1a/grup-respiratie-circulara"
     },
     "resumi": {
-      "indiv": "https://calendly.com/loredana-crisan-83/sesiune-breath-and-sound",
-      "grup": ""
-    },
-    "buteyko": "https://calendly.com/loredana-crisan-83"
+      "indiv": "https://cal.com/loredana-crisan-z04c1a/sesiune-breath-and-sound",
+      "grup": "https://cal.com/loredana-crisan-z04c1a/grup-resumi"
+    }
   }
 }
