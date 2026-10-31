@@ -522,7 +522,7 @@
     <h1>Respiri. <span class="accent">Te transformi.</span><br>Devii.</h1>
     <p class="desc">Terapie prin respirație, sunet și mișcare pentru reglare emoțională, eliberare de anxietate și reconectare cu sinele tău autentic.</p>
     <div class="ctas">
-      <a class="btn1" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă o sesiune</a>
+      <a class="btn1" data-book="hero" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă o sesiune</a>
       <a class="btn2" href="#despre-mine">Află mai multe<svg class="btn-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left:6px;vertical-align:-2px;"><path d="m9 6 6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -715,7 +715,7 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           <button class="tab-seg is-active" type="button" data-card="boluri" data-tab="indiv">Individual 1:1</button><button class="tab-seg" type="button" data-card="boluri" data-tab="grup">Grup</button>
         </div>
         <div class="price" data-price="boluri"><b>260 lei</b><span>Individual · 60 min</span></div>
-        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sound-therapy" target="_blank" rel="noopener">Rezervă sesiunea</a>
+        <a class="btn-dark card-cta" data-book-card="boluri" href="https://calendly.com/loredana-crisan-83/sound-therapy" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
       <div class="card" style="--accent:#b7c184;">
         <div class="kicker">Breathwork</div>
@@ -726,14 +726,14 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           <button class="tab-seg is-active" type="button" data-card="circulara" data-tab="indiv">Individual 1:1</button><button class="tab-seg" type="button" data-card="circulara" data-tab="grup">Grup</button>
         </div>
         <div class="price" data-price="circulara"><b>350 lei</b><span>Individual · 120 min</span></div>
-        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sesiune-individuala-respiratii" target="_blank" rel="noopener">Rezervă sesiunea</a>
+        <a class="btn-dark card-cta" data-book-card="circulara" href="https://calendly.com/loredana-crisan-83/sesiune-individuala-respiratii" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
       <div class="card" style="--accent:#63733d;">
         <div class="kicker">Respirație &amp; Echilibru</div>
         <h3>Respirația Buteyko</h3>
         <p>Un pachet complet pentru a-ți reechilibra respirația, pas cu pas, cu evaluare inclusă și ghidaj personalizat pe tot parcursul.</p>
         <div class="price"><b>710 lei</b><span>Pachet 6+1 · 30–60 min</span></div>
-        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă pachetul</a>
+        <a class="btn-dark card-cta" data-book="buteyko" href="https://calendly.com/loredana-crisan-83" target="_blank" rel="noopener">Rezervă pachetul</a>
       </div>
     </div>
     <div class="cards reveal" style="margin-top:28px;grid-template-columns:repeat(2,1fr);">
@@ -747,7 +747,7 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           <button class="tab-seg is-active" type="button" data-card="resumi" data-tab="indiv">Individual 1:1</button><button class="tab-seg" type="button" data-card="resumi" data-tab="grup">Grup</button>
         </div>
         <div class="price" data-price="resumi"><b>350 lei</b><span>Individual · 90–100 min</span></div>
-        <a class="btn-dark card-cta" href="https://calendly.com/loredana-crisan-83/sesiune-breath-and-sound" target="_blank" rel="noopener">Rezervă sesiunea</a>
+        <a class="btn-dark card-cta" data-book-card="resumi" href="https://calendly.com/loredana-crisan-83/sesiune-breath-and-sound" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
       <div class="card light-accent" style="--accent:#fedd92;">
         <div class="kicker">Ofertă personalizată</div>
@@ -782,6 +782,45 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           }
         });
       });
+    })();
+    </script>
+    <script>
+    /* Linkuri de rezervare: se citesc din booking-links.json (langa index.html).
+       Daca fisierul nu poate fi incarcat (ex. deschis direct din disc), raman linkurile din HTML. */
+    (function(){
+      var cfg = null, tabs = {};
+      function setCard(key){
+        var a = document.querySelector('a[data-book-card="' + key + '"]');
+        if(!a || !cfg) return;
+        if(!a.hasAttribute('data-label')) a.setAttribute('data-label', a.textContent);
+        var tab = tabs[key] || 'indiv';
+        var url = cfg.links && cfg.links[key] && cfg.links[key][tab];
+        if(url){
+          a.href = url; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = a.getAttribute('data-label');
+        } else {
+          a.href = '#contact'; a.removeAttribute('target');
+          a.textContent = 'Cere detalii';
+        }
+      }
+      function applyAll(){
+        document.querySelectorAll('a[data-book]').forEach(function(a){
+          var url = cfg.links && cfg.links[a.getAttribute('data-book')];
+          if(typeof url === 'string' && url) a.href = url;
+        });
+        document.querySelectorAll('a[data-book-card]').forEach(function(a){ setCard(a.getAttribute('data-book-card')); });
+      }
+      document.querySelectorAll('.tab-seg[data-card]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var key = btn.getAttribute('data-card');
+          tabs[key] = btn.getAttribute('data-tab');
+          setCard(key);
+        });
+      });
+      fetch('booking-links.json', {cache:'no-cache'})
+        .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function(j){ cfg = j; applyAll(); })
+        .catch(function(e){ console.warn('booking-links.json indisponibil, folosesc linkurile din HTML', e); });
     })();
     </script>
   </div>
@@ -863,7 +902,7 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           <li>Răspund la toate întrebările tale</li>
           <li>Fără obligații, doar o conversație deschisă</li>
         </ul>
-        <a class="btn-dark" href="https://calendly.com/loredana-crisan-83/sesiune-de-cunoastere" target="_blank" rel="noopener">Rezervă gratuit<svg class="btn-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left:6px;vertical-align:-2px;"><path d="m9 6 6 6-6 6"/></svg></a>
+        <a class="btn-dark" data-book="cunoastere" href="https://calendly.com/loredana-crisan-83/sesiune-de-cunoastere" target="_blank" rel="noopener">Rezervă gratuit<svg class="btn-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left:6px;vertical-align:-2px;"><path d="m9 6 6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>

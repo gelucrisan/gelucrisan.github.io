@@ -1,0 +1,20 @@
+{
+  "_citeste": "Aici schimbi toate linkurile de rezervare (Calendly / Cal.com). Modifici doar valorile dintre ghilimele. Daca un link 'grup' ramane gol (\"\"), butonul din cardul respectiv trimite la sectiunea de contact cu textul 'Cere detalii'.",
+  "links": {
+    "hero": "https://calendly.com/loredana-crisan-83",
+    "cunoastere": "https://calendly.com/loredana-crisan-83/sesiune-de-cunoastere",
+    "boluri": {
+      "indiv": "https://calendly.com/loredana-crisan-83/sound-therapy",
+      "grup": ""
+    },
+    "circulara": {
+      "indiv": "https://calendly.com/loredana-crisan-83/sesiune-individuala-respiratii",
+      "grup": ""
+    },
+    "resumi": {
+      "indiv": "https://calendly.com/loredana-crisan-83/sesiune-breath-and-sound",
+      "grup": ""
+    },
+    "buteyko": "https://calendly.com/loredana-crisan-83"
+  }
+}
