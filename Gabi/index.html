@@ -865,10 +865,11 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           + (when ? '<p class="bd-when">' + when + '</p>' : '')
           + '<p>' + (pending ? 'Programarea va fi confirmată în curând.' : 'Vei primi confirmarea pe e-mail.') + '</p>'
           + '<button type="button">Închide</button></div>';
-        function close(){ o.remove(); document.removeEventListener('keydown', onKey); }
+        function close(){ o.remove(); document.removeEventListener('keydown', onKey); document.body.style.overflow = ''; }
         function onKey(ev){ if(ev.key === 'Escape') close(); }
         o.addEventListener('click', function(ev){ if(ev.target === o || ev.target.tagName === 'BUTTON') close(); });
         document.addEventListener('keydown', onKey);
+        document.body.style.overflow = 'hidden';
         document.body.appendChild(o);
         o.querySelector('button').focus();
       }
