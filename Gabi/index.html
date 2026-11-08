@@ -746,7 +746,7 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
         <div class="tab-group">
           <button class="tab-seg is-active" type="button" data-card="resumi" data-tab="indiv">Individual 1:1</button><button class="tab-seg" type="button" data-card="resumi" data-tab="grup">Grup</button>
         </div>
-        <div class="price" data-price="resumi"><b>350 lei</b><span>Individual · 90–100 min</span></div>
+        <div class="price" data-price="resumi"><b>350 lei</b><span>Individual · 90 min</span></div>
         <a class="btn-dark card-cta" data-book-card="resumi" data-href-grup="https://cal.com/loredana-crisan-z04c1a/grup-resumi" href="https://cal.com/loredana-crisan-z04c1a/sesiune-resumi" target="_blank" rel="noopener">Rezervă sesiunea</a>
       </div>
       <div class="card light-accent" style="--accent:#fedd92;">
@@ -764,9 +764,9 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
     <script>
     (function(){
       var tarifePrices = {
-        boluri:    { indiv:['260 lei','Individual · 60 min'],      grup:['125 lei','Grup · max 6 pers · 60 min'] },
+        boluri:    { indiv:['260 lei','Individual · 60 min'],      grup:['125 lei','Grup · max 5 pers · 60 min'] },
         circulara: { indiv:['350 lei','Individual · 120 min'],     grup:['260 lei','Grup · max 4 pers · 120 min'] },
-        resumi:    { indiv:['350 lei','Individual · 90–100 min'],  grup:['260 lei','Grup · 90–100 min'] }
+        resumi:    { indiv:['350 lei','Individual · 90 min'],  grup:['260 lei','Grup · 90–100 min'] }
       };
       document.querySelectorAll('.tab-seg[data-card]').forEach(function(btn){
         btn.addEventListener('click', function(){
