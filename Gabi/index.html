@@ -818,6 +818,25 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
           setCard(key);
         });
       });
+      /* Calendar Cal.com ca pop-up peste pagina (fara tab nou). Daca embed.js nu se incarca,
+         linkul normal (target=_blank) ramane functional. */
+      (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document;
+        C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments;
+          if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; }
+          if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || [];
+            if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); }
+            else p(cal, ar); return; }
+          p(cal, ar); };
+      })(window, 'https://app.cal.com/embed/embed.js', 'init');
+      Cal('init', {origin: 'https://app.cal.com'});
+      document.addEventListener('click', function(e){
+        var a = e.target.closest && e.target.closest('a[data-book], a[data-book-card]');
+        if(!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+        var m = /^https:\/\/cal\.com\/([^?#]+)/.exec(a.href || '');
+        if(!m || !window.Cal || !Cal.loaded) return;
+        e.preventDefault();
+        Cal('modal', {calLink: m[1], config: {layout: 'month_view', theme: 'light'}});
+      });
       fetch('booking-links.json', {cache:'no-cache'})
         .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
         .then(function(j){ cfg = j; applyAll(); })
