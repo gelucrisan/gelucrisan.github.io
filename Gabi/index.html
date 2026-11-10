@@ -520,7 +520,7 @@
   <div class="content">
     <div class="eyebrow"><span class="dash"></span> <span class="hero-badge-desktop">CLUJ-NAPOCA · SESIUNI INDIVIDUALE &amp; DE GRUP</span><span class="hero-badge-mobile">CLUJ-NAPOCA<br>SESIUNI INDIVIDUALE ȘI DE GRUP</span> <span class="dash"></span></div>
     <h1>Respiri. <span class="accent">Te transformi.</span><br>Devii.</h1>
-    <p class="desc">Terapie prin respirație, sunet și mișcare.</p>
+    <p class="desc" id="hero-tagline">Terapie prin respirație, sunet și mișcare.</p>
     <p class="desc" style="margin-top:14px;max-width:900px;">Respirația te aduce în prezent, sunetul te invită la liniște, iar mișcarea te reconectează cu corpul.</p>
     <div class="ctas">
       <a class="btn1" data-book="hero" href="https://cal.com/loredana-crisan-z04c1a" target="_blank" rel="noopener">Rezervă o sesiune</a>
@@ -1222,5 +1222,28 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
   update();
 })();
 </script>
+<!-- FS-TUNER START (temporar: control dimensiune font pentru #hero-tagline; se șterge tot blocul până la FS-TUNER END) -->
+<div id="fs-tuner" style="position:fixed;right:16px;bottom:16px;z-index:99999;background:rgba(20,20,20,.88);color:#fff;font:13px/1.2 Montserrat,Arial,sans-serif;padding:10px 12px;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px;">
+  <span style="opacity:.75">Tagline</span>
+  <button type="button" id="fs-minus" style="width:30px;height:30px;border-radius:8px;border:1px solid #888;background:#333;color:#fff;font-size:18px;cursor:pointer;">−</button>
+  <span id="fs-val" style="min-width:48px;text-align:center;font-weight:600;">–</span>
+  <button type="button" id="fs-plus" style="width:30px;height:30px;border-radius:8px;border:1px solid #888;background:#333;color:#fff;font-size:18px;cursor:pointer;">+</button>
+  <button type="button" id="fs-reset" title="Revino la dimensiunea din CSS" style="height:30px;border-radius:8px;border:1px solid #888;background:#333;color:#fff;font-size:12px;cursor:pointer;padding:0 8px;">Reset</button>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('hero-tagline'),val=document.getElementById('fs-val');
+  if(!el)return;
+  function cur(){return parseFloat(getComputedStyle(el).fontSize);}
+  function show(){val.textContent=cur()+'px';}
+  function step(d){el.style.fontSize=Math.max(8,cur()+d)+'px';show();}
+  document.getElementById('fs-plus').onclick=function(){step(1);};
+  document.getElementById('fs-minus').onclick=function(){step(-1);};
+  document.getElementById('fs-reset').onclick=function(){el.style.fontSize='';show();};
+  window.addEventListener('resize',show);
+  show();
+})();
+</script>
+<!-- FS-TUNER END -->
 </body>
 </html>
