@@ -1,4 +1,4 @@
-# Site Loredana Crișan — Breath & Sound Healing
+# Site Loredana Crișan — Breath & Terapie prin sunet
 Predare către programator — notițe de la Ary / Oaza Advertising
 
 ## Ce este acest fișier
