@@ -690,7 +690,7 @@ const benefits={
 ['Un spațiu pentru observarea și exprimarea emoțiilor.','Susținerea echilibrului emoțional și a gestionării stresului.','Reconectare cu propriile nevoi, într-un ritm personal.'],
 ['Revenirea cu atenția în momentul prezent.','Un răgaz de la ritmul alert al vieții cotidiene.','Spațiu pentru liniște, introspecție și integrare.']]
 };
-benefits['lc-tab-circle'].push(['Înțelegerea reacțiilor și tiparelor comportamentale','Perspective noi asupra experiențelor interioare','Reflecție și integrarea experienței trăite']);
+benefits['lc-tab-circle'].push(['Înțelegerea reacțiilor și tiparelor comportamentale','Perspective noi asupra experiențelor interioare','Dezvoltarea rezilienței în fața stresului']);
 const listIds=['lc-physical','lc-emotional','lc-mental'];
 function choose(tab){const fk=root.querySelector('#lc-footer-kicker'),pk=root.querySelector('#'+tab.getAttribute('aria-controls')+' .lc-kicker');if(fk&&pk)fk.innerHTML=pk.innerHTML;tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',String(on));root.querySelector('#'+t.getAttribute('aria-controls')).hidden=!on;});benefits[tab.id].forEach((items,i)=>{const list=root.querySelector('#'+listIds[i]);list.replaceChildren(...items.map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));});}
 tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListener('keydown',e=>{let j=i;if(['ArrowDown','ArrowRight'].includes(e.key))j=(i+1)%tabs.length;else if(['ArrowUp','ArrowLeft'].includes(e.key))j=(i+tabs.length-1)%tabs.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=tabs.length-1;else return;e.preventDefault();choose(tabs[j]);tabs[j].focus();});});
