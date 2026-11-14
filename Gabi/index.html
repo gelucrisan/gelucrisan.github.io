@@ -638,7 +638,7 @@
 <article class="lc-panel" role="tabpanel" id="lc-panel-circle" aria-labelledby="lc-tab-circle" hidden>
 <div class="lc-kicker">Respirație &amp; emoții</div><h3>Respirație circulară conectată</h3><p class="lc-tagline">Respiră. Simte. Explorează.</p>
 <div class="lc-description"><p>O practică dinamică de breathwork în care inspirația și expirația se succed într-un flux continuu, fără pauze intenționate. Atenția se mută treptat dinspre a analiza către a simți, deschizând un spațiu de explorare a corpului, emoțiilor și reacțiilor personale.</p><p>Este o experiență mai complexă și potențial intensă, prin care te voi ghida pas cu pas. Pot apărea senzații puternice, lacrimi, amintiri sau momente de claritate. Procesul este susținut cu atenție, fără a forța eliberarea emoțională sau atingerea unui rezultat.</p></div>
-<div class="lc-preparation"><svg data-lucide="messages-square" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></svg><div><h4>Înainte de sesiune: purtăm o discuție deschisă</h4><p>Practica necesită pregătire prealabilă. Discutăm despre așteptări, starea de sănătate și experiențele relevante, pentru a verifica potrivirea, limitele și eventualele contraindicații. Îți explic desfășurarea și cum poți cere o pauză sau oprirea practicii.</p></div></div>
+<div class="lc-preparation"><svg data-lucide="messages-square" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></svg><div><h4>Înainte de sesiune: purtăm o discuție deschisă</h4><p>Practica necesită pregătire prealabilă. Discutăm despre așteptări, starea de sănătate și experiențele relevante, pentru a verifica potrivirea, limitele și eventualele contraindicații. Îți explic desfășurarea și cum poți gestiona eventualele trăiri copleșitoare.</p></div></div>
 </article>
 <article class="lc-panel" role="tabpanel" id="lc-panel-prana" aria-labelledby="lc-tab-prana" hidden>
 <div class="lc-kicker">Respirație &amp; atenție</div><h3>Pranayama</h3><p class="lc-tagline">Respirația, o ancoră către tine.</p>
@@ -1224,5 +1224,28 @@ tabs.forEach((t,i)=>{t.addEventListener('click',()=>choose(t));t.addEventListene
   update();
 })();
 </script>
+<!-- FS-TUNER START (temporar: control dimensiune font pentru #hero-tagline; se șterge tot blocul până la FS-TUNER END) -->
+<div id="fs-tuner" style="position:fixed;right:16px;bottom:16px;z-index:99999;background:rgba(20,20,20,.88);color:#fff;font:13px/1.2 Montserrat,Arial,sans-serif;padding:10px 12px;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,.35);display:flex;align-items:center;gap:8px;">
+  <span style="opacity:.75">Tagline</span>
+  <button type="button" id="fs-minus" style="width:30px;height:30px;border-radius:8px;border:1px solid #888;background:#333;color:#fff;font-size:18px;cursor:pointer;">−</button>
+  <span id="fs-val" style="min-width:48px;text-align:center;font-weight:600;">–</span>
+  <button type="button" id="fs-plus" style="width:30px;height:30px;border-radius:8px;border:1px solid #888;background:#333;color:#fff;font-size:18px;cursor:pointer;">+</button>
+  <button type="button" id="fs-reset" title="Revino la dimensiunea din CSS" style="height:30px;border-radius:8px;border:1px solid #888;background:#333;color:#fff;font-size:12px;cursor:pointer;padding:0 8px;">Reset</button>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('hero-tagline'),val=document.getElementById('fs-val');
+  if(!el)return;
+  function cur(){return parseFloat(getComputedStyle(el).fontSize);}
+  function show(){val.textContent=cur()+'px';}
+  function step(d){el.style.fontSize=Math.max(8,cur()+d)+'px';show();}
+  document.getElementById('fs-plus').onclick=function(){step(1);};
+  document.getElementById('fs-minus').onclick=function(){step(-1);};
+  document.getElementById('fs-reset').onclick=function(){el.style.fontSize='';show();};
+  window.addEventListener('resize',show);
+  show();
+})();
+</script>
+<!-- FS-TUNER END -->
 </body>
 </html>
